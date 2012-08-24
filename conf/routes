@@ -8,5 +8,8 @@ GET     /                           controllers.Application.index
 # Events
 GET     /events                     controllers.Events.list
 
+# Speakers
+GET     /speakers                   controllers.Speakers.list
+
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
