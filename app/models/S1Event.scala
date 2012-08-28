@@ -44,15 +44,14 @@ case class S1Event(var id: Pk[Long],
 
 object S1Event {
 
-	/**
-	 * Parses a row into an event
-	 */
+	/** Parses a row into an event
+	  */
 	private val event = {
 		get[Pk[Long]]("id") ~
 			get[String]("title") ~
 			get[String]("description") ~
-			get[Date]("start") ~
-			get[Date]("end") ~
+			get[Date]("starttime") ~
+			get[Date]("endtime") ~
 			get[String]("location") ~
 			get[Long]("speakerid") map {
 				case id ~ title ~ description ~ start ~ end ~ location ~ speakerId =>
@@ -60,9 +59,8 @@ object S1Event {
 			}
 	}
 
-	/**
-	 * Fetches all Events
-	 */
+	/** Fetches all Events
+	  */
 	def findAll = {
 		DB.withConnection { implicit connection =>
 			SQL("select * from event").as(event *)
