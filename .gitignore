@@ -8,4 +8,5 @@ tmp
 bin
 .classpath
 .cache
+conf/private.conf
 
