@@ -2,37 +2,19 @@ package controllers
 
 import play.api._
 import play.api.mvc._
+import models.Speaker
+import json.JsonSpeakerWriter
 
-object Speakers extends Controller {
+object Speakers extends APIController {
 
-	// TODO implement
+	/** Returns the full list of speakers in JSON format
+	  */
 	def list = Action {
-		Ok("""{
-                 "status": "OK",
-                 "message": "Success",
-                 "result": {
-                   "speakers" : [
-                     {
-                       "id": 1, 
-                       "name": "John Doe", 
-                       "title": "CTO of Example Inc.", 
-                       "about": "John is in charge of the technical future of Example Inc, and is currently engaged in various conferences as a major speaker.", 
-                       "email": "john@example.com",
-                       "twitter": "typesafe", 
-                       "url": "http://example.com/john" 
-                     },
-                     {
-                       "id": 2, 
-                       "name": "Jane Doe", 
-                       "title": "Senior Architect at Example Org.", 
-                       "about": "Jane is reponsible for the major architectural decisions at Example Org. Her experience with the Typesafe stack is fundamental to the direction of the organization.", 
-                       "email": "jane@example.org",
-                       "twitter": "typesafe", 
-                       "url": "http://example.org/jane" 
-                     }
-                   ]
-                 }
-              }""")
+		try {
+			Success(Speaker.findAll, "speakers")(JsonSpeakerWriter)
+		} catch {
+			case t: Throwable => ServerError(t.getMessage)
+		}
 	}
 
 }
