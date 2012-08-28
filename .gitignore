@@ -7,4 +7,5 @@ tmp
 .history
 bin
 .classpath
+.cache
 
