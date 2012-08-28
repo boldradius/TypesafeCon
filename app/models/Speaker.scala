@@ -39,6 +39,16 @@ case class Speaker(var id: Pk[Long],
 			}
 		}
 	}
+	
+	/** Deletes the speaker from the DB
+	  */
+	def delete = {
+		DB.withConnection { implicit connection =>
+			SQL("delete from speaker where id = {id}")
+						.on('id -> id)
+						.executeUpdate()
+		}
+	}
 }
 
 object Speaker {

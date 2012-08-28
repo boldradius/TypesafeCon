@@ -39,6 +39,16 @@ case class S1Event(var id: Pk[Long],
 			}
 		}
 	}
+	
+	/** Deletes the event from the DB
+	  */
+	def delete = {
+		DB.withConnection { implicit connection =>
+			SQL("delete from event where id = {id}")
+						.on('id -> id)
+						.executeUpdate()
+		}
+	}
 
 }
 
