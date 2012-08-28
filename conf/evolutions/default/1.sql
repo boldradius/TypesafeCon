@@ -11,7 +11,7 @@ create table speaker (
   title varchar(255),
   about text,
   email varchar(255),
-  twtter varchar(255),
+  twitter varchar(255),
   url varchar(255),
   CONSTRAINT speaker_pkey PRIMARY KEY (id)
 );
