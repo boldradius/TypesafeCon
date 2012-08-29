@@ -155,6 +155,71 @@ object InitialData {
 							Some("KaiWaehner"), 
 							Some("http://www.kai-waehner.de/blog")).create.get
 							
+			val graeme = Speaker(Id(0), 
+							"Graeme Rocher", 
+							"VMware", 
+							"", 
+							Some("graeme.rocher@gmail.com"), 
+							Some("graemerocher"), 
+							Some("http://grails.io")).create.get
+							
+			val edward = Speaker(Id(0), 
+							"Edward Burns ", 
+							"Consulting Member of Technical Staff , Oracle ", 
+							"Ed Burns is a senior Java engineer at Oracle. Ed has worked on a wide variety of client and server side Web technologies since 1994, including NCSA Mosaic, Mozilla, the Sun Java Plugin, Jakarta Tomcat and, most recently JavaServer Faces. Ed is currently the co-spec lead for JSR 127, JavaServer Faces, a topic on which Ed recently co-authored a book for McGraw-Hill. Ed is an experienced international conference speaker, with consistently high attendance numbers and ratings at the JavaOne conference, JAOO, W-JAX, No Fluff Just Stuff, JA-SIG, The Ajax Experience, and JUGs and Linux User Groups. ", 
+							None, 
+							Some("edburns"), 
+							Some("http://ridingthecrest.com/edburns/")).create.get
+							
+			val santiago = Speaker(Id(0), 
+							"Santiago Pericasgeertsen", 
+							"Software Engineer, Oracle", 
+							"", 
+							Some("santiago@cs.bu.edu"), 
+							None, 
+							Some("http://cs-people.bu.edu/santiago/")).create.get
+							
+			val stephen = Speaker(Id(0), 
+							"Stephen Chin ", 
+							"Java Evangelist , Oracle ", 
+							"Stephen Chin is a Java Evangelist at Oracle specializing in UI technology and co-author of the Pro JavaFX Platform 2 title, which is the leading technical reference for JavaFX. He has been featured at Java conferences around the world including Devoxx, Codemash, OSCON, J-Fall, GeeCON, Jazoon, and JavaOne, where he twice received a Rock Star Award. In his evenings and weekends, Stephen is an open-source hacker, working on projects including ScalaFX, a DSL for JavaFX in the Scala language, Visage, a UI oriented JVM language, JFXtras, a JavaFX component and extension library, and Apropos, an Agile Project Portfolio scheduling tool written in JavaFX. Stephen can be followed on twitter @steveonjava and reached via his blog: http://steveonjava.com", 
+							None, 
+							Some("steveonjava"), 
+							Some("http://steveonjava.com")).create.get
+							
+			val nic = Speaker(Id(0), 
+							"Nic Williams ", 
+							"VP of Developer Evangelism at Engine Yard", 
+							"Dr Nic is a developer's developer. He writes blog posts for developers; creates tools, libraries and text editor extensions for developers; and speaks to developers at conferences. He's the VP of Developer Evangelism at Engine Yard, the premier platform as a service. He's Australian and living in the Bay Area. And he's funny; if you can understand his accent.", 
+							Some("drnicwilliams@gmail.com"), 
+							Some("drnic"), 
+							Some("http://drnicwilliams.com/")).create.get
+							
+			val raghavan = Speaker(Id(0), 
+							"Raghavan \"Rags\" Srinivas ", 
+							"Developer Advocate , Couchbase ", 
+							"Raghavan \"Rags\" Srinivas is a Developer Advocate at Couchbase getting his hands dirty with emerging technology directions and trends. His general focus area is in distributed systems, with a specialization in cloud computing. He worked on Hadoop and HBase during its early stages. He has spoken on a variety of technical topics at conferences around the world, conducted and organized Hands-on Labs and taught graduate classes in the evening. He is also a repeat JavaOne rock star speaker award winner.\nRags brings with him over 20 years of hands-on software development and over 10 years of architecture and technology evangelism experience. He worked for Digital Equipment Corporation, Sun Microsystems, Intuit and Accenture. He has worked on several technology areas, including internals of VMS, Unix and NT to Hadoop and HBase. He has evangelized and influenced the architecture of a number of technology areas including the early releases of JavaFX, Java, Java EE, Java and XML, Java ME, AJAX and Web 2.0, Java Security and so on.\nRags holds a Masters degree in Computer Science from the Center of Advanced Computer Studies at the University of Louisiana at Lafayette. ", 
+							None, 
+							Some("ragss"), 
+							Some("http://ragss.wordpress.com/")).create.get
+							
+			val aaron = Speaker(Id(0), 
+							"Aaron Bedra ", 
+							"Senior Software Engineer, Groupon", 
+							"Aaron Bedra is a senior software engineer at Groupon. He is a frequent contributor to the Clojure language and its supporting libraries as well as an active member of the Clojure community.\nAaron has led the development of several commercial Clojure projects and is the co-author of Programming Clojure, 2nd Edition and the upcoming Practical Software Security Book. ", 
+							None, 
+							Some("abedra"), 
+							Some("http://www.aaronbedra.com/")).create.get
+							
+			val thomas = Speaker(Id(0), 
+							"Thomas Enebo", 
+							"JRuby guy , Red Hat", 
+							"Thomas Enebo is the co-lead of the JRuby project and an employee of Red Hat. He has been a practitioner of Java since the heady days of the HotJava browser, and he has been happily using Ruby since 2001. Thomas has spoken at numerous Java and Ruby conferences, co-authored \"Using JRuby\", and was awarded the \"Rock Star\" award at JavaOne. When Thomas is not working he enjoys biking, anime, and drinking a decent IPA. ", 
+							None, 
+							Some("tom_enebo"), 
+							Some("http://blog.enebo.com/")).create.get
+							
+							
 							
 			/********************************************************************************************************************/
 			/*************************************** EVENTS *********************************************************************/
@@ -205,7 +270,6 @@ object InitialData {
 							"Parc 55 - Cyril Magnin I", 
 							Seq(peter.id.get)).create
 							
-			// TODO has multiple speakers
 			val BOF4149 = S1Event(Id(0),  
 							"BOF4149",
 							"Web Framework Smackdown 2012", 
@@ -213,7 +277,7 @@ object InitialData {
 							new DateTime(2012,10,1,20,30), 
 							new DateTime(2012,10,1,21,15), 
 							"Parc 55 - Cyril Magnin II/III", 
-							Seq(markus.id.get)).create
+							Seq(markus.id.get, graeme.id.get, jward.id.get, edward.id.get, santiago.id.get)).create
 							
 			val CON5329 = S1Event(Id(0),  
 							"CON5329",
@@ -222,7 +286,7 @@ object InitialData {
 							new DateTime(2012,10,1,11,30), 
 							new DateTime(2012,10,1,12,30), 
 							"Hilton San Francisco - Imperial Ballroom B", 
-							Seq(luc.id.get)).create
+							Seq(luc.id.get, stephen.id.get)).create
 							
 			val CON3395 = S1Event(Id(0),  
 							"CON3395",
@@ -294,7 +358,7 @@ object InitialData {
 							new DateTime(2012,10,3,11,30), 
 							new DateTime(2012,10,3,12,30), 
 							"Hilton San Francisco - Plaza A/B", 
-							Seq(guillaume.id.get)).create
+							Seq(guillaume.id.get, nic.id.get, raghavan.id.get, aaron.id.get)).create
 							
 			val CON2989 = S1Event(Id(0),  
 							"CON2989",
@@ -305,7 +369,6 @@ object InitialData {
 							"Parc 55 - Mission", 
 							Seq(bruno.id.get)).create
 							
-			// TODO multiple speakers
 			val CON6575 = S1Event(Id(0),  
 							"CON6575",
 							"Polyglot for Dummies", 
@@ -313,7 +376,7 @@ object InitialData {
 							new DateTime(2012,10,3,11,30), 
 							new DateTime(2012,10,3,12,30), 
 							"Hilton San Francisco - Golden Gate 6/7/8", 
-							Seq(charles.id.get)).create
+							Seq(charles.id.get, thomas.id.get)).create
 	
 			val CON2424 = S1Event(Id(0),  
 							"CON2424",
