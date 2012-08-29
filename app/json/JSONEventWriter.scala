@@ -18,7 +18,7 @@ object JsonEventWriter extends Writes[S1Event] {
 				"start" ->       toJson(event.start.toString()),
 				"end" ->         toJson(event.end.toString()),
 				"location" ->    toJson(event.location),
-				"speakerId" ->   toJson(event.speakerId))
+				"speakerIds" ->   toJson(event.speakerIds))
 			)
 	}
 }

@@ -167,7 +167,7 @@ object InitialData {
 							new DateTime(2012,10,4,11,0), 
 							new DateTime(2012,10,4,12,0), 
 							"Hilton San Francisco - Golden Gate 3/4/5", 
-							viktor.id.get).create
+							Seq(viktor.id.get)).create
 	
 			val BOF6890 = S1Event(Id(0), 
 							"BOF6890",
@@ -176,7 +176,7 @@ object InitialData {
 							new DateTime(2012,10,2,17,30), 
 							new DateTime(2012,10,2,18,15), 
 							"Hilton San Francisco - Continental Ballroom 5", 
-							roland.id.get).create
+							Seq(roland.id.get)).create
 							
 			val CON3454 = S1Event(Id(0), 
 							"CON3454",
@@ -185,7 +185,7 @@ object InitialData {
 							new DateTime(2012,10,1,10,0), 
 							new DateTime(2012,10,1,11,0), 
 							"Hilton San Francisco - Yosemite A/B/C", 
-							venkat.id.get).create
+							Seq(venkat.id.get)).create
 							
 			val CON3845 = S1Event(Id(0),  
 							"CON3845",
@@ -194,7 +194,7 @@ object InitialData {
 							new DateTime(2012,10,2,8,30), 
 							new DateTime(2012,10,2,9,30), 
 							"Hilton San Francisco - Continental Ballroom 5", 
-							jward.id.get).create
+							Seq(jward.id.get)).create
 							
 			val CON6008 = S1Event(Id(0),  
 							"CON6008",
@@ -203,7 +203,7 @@ object InitialData {
 							new DateTime(2012,10,2,10,0), 
 							new DateTime(2012,10,2,11,0), 
 							"Parc 55 - Cyril Magnin I", 
-							peter.id.get).create
+							Seq(peter.id.get)).create
 							
 			// TODO has multiple speakers
 			val BOF4149 = S1Event(Id(0),  
@@ -213,7 +213,7 @@ object InitialData {
 							new DateTime(2012,10,1,20,30), 
 							new DateTime(2012,10,1,21,15), 
 							"Parc 55 - Cyril Magnin II/III", 
-							markus.id.get).create
+							Seq(markus.id.get)).create
 							
 			val CON5329 = S1Event(Id(0),  
 							"CON5329",
@@ -222,7 +222,7 @@ object InitialData {
 							new DateTime(2012,10,1,11,30), 
 							new DateTime(2012,10,1,12,30), 
 							"Hilton San Francisco - Imperial Ballroom B", 
-							luc.id.get).create
+							Seq(luc.id.get)).create
 							
 			val CON3395 = S1Event(Id(0),  
 							"CON3395",
@@ -231,7 +231,7 @@ object InitialData {
 							new DateTime(2012,10,4,15,30), 
 							new DateTime(2012,10,4,16,30), 
 							"Parc 55 - Cyril Magnin I", 
-							bruno.id.get).create
+							Seq(bruno.id.get)).create
 							
 			val CON4648 = S1Event(Id(0),  
 							"CON4648",
@@ -240,7 +240,7 @@ object InitialData {
 							new DateTime(2012,10,3,16,30), 
 							new DateTime(2012,10,3,17,30), 
 							"Hilton San Francisco - Imperial Ballroom B", 
-							ppilgrim.id.get).create
+							Seq(ppilgrim.id.get)).create
 							
 			val CON3470 = S1Event(Id(0),  
 							"CON3470",
@@ -249,7 +249,7 @@ object InitialData {
 							new DateTime(2012,10,2,13,0), 
 							new DateTime(2012,10,2,14,0), 
 							"Hilton San Francisco - Golden Gate 3/4/5", 
-							venkat.id.get).create
+							Seq(venkat.id.get)).create
 							
 			val CON6338 = S1Event(Id(0),  
 							"CON6338",
@@ -258,7 +258,7 @@ object InitialData {
 							new DateTime(2012,10,3,13,0), 
 							new DateTime(2012,10,3,14,0), 
 							"Hilton San Francisco - Golden Gate 6/7/8", 
-							martin.id.get).create
+							Seq(martin.id.get)).create
 							
 			val CON5774 = S1Event(Id(0),  
 							"CON5774",
@@ -267,7 +267,7 @@ object InitialData {
 							new DateTime(2012,10,3,8,30), 
 							new DateTime(2012,10,3,9,30), 
 							"Hilton San Francisco - Golden Gate 3/4/5", 
-							andrey.id.get).create
+							Seq(andrey.id.get)).create
 							
 			val BOF6806 = S1Event(Id(0),  
 							"BOF6806",
@@ -276,7 +276,7 @@ object InitialData {
 							new DateTime(2012,10,2,18,30), 
 							new DateTime(2012,10,2,19,15), 
 							"Parc 55 - Embarcadero", 
-							talip.id.get).create
+							Seq(talip.id.get)).create
 							
 			val CON2552 = S1Event(Id(0),  
 							"CON2552",
@@ -285,7 +285,7 @@ object InitialData {
 							new DateTime(2012,10,2,15,0), 
 							new DateTime(2012,10,2,16,0), 
 							"Hilton San Francisco - Golden Gate 6/7/8", 
-							brian.id.get).create
+							Seq(brian.id.get)).create
 							
 			val CON3257 = S1Event(Id(0),  
 							"CON3257",
@@ -294,7 +294,7 @@ object InitialData {
 							new DateTime(2012,10,3,11,30), 
 							new DateTime(2012,10,3,12,30), 
 							"Hilton San Francisco - Plaza A/B", 
-							guillaume.id.get).create
+							Seq(guillaume.id.get)).create
 							
 			val CON2989 = S1Event(Id(0),  
 							"CON2989",
@@ -303,7 +303,7 @@ object InitialData {
 							new DateTime(2012,10,3,16,30), 
 							new DateTime(2012,10,3,17,30), 
 							"Parc 55 - Mission", 
-							bruno.id.get).create
+							Seq(bruno.id.get)).create
 							
 			// TODO multiple speakers
 			val CON6575 = S1Event(Id(0),  
@@ -313,7 +313,7 @@ object InitialData {
 							new DateTime(2012,10,3,11,30), 
 							new DateTime(2012,10,3,12,30), 
 							"Hilton San Francisco - Golden Gate 6/7/8", 
-							charles.id.get).create
+							Seq(charles.id.get)).create
 	
 			val CON2424 = S1Event(Id(0),  
 							"CON2424",
@@ -322,7 +322,7 @@ object InitialData {
 							new DateTime(2012,10,1,10,0), 
 							new DateTime(2012,10,1,11,0), 
 							"Hilton San Francisco - Golden Gate 6/7/8", 
-							kai.id.get).create
+							Seq(kai.id.get)).create
 			
 		}
 	}
