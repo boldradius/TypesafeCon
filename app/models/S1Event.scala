@@ -76,4 +76,10 @@ object S1Event {
 			SQL("select * from event").as(event *)
 		}
 	}
+		
+	def countAll = {
+		DB.withConnection { implicit connection =>
+			SQL("select count(*) from event").as(scalar[Long].single)
+		}
+	}
 }

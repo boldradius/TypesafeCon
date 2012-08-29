@@ -16,6 +16,8 @@ case class Speaker(var id: Pk[Long],
 				twitter: Option[String],
 				url: Option[String]) {
 	
+	def this() = this(Id(0), "", "", "", None, None, None)
+	
 	/** Inserts the speaker into the DB
 	  */
 	def create = {
@@ -71,6 +73,12 @@ object Speaker {
 	def findAll = {
 		DB.withConnection { implicit connection =>
 			SQL("select * from speaker").as(speaker *)
+		}
+	}
+	
+	def countAll = {
+		DB.withConnection { implicit connection =>
+			SQL("select count(*) from speaker").as(scalar[Long].single)
 		}
 	}
 }
