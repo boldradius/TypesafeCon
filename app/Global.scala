@@ -160,8 +160,8 @@ object InitialData {
 			/*************************************** EVENTS *********************************************************************/
 			/********************************************************************************************************************/
 						
-			// TODO add codes to events
-			val CON4345 = S1Event(Id(0), 
+			val CON4345 = S1Event(Id(0),
+							"CON4345",
 							"Up, Up, and Out: Scaling Software with Akka", 
 							"Developing concurrent and/or distributed applications often involves choosing between productivity and scalability: do I use easy-to-understand paradigms that don’t provide maximal throughput, or do I create complex and fast code that’s difficult to understand and maintain? This session introduces Akka, which was designed to eliminate the need to make this choice by adopting the actor concurrency model found in other languages such as Erlang and bringing it to the JVM. It is designed to both scale up (by using multiple cores or CPUs on a single machine) and out (by distributing work among multiple VMs) and to support both via configuration and automatic VM clustering rather than code changes. It is also open source, under the Apache V2 license.",
 							new DateTime(2012,10,4,11,0), 
@@ -170,6 +170,7 @@ object InitialData {
 							viktor.id.get).create
 	
 			val BOF6890 = S1Event(Id(0), 
+							"BOF6890",
 							"Strategies for Testing Event-Driven Programs", 
 							"Testing strategies are well understood and established in traditional OO and/or functional settings. The same is not true for asynchronous, event-driven paradigms such as the actor model, in which the timing and execution context of assertions is important and temporal relations between generated events become test objectives. This session introduces the Akka TestKit, which supports a wide range of testing approaches, from white box to black box, detailing strengths and weaknesses of the different levels at which tests can be conducted. The TestKit’s mostly passive approach is complemented by specialized frameworks such as Basset and Setak, which control event schedules as well as static verification of finite state machines.",
 							new DateTime(2012,10,2,17,30), 
@@ -178,6 +179,7 @@ object InitialData {
 							roland.id.get).create
 							
 			val CON3454 = S1Event(Id(0), 
+							"CON3454",
 							"Concurrency Without Pain in Pure Java", 
 							"Programming concurrency has turned into a Herculean task. This session’s speaker calls the traditional approach the “synchronize and suffer model.” Fortunately, there are other approaches to concurrency and you can reach out to those directly from your Java code. This presentation discusses actor-based concurrency and software transaction memory. It then develops examples with Akka and compares the power of these approaches with the traditional approach.",
 							new DateTime(2012,10,1,10,0), 
@@ -185,7 +187,8 @@ object InitialData {
 							"Hilton San Francisco - Yosemite A/B/C", 
 							venkat.id.get).create
 							
-			val CON3845 = S1Event(Id(0), 
+			val CON3845 = S1Event(Id(0),  
+							"CON3845",
 							"Introduction to the Play Framework", 
 							"The Play Framework is a lightweight, stateless Web framework for Java and Scala applications. It’s built on Java NIO, so it’s highly scalable. This session gives you an introduction to building Web applications with the Play Framework. You will learn how to set up routes and create controllers and views, plus how to deploy Play Framework applications in the cloud.",
 							new DateTime(2012,10,2,8,30), 
@@ -193,7 +196,8 @@ object InitialData {
 							"Hilton San Francisco - Continental Ballroom 5", 
 							jward.id.get).create
 							
-			val CON6008 = S1Event(Id(0), 
+			val CON6008 = S1Event(Id(0),  
+							"CON6008",
 							"Modern Java Web Development with Play Framework 2.0", 
 							"The original version of the Play framework brought back the fun to Java Web development. Developer-friendliness, rapid application development, and agile practices were taken to the next level. Play 2.0 (playframework.org) is trying to push the envelope even further by providing tools for dealing with the ever-changing and complex requirements of today’s Web, such as various ways of doing asynchronous request processing to handle JSON; forms; templates; asynchronous HTTP calls; functional tests; and even coffeescript, LESS, and JavaScript compilation. In this session, you will learn how Java developers can take advantage of all these exciting new features.",
 							new DateTime(2012,10,2,10,0), 
@@ -202,7 +206,8 @@ object InitialData {
 							peter.id.get).create
 							
 			// TODO has multiple speakers
-			val BOF4149 = S1Event(Id(0), 
+			val BOF4149 = S1Event(Id(0),  
+							"BOF4149",
 							"Web Framework Smackdown 2012", 
 							"Much has changed since the first Web framework smackdown, at JavaOne 2005. Or has it? The 2012 edition of this popular panel discussion surveys the current landscape of Web UI frameworks for the Java platform. The 2005 edition featured JSF, Webwork, Struts, Tapestry, and Wicket. The 2012 edition features representatives of the current crop of frameworks, with a special emphasis on frameworks that leverage HTML5 and thin-server architecture. Java Champion Markus Eisele leads the lively discussion with panelists James Ward (Play), Graeme Rocher (Grails), Edward Burns (JSF) and Santiago Pericasgeertsen (Avatar).",
 							new DateTime(2012,10,1,20,30), 
@@ -210,7 +215,8 @@ object InitialData {
 							"Parc 55 - Cyril Magnin II/III", 
 							markus.id.get).create
 							
-			val CON5329 = S1Event(Id(0), 
+			val CON5329 = S1Event(Id(0),  
+							"CON5329",
 							"JavaFX and Scala, Like Milk and Cookies", 
 							"This presentation demonstrates the benefits of using JavaFX 2 together with the Scala programming language to provide a type-safe declarative syntax with support for lazy bindings and collections. It discusses advanced language features such as DelayedInit and @specialized and outlines ways of forcing prioritization of implicit conversions for n-level cases. Those who survive the pure technical geekiness of this talk will be rewarded with plenty of JavaFX UI eye candy.",
 							new DateTime(2012,10,1,11,30), 
@@ -218,7 +224,8 @@ object InitialData {
 							"Hilton San Francisco - Imperial Ballroom B", 
 							luc.id.get).create
 							
-			val CON3395 = S1Event(Id(0), 
+			val CON3395 = S1Event(Id(0),  
+							"CON3395",
 							"How Scala, Wicket, and Java EE Can Improve Web Development", 
 							"This session shows how to mix the Apache Wicket framework, the Scala language, and its DSL advantages on top of Java EE and the GlassFish platform, using the Gamboa Project with a full-featured Maven archetype.",
 							new DateTime(2012,10,4,15,30), 
@@ -226,7 +233,8 @@ object InitialData {
 							"Parc 55 - Cyril Magnin I", 
 							bruno.id.get).create
 							
-			val CON4648 = S1Event(Id(0), 
+			val CON4648 = S1Event(Id(0),  
+							"CON4648",
 							"Scala, JavaFX, Java EE 7, and Enterprise Integration", 
 							"This session shows you how to use Scala, one of the hottest technologies, to build a JavaFX application that talks to a Java EE 7 application server. Scala is an object-functional language that improves on Java in several areas. Java EE 7 is the enterprise edition “taking it to the cloud” with virtualization. This session shows how to build a Scala application with ScalaFX, a domain-specific language and framework, and tie it to an application that stores data to the cloud. It addresses the limitations of the technologies chosen to write the application. Finally, it also discusses the hot issue of the moment: Should I stick with the Spring Framework or dump it to go with the Java EE specification.",
 							new DateTime(2012,10,3,16,30), 
@@ -234,7 +242,8 @@ object InitialData {
 							"Hilton San Francisco - Imperial Ballroom B", 
 							ppilgrim.id.get).create
 							
-			val CON3470 = S1Event(Id(0), 
+			val CON3470 = S1Event(Id(0),  
+							"CON3470",
 							"Scala Tricks", 
 							"Scala is a very powerful hybrid functional pure object oriented language on the Java Virtual Machine (JVM). Scala is known for its conciseness and expressiveness. This presentation looks at some common tasks you do everyday in developing applications and shows how they manifest in Scala. You will learn about the strengths of Scala from application development point of view. Rather than focusing on the syntax of Scala, the focus here is on Scala idioms and powerful Scala libraries for performing routine tasks.",
 							new DateTime(2012,10,2,13,0), 
@@ -242,7 +251,8 @@ object InitialData {
 							"Hilton San Francisco - Golden Gate 3/4/5", 
 							venkat.id.get).create
 							
-			val CON6338 = S1Event(Id(0), 
+			val CON6338 = S1Event(Id(0),  
+							"CON6338",
 							"What’s New in Scala 2.10", 
 							"This session focuses on Scala 2.10. The main features of this latest version of the Scala language are a comprehensive reflection library, interoperability with dynamically typed languages through the Dynamic type, value classes that avoid boxing operations, flexible string interpolation, and a core concurrency library that is the foundation of parallel collections and actors. You’ll see a quick introduction to each new feature, together with illustrative use cases.",
 							new DateTime(2012,10,3,13,0), 
@@ -250,7 +260,8 @@ object InitialData {
 							"Hilton San Francisco - Golden Gate 6/7/8", 
 							martin.id.get).create
 							
-			val CON5774 = S1Event(Id(0), 
+			val CON5774 = S1Event(Id(0),  
+							"CON5774",
 							"Who’s More Functional: Kotlin, Groovy, Scala, or Java?", 
 							"What is “functional programming” (FP)? Is it a paradigm, a mind-set, or just a buzzword? What’s good about it? How can we benefit from it? This session is about functional aspects of modern programming languages and their costs and benefits. As the mainstream languages rely on object orientation, the session presents “functional style” as a set of design patterns that have been well known in the object-oriented (OO) community for the last two decades but that sometimes appear as a revelation to the FP community.",
 							new DateTime(2012,10,3,8,30), 
@@ -258,7 +269,8 @@ object InitialData {
 							"Hilton San Francisco - Golden Gate 3/4/5", 
 							andrey.id.get).create
 							
-			val BOF6806 = S1Event(Id(0), 
+			val BOF6806 = S1Event(Id(0),  
+							"BOF6806",
 							"Hazelcast: Scalable Data Structures", 
 							"This session discusses distributed implementations of queue, map, list, multimap, lock, and CountDownLatch in Hazelcast. You’ll learn how they can be used to easily build highly scalable distributed applications.",
 							new DateTime(2012,10,2,18,30), 
@@ -266,7 +278,8 @@ object InitialData {
 							"Parc 55 - Embarcadero", 
 							talip.id.get).create
 							
-			val CON2552 = S1Event(Id(0), 
+			val CON2552 = S1Event(Id(0),  
+							"CON2552",
 							"Case Study: Rewriting an Open Source Music Program in Scala", 
 							"The best way to learn a new language is to use it, but there is an enormous gap between HelloWorld.scala and a “real” project. To help with his own effort to learn Scala, this session’s speaker rewrote his Log4JFugue open source project, which—at about 2,500 lines of code—was big enough to be real yet small enough to be manageable. This presentation briefly describes the problem space addressed by Log4JFugue and then summarizes the architecture of the Java version. The majority of the session is a hands-on, code-on-the-fly re-creation of the Scala version from scratch. You will see the differences between the languages and get a feel for coding in the functional paradigm. You will also understand that Scala need not be scary. No background in Scala is required.",
 							new DateTime(2012,10,2,15,0), 
@@ -274,7 +287,8 @@ object InitialData {
 							"Hilton San Francisco - Golden Gate 6/7/8", 
 							brian.id.get).create
 							
-			val CON3257 = S1Event(Id(0), 
+			val CON3257 = S1Event(Id(0),  
+							"CON3257",
 							"Script Bowl 2012: The Battle of the JVM-Based Languages", 
 							"Languages that run on the JVM are represented by their gurus in this session. These advocates show off the shiny new language features and battle for bragging rights for the most popular language. Returning from 2011 are language gurus representing Clojure, Groovy, JRuby, and Scala. After attending this fun-filled and technically invigorating session, attendees will be able to judge for themselves which scripting language meets their needs best. They’ll also be able to compare and contrast the respective languages and possibly spark some thought-provoking discussions with the panelists that will be beneficial to the entire Java community. And best of all, the audience will participate in selecting this year’s winner(s).",
 							new DateTime(2012,10,3,11,30), 
@@ -282,7 +296,8 @@ object InitialData {
 							"Hilton San Francisco - Plaza A/B", 
 							guillaume.id.get).create
 							
-			val CON2989 = S1Event(Id(0), 
+			val CON2989 = S1Event(Id(0),  
+							"CON2989",
 							"Leverage Enterprise Integration Patterns with Apache Camel and Twitter", 
 							"Learn how to take advantage of enterprise integration patterns with the Twitter social network as an example of datasource and destiny. This session shows how to start integrating systems with Apache Camel, the top Java EIP framework. It also covers how to design, define, and run routes with Java, XML, or Scala DSLs.",
 							new DateTime(2012,10,3,16,30), 
@@ -291,7 +306,8 @@ object InitialData {
 							bruno.id.get).create
 							
 			// TODO multiple speakers
-			val CON6575 = S1Event(Id(0), 
+			val CON6575 = S1Event(Id(0),  
+							"CON6575",
 							"Polyglot for Dummies", 
 							"Why are people writing applications in languages other than Java? Can I really be productive with another language? Which language should I choose? Why would I use more than one? This session survey several popular JVM languages and explores how they can help you build better applications. It shows how to integrate multiple languages in a single app and walks through the speakers’ favorite features and libraries. Java, Ruby, Scala, Clojure, and Groovy ... all work harmoniously on the polyglot JVM.",
 							new DateTime(2012,10,3,11,30), 
@@ -299,7 +315,8 @@ object InitialData {
 							"Hilton San Francisco - Golden Gate 6/7/8", 
 							charles.id.get).create
 	
-			val CON2424 = S1Event(Id(0), 
+			val CON2424 = S1Event(Id(0),  
+							"CON2424",
 							"Lessons Learned: Use of Modern JVM Languages Besides Java", 
 							"Java is the main language for the JVM, but it has several shortcomings. In the last few years, several modern languages such as Groovy, Scala, and Clojure have emerged for the JVM besides the almighty Java to improve the programming experience and create sustainable software. This session presents a progress report that shows why some of these modern languages should be used in projects. The main goal is to provide information about the business value of introducing additional languages, but the presentation does include some code examples.",
 							new DateTime(2012,10,1,10,0), 

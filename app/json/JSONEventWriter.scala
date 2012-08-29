@@ -12,6 +12,7 @@ object JsonEventWriter extends Writes[S1Event] {
 	override def writes(event: S1Event): JsValue = {
 		toJson(
 			Map("id" ->          toJson(event.id.get),
+				"code" ->          toJson(event.code),
 				"title" ->       toJson(event.title),
 				"description" -> toJson(event.description),
 				"start" ->       toJson(event.start.toString()),

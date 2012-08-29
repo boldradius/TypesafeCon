@@ -9,6 +9,7 @@ import play.api.db.DB
 import play.api.Logger
 
 case class S1Event(var id: Pk[Long],
+	code: String,
 	title: String,
 	description: String,
 	start: DateTime,
@@ -22,8 +23,9 @@ case class S1Event(var id: Pk[Long],
 		Logger.debug("Creating Event " + this)
 
 		DB.withConnection { implicit connection =>
-			val id = SQL("""insert into event (title, description, starttime, endtime, location, speakerid) 
-							values ({title}, {description}, {start}, {end}, {location}, {speakerid})""").on(
+			val id = SQL("""insert into event (code, title, description, starttime, endtime, location, speakerid) 
+							values ({code}, {title}, {description}, {start}, {end}, {location}, {speakerid})""").on(
+				'code -> code,
 				'title -> title,
 				'description -> description,
 				'start -> new Date(start.getMillis()),
@@ -58,14 +60,15 @@ object S1Event {
 	  */
 	private val event = {
 		get[Pk[Long]]("id") ~
+			get[String]("code") ~
 			get[String]("title") ~
 			get[String]("description") ~
 			get[Date]("starttime") ~
 			get[Date]("endtime") ~
 			get[String]("location") ~
 			get[Long]("speakerid") map {
-				case id ~ title ~ description ~ start ~ end ~ location ~ speakerId =>
-					S1Event(id, title, description, new DateTime(start), new DateTime(end), location, speakerId)
+				case id ~ code ~ title ~ description ~ start ~ end ~ location ~ speakerId =>
+					S1Event(id, code, title, description, new DateTime(start), new DateTime(end), location, speakerId)
 			}
 	}
 
