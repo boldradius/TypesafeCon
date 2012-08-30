@@ -5,6 +5,9 @@
 # Home page
 GET     /                           controllers.Application.index
 
+# Playground
+GET     /playground                 controllers.Application.playground
+
 # Events
 GET     /events                     controllers.Events.list
 
