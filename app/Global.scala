@@ -164,9 +164,9 @@ object InitialData {
 							Some("http://grails.io")).create.get
 							
 			val edward = Speaker(Id(0), 
-							"Edward Burns ", 
-							"Consulting Member of Technical Staff , Oracle ", 
-							"Ed Burns is a senior Java engineer at Oracle. Ed has worked on a wide variety of client and server side Web technologies since 1994, including NCSA Mosaic, Mozilla, the Sun Java Plugin, Jakarta Tomcat and, most recently JavaServer Faces. Ed is currently the co-spec lead for JSR 127, JavaServer Faces, a topic on which Ed recently co-authored a book for McGraw-Hill. Ed is an experienced international conference speaker, with consistently high attendance numbers and ratings at the JavaOne conference, JAOO, W-JAX, No Fluff Just Stuff, JA-SIG, The Ajax Experience, and JUGs and Linux User Groups. ", 
+							"Edward Burns", 
+							"Consulting Member of Technical Staff, Oracle", 
+							"Ed Burns is a senior Java engineer at Oracle. Ed has worked on a wide variety of client and server side Web technologies since 1994, including NCSA Mosaic, Mozilla, the Sun Java Plugin, Jakarta Tomcat and, most recently JavaServer Faces. Ed is currently the co-spec lead for JSR 127, JavaServer Faces, a topic on which Ed recently co-authored a book for McGraw-Hill. Ed is an experienced international conference speaker, with consistently high attendance numbers and ratings at the JavaOne conference, JAOO, W-JAX, No Fluff Just Stuff, JA-SIG, The Ajax Experience, and JUGs and Linux User Groups.", 
 							None, 
 							Some("edburns"), 
 							Some("http://ridingthecrest.com/edburns/")).create.get
@@ -180,15 +180,15 @@ object InitialData {
 							Some("http://cs-people.bu.edu/santiago/")).create.get
 							
 			val stephen = Speaker(Id(0), 
-							"Stephen Chin ", 
-							"Java Evangelist , Oracle ", 
+							"Stephen Chin", 
+							"Java Evangelist, Oracle", 
 							"Stephen Chin is a Java Evangelist at Oracle specializing in UI technology and co-author of the Pro JavaFX Platform 2 title, which is the leading technical reference for JavaFX. He has been featured at Java conferences around the world including Devoxx, Codemash, OSCON, J-Fall, GeeCON, Jazoon, and JavaOne, where he twice received a Rock Star Award. In his evenings and weekends, Stephen is an open-source hacker, working on projects including ScalaFX, a DSL for JavaFX in the Scala language, Visage, a UI oriented JVM language, JFXtras, a JavaFX component and extension library, and Apropos, an Agile Project Portfolio scheduling tool written in JavaFX. Stephen can be followed on twitter @steveonjava and reached via his blog: http://steveonjava.com", 
 							None, 
 							Some("steveonjava"), 
 							Some("http://steveonjava.com")).create.get
 							
 			val nic = Speaker(Id(0), 
-							"Nic Williams ", 
+							"Nic Williams", 
 							"VP of Developer Evangelism at Engine Yard", 
 							"Dr Nic is a developer's developer. He writes blog posts for developers; creates tools, libraries and text editor extensions for developers; and speaks to developers at conferences. He's the VP of Developer Evangelism at Engine Yard, the premier platform as a service. He's Australian and living in the Bay Area. And he's funny; if you can understand his accent.", 
 							Some("drnicwilliams@gmail.com"), 
@@ -196,25 +196,25 @@ object InitialData {
 							Some("http://drnicwilliams.com/")).create.get
 							
 			val raghavan = Speaker(Id(0), 
-							"Raghavan \"Rags\" Srinivas ", 
-							"Developer Advocate , Couchbase ", 
-							"Raghavan \"Rags\" Srinivas is a Developer Advocate at Couchbase getting his hands dirty with emerging technology directions and trends. His general focus area is in distributed systems, with a specialization in cloud computing. He worked on Hadoop and HBase during its early stages. He has spoken on a variety of technical topics at conferences around the world, conducted and organized Hands-on Labs and taught graduate classes in the evening. He is also a repeat JavaOne rock star speaker award winner.\nRags brings with him over 20 years of hands-on software development and over 10 years of architecture and technology evangelism experience. He worked for Digital Equipment Corporation, Sun Microsystems, Intuit and Accenture. He has worked on several technology areas, including internals of VMS, Unix and NT to Hadoop and HBase. He has evangelized and influenced the architecture of a number of technology areas including the early releases of JavaFX, Java, Java EE, Java and XML, Java ME, AJAX and Web 2.0, Java Security and so on.\nRags holds a Masters degree in Computer Science from the Center of Advanced Computer Studies at the University of Louisiana at Lafayette. ", 
+							"Raghavan \"Rags\" Srinivas", 
+							"Developer Advocate, Couchbase", 
+							"Raghavan \"Rags\" Srinivas is a Developer Advocate at Couchbase getting his hands dirty with emerging technology directions and trends. His general focus area is in distributed systems, with a specialization in cloud computing. He worked on Hadoop and HBase during its early stages. He has spoken on a variety of technical topics at conferences around the world, conducted and organized Hands-on Labs and taught graduate classes in the evening. He is also a repeat JavaOne rock star speaker award winner.\nRags brings with him over 20 years of hands-on software development and over 10 years of architecture and technology evangelism experience. He worked for Digital Equipment Corporation, Sun Microsystems, Intuit and Accenture. He has worked on several technology areas, including internals of VMS, Unix and NT to Hadoop and HBase. He has evangelized and influenced the architecture of a number of technology areas including the early releases of JavaFX, Java, Java EE, Java and XML, Java ME, AJAX and Web 2.0, Java Security and so on.\nRags holds a Masters degree in Computer Science from the Center of Advanced Computer Studies at the University of Louisiana at Lafayette.", 
 							None, 
 							Some("ragss"), 
 							Some("http://ragss.wordpress.com/")).create.get
 							
 			val aaron = Speaker(Id(0), 
-							"Aaron Bedra ", 
+							"Aaron Bedra", 
 							"Senior Software Engineer, Groupon", 
-							"Aaron Bedra is a senior software engineer at Groupon. He is a frequent contributor to the Clojure language and its supporting libraries as well as an active member of the Clojure community.\nAaron has led the development of several commercial Clojure projects and is the co-author of Programming Clojure, 2nd Edition and the upcoming Practical Software Security Book. ", 
+							"Aaron Bedra is a senior software engineer at Groupon. He is a frequent contributor to the Clojure language and its supporting libraries as well as an active member of the Clojure community.\nAaron has led the development of several commercial Clojure projects and is the co-author of Programming Clojure, 2nd Edition and the upcoming Practical Software Security Book.", 
 							None, 
 							Some("abedra"), 
 							Some("http://www.aaronbedra.com/")).create.get
 							
 			val thomas = Speaker(Id(0), 
 							"Thomas Enebo", 
-							"JRuby guy , Red Hat", 
-							"Thomas Enebo is the co-lead of the JRuby project and an employee of Red Hat. He has been a practitioner of Java since the heady days of the HotJava browser, and he has been happily using Ruby since 2001. Thomas has spoken at numerous Java and Ruby conferences, co-authored \"Using JRuby\", and was awarded the \"Rock Star\" award at JavaOne. When Thomas is not working he enjoys biking, anime, and drinking a decent IPA. ", 
+							"JRuby guy, Red Hat", 
+							"Thomas Enebo is the co-lead of the JRuby project and an employee of Red Hat. He has been a practitioner of Java since the heady days of the HotJava browser, and he has been happily using Ruby since 2001. Thomas has spoken at numerous Java and Ruby conferences, co-authored \"Using JRuby\", and was awarded the \"Rock Star\" award at JavaOne. When Thomas is not working he enjoys biking, anime, and drinking a decent IPA.", 
 							None, 
 							Some("tom_enebo"), 
 							Some("http://blog.enebo.com/")).create.get
