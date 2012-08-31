@@ -1,7 +1,14 @@
-@(message: String)
-
-@main("Welcome to Play 2.0") {
-    
-    @welcome(message)
-    
+@main(Messages("title.about")) {
+	
+	<h1>@Messages("title.about")</h1>
+	<p>@Messages("about.details")</p>
+	
+	<h2>@Messages("about.download")</h2>
+	<a href="#">iPhone</a>
+	<a href="#">Android</a>
+	
+	<p>@Messages("about.more")</p>
+	<a href="http://typesafe.com" target="_blank">
+		<img src="@routes.Assets.at("images/typesafe.logo.png")">
+	</a>
 }

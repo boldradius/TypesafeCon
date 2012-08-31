@@ -1,4 +1,4 @@
-# --- First database schema - fixed
+# --- Speaker-event many to many relationship
 
 # --- !Ups
 

@@ -1,4 +1,4 @@
-# --- First database schema - fixed
+# --- Event codes
 
 # --- !Ups
 

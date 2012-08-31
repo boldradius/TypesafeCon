@@ -22,6 +22,16 @@ class APIController extends Controller {
 	def MissingParam(name: String) = Error("Missing parameter: " + name)
 	
 	def InvalidParam(name: String, details: String) = Error("Invalid parameter: " + name + " (" + details + ")")
+	
+	def ParamError(error: FormError) = {
+		error.message match {
+			case "error.required" => MissingParam(error.key)
+			case "error.minLength" => InvalidParam(error.key, error.message)
+			case "error.maxLength" => InvalidParam(error.key, error.message)
+			case "error.invalidParameter" => InvalidParam(error.key, error.message)
+			case _ => Error(error.message)
+		}
+	}
 
 	def UnauthorizedAccess = Error("Unauthorized access")
 								
