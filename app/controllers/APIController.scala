@@ -6,6 +6,8 @@ import play.api.libs.json.Writes
 import play.api.mvc.Controller
 import play.api.Logger
 import play.api.data._
+import play.api.mvc.SimpleResult
+import play.api.libs.json.JsValue
 
 class APIController extends Controller {
 	
@@ -35,9 +37,11 @@ class APIController extends Controller {
 
 	def UnauthorizedAccess = Error("Unauthorized access")
 								
-	def Success[A](result: A)(implicit formatter: Writes[A]) =
+	def Success(message:String): SimpleResult[JsValue] = Success(message, "")
+	
+	def Success[A](result: A, message: String = "success")(implicit formatter: Writes[A]) =
 		Ok(toJson(Map(	"status" -> toJson("OK"),
-						"message" -> toJson("Success"),
+						"message" -> toJson(message),
 						"result" -> toJson(result))))
 						
 	def Success[A](list: Seq[A], listName: String)(implicit formatter: Writes[A]) =
