@@ -1,14 +1,3 @@
-@font-face {
-	font-family: Zine;
-	src: url("../fonts/zsd_mr.ttf");
-}
-
-@font-face {
-	font-family: ZineBold;
-	src: url("../fonts/zsd_rr.ttf");
-	font-weight: bold;
-}
-
 body {
 	padding-top: 10px;
 	background: #EDF8FB;
@@ -16,14 +5,19 @@ body {
 
 body,html {
 	color: #555D60;
-	font-family: Helvetica, Arial, Sans;
-	font-size: 14px;
+	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial; 
+	font-size: 16pt;
 }
 
-h1, h2 {
-	font-family: 'Zine';
-	font-weight: normal;
-	font-size: 30px;
+h2 {
+	font-size: 18pt;
+	color: #262626;
+}
+
+.title {
+	font-size: 14pt;
+	font-style: italic;
+	color: #999;
 }
 
 #typesafeLogo {

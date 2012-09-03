@@ -13,6 +13,7 @@ GET     /events                     controllers.Events.list
 
 # Speakers
 GET     /speakers                   controllers.Speakers.list
+GET     /speakers/:id               controllers.Speakers.get(id: Long)
 
 # Users
 GET     /users/:id                  controllers.Users.get(id: Long)

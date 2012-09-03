@@ -1,0 +1,28 @@
+@(speaker: Speaker)(implicit flash:Flash) 
+
+@main {
+
+	<div class="row">
+		<div style="float:left; margin-right: 10px;">
+			<img src="@routes.Assets.at("img/profile/" + speaker.id.get + ".jpg")" 
+				onerror="this.src='@routes.Assets.at("img/profile/generic.png")';"  
+				class="img-rounded" width="80pt">
+		</div>
+		<h2>@speaker.name</h2>
+		<p class="title">@speaker.title</p>
+	</div>
+	
+	<div class="row">
+		<div class="span1">
+			About
+		</div>
+		<div class="span2">
+			@speaker.about
+		</div>
+	</div>
+	@*
+	 @speaker.email 
+	 @speaker.twitter 
+	 @speaker.url
+	 *@ 
+}

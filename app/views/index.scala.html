@@ -1,6 +1,6 @@
 @()(implicit flash:Flash)
 
-@main(Messages("title.about")) {
+@main {
 	
 	<h1>@Messages("title.about")</h1>
 	<p>@Messages("about.details")</p>
@@ -10,7 +10,7 @@
 	
 	<div class="centered">
 		<a href="http://www.typesafe.com" target="_blank">
-			<img id="typesafeLogo" src="@routes.Assets.at("images/typesafe.logo.png")">
+			<img id="typesafeLogo" src="@routes.Assets.at("img/typesafe.logo.png")">
 		</a>
 	</div>
 }

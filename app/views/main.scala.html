@@ -1,12 +1,10 @@
-@(title: String, scripts: Html = Html(""))(content: Html)(implicit flash:Flash)
+@(content: Html)(implicit flash:Flash)
 
 
 <!DOCTYPE html>
 	
 <html>
 	<head>
-		<title>@title</title>
-
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 		<link rel="stylesheet" href="@routes.Assets.at("stylesheets/bootstrap.css")">
@@ -23,9 +21,6 @@
 		<div class="container">
 				@content
 		</div>
-
-		@* Insert additional scripts *@
-		@scripts
 	</body>
 	
 </html>

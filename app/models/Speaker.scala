@@ -76,6 +76,12 @@ object Speaker {
 		}
 	}
 	
+	def findById(id: Long) = {
+		DB.withConnection { implicit connection =>
+			SQL("select * from speaker where id = {id}").on('id -> id).as(speaker.singleOpt)
+		}
+	}
+	
 	def countAll = {
 		DB.withConnection { implicit connection =>
 			SQL("select count(*) from speaker").as(scalar[Long].single)
