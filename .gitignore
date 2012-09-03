@@ -9,4 +9,4 @@ bin
 .classpath
 .cache
 conf/private.conf
-
+.DS_Store
