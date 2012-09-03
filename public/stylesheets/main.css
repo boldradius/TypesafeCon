@@ -1,23 +1,17 @@
 body {
 	padding-top: 10px;
-	background: #EDF8FB;
 }
 
 body,html {
-	color: #555D60;
 	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial; 
-	font-size: 16pt;
 }
 
 h2 {
 	font-size: 18pt;
+	line-height: 20pt;
+	margin: 5pt 0;
 	color: #262626;
-}
-
-.title {
-	font-size: 14pt;
-	font-style: italic;
-	color: #999;
+	font-family: "HelveticaNeue-CondensedBold", "Helvetica Neue";
 }
 
 #typesafeLogo {
@@ -28,3 +22,46 @@ h2 {
 	text-align: center;
 }
 
+/************** Speaker details **************/
+
+#speaker .title {
+	font-size: 14pt;
+	line-height: 16pt;
+	font-style: italic;
+	font-weight: 300;
+	color: #999;
+}
+
+.summary {
+	min-height: 60pt;
+}
+
+.img-rounded {
+	border: 1pt solid #E0E0E0;
+}
+	
+.box {
+	border: 1pt solid #DBDBDB;
+	background-color: white;
+	border-radius: 2pt;
+	margin-top: 20pt;
+}
+
+.boxRow {
+	clear: both;
+	padding: 10pt;
+}
+	
+.box .header {
+	float: left;
+	width: 60pt;
+	font-size: 13pt;
+	color: #0DA4D0;
+}
+
+.box .content {
+	margin-left: 80pt;
+	font-family: "HelveticaNeue-CondensedBold", "Helvetica Neue";
+	font-size: 16pt;
+	color: #262626;
+}
