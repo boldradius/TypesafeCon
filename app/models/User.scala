@@ -9,12 +9,12 @@ import play.api.db.DB
 import play.api.Logger
 
 case class User(var id: Pk[Long],
-				name: Option[String],
-				email: String,
-				twitter: Option[String],
-				facebook: Option[String],
-				phone: Option[String],
-				website: Option[String]) {
+				var name: Option[String],
+				var email: String,
+				var twitter: Option[String],
+				var facebook: Option[String],
+				var phone: Option[String],
+				var website: Option[String]) {
 	
 	/** Inserts the user into the DB
 	  */
@@ -38,6 +38,30 @@ case class User(var id: Pk[Long],
 				}
 			}
 		}
+	}
+	
+	/** Updates the user on the DB
+	  */
+	def update = {
+		Logger.debug("Updating User " + this)
+		
+		DB.withConnection { implicit connection =>
+			SQL("""update s1user set 
+						name = {name}, 
+						email = {email}, 
+						twitter = {twitter}, 
+						facebook = {facebook}, 
+						phone = {phone}, 
+						website = {website}
+					where id = {id}""").on(
+				'name -> name,
+				'email -> email,
+				'twitter -> twitter,
+				'facebook -> facebook,
+				'phone -> phone,
+				'website -> website,
+				'id -> id).executeUpdate()
+		} > 0
 	}
 	
 		/** Deletes the speaker from the DB

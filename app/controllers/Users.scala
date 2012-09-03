@@ -13,7 +13,7 @@ object Users extends APIController {
 	private val userForm: Form[User] = Form(
 		mapping(
 			"name" -> optional(text(maxLength = 255)),
-			"email" -> email.verifying("Email is already registered", email => User.findByEmail(email).isEmpty), // Verify uniqueness of email
+			"email" -> email,
 			"twitter" -> optional(text(maxLength = 255)),
 			"facebook" -> optional(text(maxLength = 255)),
 			"phone" -> optional(text(maxLength = 255)),
@@ -34,9 +34,13 @@ object Users extends APIController {
 
 						// Parameters are fine, create user
 						user => {
-							user.create match {
-								case Some(newUser) => Success(Map("id" -> newUser.id.get))
-								case None => Error("User cannot be created")
+							if (User.findByEmail(user.email).isDefined) {
+								Error("Email is already registered")
+							} else {
+								user.create match {
+									case Some(newUser) => Success(Map("id" -> newUser.id.get))
+									case None => Error("User cannot be created")
+								}
 							}
 						})
 				} catch {
@@ -46,8 +50,48 @@ object Users extends APIController {
 				}
 			}
 	}
-	
-	def update(id: Long) = TODO
+
+	def update(id: Long) = Action {
+		implicit request =>
+			{
+				try {
+					User.findById(id) match {
+						case None => Error("User not found")
+						case Some(existingUser) =>
+							userForm.bindFromRequest.fold(
+
+								// Error on the user parameters, send proper json error
+								formWithErrors => ParamError(formWithErrors.errors(0)),
+
+								// Parameters are fine, update user
+								user => {
+									// Verify if the email is already registered under another user
+									User.findByEmail(user.email) match {
+										case Some(user) if (user.id.get != id) => Error("Email is already registered")
+										case _ => {
+											existingUser.name = user.name
+											existingUser.email = user.email
+											existingUser.twitter = user.twitter
+											existingUser.facebook = user.facebook
+											existingUser.phone = user.phone
+											existingUser.website = user.website
+											if (existingUser.update)
+												Success("Success")
+											else
+												ServerError("The user could not be updated")
+										}
+									}
+
+								})
+					}
+
+				} catch {
+					case t: Throwable =>
+						Logger.error("Error updating user", t)
+						ServerError(t.getMessage)
+				}
+			}
+	}
 
 	// Uses ImageMagick to resize and convert images to JPG
 	def uploadImage(userid: Long) = Action {
