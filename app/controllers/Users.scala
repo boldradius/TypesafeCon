@@ -7,6 +7,7 @@ import play.api.mvc.Action
 import play.api.Logger
 import models.User
 import scala.sys.process._
+import json.JsonUserWriter
 
 object Users extends APIController {
 
@@ -22,6 +23,22 @@ object Users extends APIController {
 			} {
 				user => None // TODO implement if necessary
 			})
+
+	def get(id: Long) = Action {
+		implicit request =>
+			{
+				try {
+					User.findById(id) match {
+						case Some(user) => Success(user)(JsonUserWriter)
+						case _ => Error("User not found")
+					}
+				} catch {
+					case t: Throwable =>
+						Logger.error("Error creating user", t)
+						ServerError(t.getMessage)
+				}
+			}
+	}
 
 	def create = Action {
 		implicit request =>

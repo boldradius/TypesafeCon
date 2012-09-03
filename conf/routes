@@ -15,6 +15,7 @@ GET     /events                     controllers.Events.list
 GET     /speakers                   controllers.Speakers.list
 
 # Users
+GET     /users/:id                  controllers.Users.get(id: Long)
 POST    /users                      controllers.Users.create
 PUT     /users/:id                  controllers.Users.update(id: Long)
 
