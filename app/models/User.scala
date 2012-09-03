@@ -62,6 +62,10 @@ object User {
 		User(Id(0), name, email, twitter, facebook, phone, website)
 	}
 	
+	def apply(email: String):User  = {
+		User(Id(0), None, email, None, None, None, None)
+	}
+	
 	private val user = {
 		get[Pk[Long]]("id") ~
 		get[Option[String]]("name") ~

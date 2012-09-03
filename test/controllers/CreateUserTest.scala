@@ -10,14 +10,13 @@ import models.Speaker
 import tools.LoremIpsum
 import models.User
 
-// TODO add image
-class UserTest extends Specification {
+class CreateUserTest extends Specification {
 
 	private val ValidResponse = """\{"status":"(.+?)","message":"(.+?)","result":(.*)\}""".r
 	
 	"The Create User API call" should {
 		
-		"Return error when email is not provided" in new UserTestCase {
+		"Return error when email is not provided" in new CreateUserTestCase {
 			running(FakeApplication()) {
 				val Some(result) = routeAndCall(FakeRequest(POST, "/users").withFormUrlEncodedBody("name" -> "John"))
 					
@@ -32,7 +31,7 @@ class UserTest extends Specification {
 		}
 		
 		
-		"Return error when creating use with an email already registered" in new UserTestCase {
+		"Return error when creating user with an email already registered" in new CreateUserTestCase {
 			running(FakeApplication()) {
 				val Some(result) = routeAndCall(FakeRequest(POST, "/users").withFormUrlEncodedBody(
 					"name" -> "John", 
@@ -53,7 +52,7 @@ class UserTest extends Specification {
 		}	
 		
 		
-		"Create a user when passed all valid parameters" in new UserTestCase {
+		"Create a user when passed all valid parameters" in new CreateUserTestCase {
 			running(FakeApplication()) {
 				val Some(result) = routeAndCall(FakeRequest(POST, "/users").withFormUrlEncodedBody(
 					"name" -> "John", 
@@ -72,7 +71,6 @@ class UserTest extends Specification {
 						User.findById(id.toLong) match {
 							case None => failure("User with id " + id + " was not found")
 							case Some(user) => {
-								testUser = user
 								user.name must beEqualTo(Some("John"))
 								user.twitter must beEqualTo(Some("john"))
 								user.facebook must beEqualTo(Some("johnDoe"))
@@ -89,9 +87,7 @@ class UserTest extends Specification {
 	}
 }
 
-trait UserTestCase extends After {
-	
-	var testUser: User = _
+trait CreateUserTestCase extends After {
 	
 	// Remove the test data
 	def after = running(FakeApplication()) { 

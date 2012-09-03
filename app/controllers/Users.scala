@@ -46,6 +46,8 @@ object Users extends APIController {
 				}
 			}
 	}
+	
+	def update(id: Long) = TODO
 
 	// Uses ImageMagick to resize and convert images to JPG
 	def uploadImage(userid: Long) = Action {
