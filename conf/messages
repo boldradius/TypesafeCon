@@ -3,9 +3,10 @@ title.playground=Playground
 
 about.details=ScalaOne is an application for JavaOne attendees to visualize content related to the Typesafe stack (Scala, Akka and the Play! Framework).
 about.download=Download the app:
-about.more=To learn more about the Typesafe stack, click here:
+about.typesafe=About Typesafe
+about.typesafe.more=To learn more about the Typesafe stack, click here:
 
-playground.details=This is the playground area. It's here for you to hack at. Here's how:
+playground.details=This is the playground area. It''s here for you to hack at. Here''s how:
 playground.details.step1=Fork the application repository here: 
 playground.details.step2=Hack away at the backend source code.
-playground.details.step3=Send us a pull request, and we'll include your changes if they''re safe and fun for everyone :)
+playground.details.step3=Send us a pull request, and we''ll include your changes if they''re safe and fun for everyone :)

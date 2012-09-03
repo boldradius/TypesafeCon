@@ -6,10 +6,10 @@ import play.api.mvc._
 object Application extends Controller {
 
 	def index = Action {
-		Ok(views.html.index())
+		implicit request => Ok(views.html.index())
 	}
 	
 	def playground = Action {
-		Ok(views.html.playground())
+		implicit request => Ok(views.html.playground())
 	}
 }

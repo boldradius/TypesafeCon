@@ -9,6 +9,11 @@
 	font-weight: bold;
 }
 
+body {
+	padding-top: 10px;
+	background: #EDF8FB;
+}
+
 body,html {
 	color: #555D60;
 	font-family: Helvetica, Arial, Sans;
@@ -18,4 +23,14 @@ body,html {
 h1, h2 {
 	font-family: 'Zine';
 	font-weight: normal;
+	font-size: 30px;
 }
+
+#typesafeLogo {
+	width: 120px;
+}
+
+.centered {
+	text-align: center;
+}
+
