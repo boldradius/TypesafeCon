@@ -8,6 +8,7 @@ import org.joda.time.DateTime
 import models.S1Event
 import models.Speaker
 import tools.LoremIpsum
+import tools.TestTools._
 
 class EventsTest extends Specification {
 
@@ -22,12 +23,16 @@ class EventsTest extends Specification {
 				contentType(result) must beSome("application/json")
 				
 				// Sanity check to verify our event is in the results
-				val json = contentAsString(result) 
-				json must contain("\"status\":\"OK\"")
-				json must contain("\"location\":\"Room 1\"")
-				json must contain("\"title\":\"Event\"")
-				json must contain("\"code\":\"FAKECODE\"")
-				json must contain("\"speakerIds\":[" + speaker.id.get + "]")
+				contentAsString(result) match {
+					case ValidResponse(status, message, result) => {
+						status must equalTo("OK")
+						result must contain("\"location\":\"Room 1\"")
+						result must contain("\"title\":\"Event\"")
+						result must contain("\"code\":\"FAKECODE\"")
+						result must contain("\"speakerIds\":[" + speaker.id.get + "]")
+					}
+					case content => failure("Invalid response format: '" + content + "'")
+				}
 			}
 		}
 	}

@@ -1,19 +1,15 @@
 package controllers
 
-import org.specs2.mutable._
-import play.api.test._
-import play.api.test.Helpers._
-import anorm.Id
-import org.joda.time.DateTime
-import models.S1Event
-import models.Speaker
-import tools.LoremIpsum
+import org.specs2.mutable.After
+import org.specs2.mutable.Specification
+
 import models.User
+import play.api.test.Helpers._
+import play.api.test._
+import tools.TestTools.ValidResponse
 
 class UpdateUserTest extends Specification {
 
-	private val ValidResponse = """\{"status":"(.+?)","message":"(.*?)","result":(.*)\}""".r
-	
 	"The Update User API call" should {
 		
 		"Return error when email is not provided" in new UpdateUserTestCase {
