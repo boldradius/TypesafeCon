@@ -1,37 +1,12 @@
 package controllers
 
-import org.specs2.mutable._
-import play.api.test._
-import play.api.test.Helpers._
+import org.specs2.mutable.After
+
 import anorm.Id
-import org.joda.time.DateTime
-import models.S1Event
 import models.Speaker
+import play.api.test.Helpers.running
+import play.api.test.FakeApplication
 import tools.LoremIpsum
-
-class SpeakersTest extends Specification {
-
-	"The List Speakers API call" should {
-		
-		"Retrieve a list of speakers" in new SpeakerTestCase  {
-			
-			running(FakeApplication()) {
-				// Verify the result is a 200 code with the proper JSON content type
-				val Some(result) = routeAndCall(FakeRequest(GET, "/speakers"))
-				status(result) must equalTo(OK)
-				contentType(result) must beSome("application/json")
-				
-				// Sanity check to verify our event is in the results
-				val json = contentAsString(result) 
-				json must contain("\"status\":\"OK\"")
-				json must contain("\"email\":\"john@example.com\"")
-				json must contain("\"name\":\"John Doe\"")
-				json must contain("\"url\":\"http://example.com/john\"")
-				json must contain("\"twitter\":null")
-			}
-		}
-	}
-}
 
 trait SpeakerTestCase extends After {
 	

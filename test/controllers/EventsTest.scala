@@ -1,14 +1,16 @@
 package controllers
 
-import org.specs2.mutable._
-import play.api.test._
-import play.api.test.Helpers._
-import anorm.Id
 import org.joda.time.DateTime
+import org.specs2.mutable.After
+import org.specs2.mutable.Specification
+
+import anorm.Id
 import models.S1Event
 import models.Speaker
+import play.api.test.Helpers._
+import play.api.test._
+import tools.TestTools.ValidResponse
 import tools.LoremIpsum
-import tools.TestTools._
 
 class EventsTest extends Specification {
 

@@ -127,7 +127,6 @@ class UpdateUserTest extends Specification {
 						}
 					case content => failure("Invalid response format: '" + content + "'")
 				}
-				
 			}
 		}
 	}
