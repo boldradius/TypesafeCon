@@ -23,6 +23,22 @@ h2 {
 	text-align: center;
 }
 
+.btn {
+	background-image: -webkit-linear-gradient(top, #B0BAC1, #848E96);
+	background-image: -o-linear-gradient(top, #B0BAC1, #848E96);
+	background-image: linear-gradient(to bottom, #B0BAC1, #848E96);
+	border-color: #8B9696;
+	font-family: "HelveticaNeue-CondensedBold", "Helvetica Neue";
+	font-size: 16pt;
+	color: #FFFFFF;
+	text-shadow: -1px -1px rgba(76,76,76,0.5);
+}
+
+.btn:hover {
+	color: #FFF;
+	background-position: 0;
+}
+
 /************** Speaker details **************/
 
 #speaker h4, #event h4 {
@@ -98,24 +114,15 @@ h2 {
 .description {
 	font-size: 14pt;
 	color: #262626;
-	
 	border: 1pt solid #DBDBDB;
 	background-color: white;
 	border-radius: 2pt;
 	margin-top: 20pt;
 	clear:both;
 	padding: 10pt;
-	
-	/*
-	-moz-box-shadow:    3px 3px 5px 6px #ccc;
-	-webkit-box-shadow: 3px 3px 5px 6px #ccc;
-	*/
 	box-shadow: 1pt 1pt 4pt 0pt rgba(0,0,0,0.38);
-	
-	/*
-Shadow Color: #000000
-Shadow Opacity: 38%
-Shadow Distance: 1pt
-Shadow Size: 4pt
-*/
+}
+
+.actions {
+	margin-top: 20pt;
 }
