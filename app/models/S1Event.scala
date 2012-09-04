@@ -90,6 +90,21 @@ object S1Event {
 				Speaker(speakerid, name, stitle, about, email, twitter, url))
 		}
 	}
+	
+	/** Parses a row into an Event
+	  */
+	private val event = {
+		get[Pk[Long]]("id") ~
+		get[String]("code") ~
+		get[String]("title") ~
+		get[String]("description") ~
+		get[Date]("starttime") ~
+		get[Date]("endtime") ~
+		get[String]("location") map {
+			case eventid ~ code ~ title ~ description ~ start ~ end ~ location  =>
+				S1Event(eventid, code, title, description, new DateTime(start), new DateTime(end), location, Nil)
+		}
+	}
 
 	/** Fetches all Events
 	  */
@@ -102,6 +117,17 @@ object S1Event {
 					inner join speaker s on s.id = se.speakerid
 					""").as(eventWithSpeakers *)
 			eventSpeakers.foldLeft(List[S1Event]())((events, engagement) => combine(events, engagement._1, engagement._2))
+		}
+	}
+	
+	/** Fetches all Events led by a speaker
+	  */
+	def findBySpeakerId(speakerId: Long) = {
+		DB.withConnection { implicit connection =>
+			SQL("""select e.* from event e
+					inner join speakerevent se on se.eventid = e.id
+					where se.speakerid = {speakerid}
+					""").on('speakerid -> speakerId).as(event *)
 		}
 	}
 	

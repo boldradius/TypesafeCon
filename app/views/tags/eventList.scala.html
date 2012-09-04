@@ -1,0 +1,17 @@
+@* Prints a box containing the non-empty fields from the list of name,value fields provided. *@
+@(events: List[S1Event])
+
+@if(events.size > 0) {
+	<div class="box">
+		@for(event <- events){
+		<div class="boxRow @if(event == events.last){lastRow}"
+			onClick="window.location='scala1://events/@event.id';">
+			<div class="rightArrow">&gt;</div>
+			<div class="content fullwidth">
+				@event.title
+			</div>
+		</div>
+		}
+	</div>
+}
+

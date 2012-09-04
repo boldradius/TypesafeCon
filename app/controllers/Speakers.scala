@@ -4,6 +4,7 @@ import play.api._
 import play.api.mvc._
 import models.Speaker
 import json.JsonSpeakerWriter
+import models.S1Event
 
 object Speakers extends APIController {
 
@@ -22,7 +23,10 @@ object Speakers extends APIController {
 		implicit request =>
 			{
 				Speaker.findById(id) match {
-					case Some(speaker) => Ok(views.html.speaker(speaker))
+					case Some(speaker) => {
+						val events = S1Event.findBySpeakerId(speaker.id.get)
+						Ok(views.html.speaker(speaker, events))
+					}
 					case _ => BadRequest("Speaker not found")
 				}
 			}

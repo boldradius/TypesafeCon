@@ -25,12 +25,18 @@ h2 {
 
 /************** Speaker details **************/
 
-#speaker .title {
+.title {
 	font-size: 14pt;
 	line-height: 16pt;
 	font-style: italic;
 	font-weight: 300;
 	color: #999;
+}
+
+.pic {
+	float:left; 
+	margin-right: 10pt;
+	margin-bottom: 10pt;
 }
 
 .summary {
@@ -46,6 +52,7 @@ h2 {
 	background-color: white;
 	border-radius: 2pt;
 	margin-top: 20pt;
+	clear:both;
 }
 
 .boxRow {
@@ -60,14 +67,25 @@ h2 {
 	
 .box .header {
 	float: left;
-	width: 60pt;
+	width: 50pt;
 	font-size: 13pt;
 	color: #0DA4D0;
 }
 
+.box .rightArrow {
+	float: right;
+	width: 10pt;
+	font-weight: 600;
+	color: #999;
+}
+
 .box .content {
-	margin-left: 80pt;
+	margin-left: 60pt;
 	font-family: "HelveticaNeue-CondensedBold", "Helvetica Neue";
 	font-size: 16pt;
 	color: #262626;
+}
+
+.box .fullwidth {
+	margin-left: 0;
 }

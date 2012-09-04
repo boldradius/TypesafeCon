@@ -1,4 +1,4 @@
-@(speaker: Speaker)(implicit flash:Flash) 
+@(speaker: Speaker, events: List[S1Event])(implicit flash:Flash) 
 
 @import tags._
 
@@ -6,7 +6,7 @@
 
 	<div id="speaker">
 		<div class="summary">
-			<div style="float:left; margin-right: 10px;">
+			<div class="pic">
 				<img src="@routes.Assets.at("img/profile/" + speaker.id.get + ".jpg")" 
 					onerror="this.src='@routes.Assets.at("img/profile/generic.png")';"  
 					class="img-rounded" 
@@ -18,9 +18,13 @@
 		
 		@box(Messages("speaker.about") -> speaker.about)
 		
-		@box(	Messages("speaker.twitter") -> speaker.twitter.getOrElse(""), 
-				Messages("speaker.email") -> speaker.email.getOrElse(""), 
-				Messages("speaker.website") -> speaker.url.getOrElse("") )
+		@box(
+			Messages("speaker.twitter") -> speaker.twitter.getOrElse(""), 
+			Messages("speaker.email") -> speaker.email.getOrElse(""), 
+			Messages("speaker.website") -> speaker.url.getOrElse("") 
+		)
+		
+		@eventList(events)
 	
 	</div>
 }
