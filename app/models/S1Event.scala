@@ -120,6 +120,14 @@ object S1Event {
 		}
 	}
 	
+	/** Fetches an Event by id
+	  */
+	def findById(id:Long) = {
+		DB.withConnection { implicit connection =>
+			SQL("select * from event where id = {id}").on('id -> id).as(event.singleOpt)
+		}
+	}
+	
 	/** Fetches all Events led by a speaker
 	  */
 	def findBySpeakerId(speakerId: Long) = {

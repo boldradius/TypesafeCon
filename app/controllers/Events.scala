@@ -4,6 +4,7 @@ import play.api._
 import play.api.mvc._
 import models.S1Event
 import json.JsonEventWriter
+import models.Speaker
 
 object Events extends APIController {
 
@@ -15,6 +16,21 @@ object Events extends APIController {
 		} catch {
 			case t: Throwable => ServerError(t.getMessage)
 		}
+	}
+	
+	/** Returns an event along with the related speakers
+	  */
+	def get(id: Long) = Action {
+		implicit request =>
+			{
+				S1Event.findById(id) match {
+					case Some(event) => {
+						val speakers = Speaker.findByEventId(event.id.get)
+						Ok(views.html.event(event, speakers))
+					}
+					case _ => BadRequest("Event not found")
+				}
+			}
 	}
 
 }

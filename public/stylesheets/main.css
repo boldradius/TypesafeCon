@@ -25,7 +25,7 @@ h2 {
 
 /************** Speaker details **************/
 
-.title {
+#speaker h4, #event h4 {
 	font-size: 14pt;
 	line-height: 16pt;
 	font-style: italic;
@@ -88,4 +88,34 @@ h2 {
 
 .box .fullwidth {
 	margin-left: 0;
+}
+
+/************** Event details **************/
+#event h2 {
+	color: #0DA4D0;
+}
+
+.description {
+	font-size: 14pt;
+	color: #262626;
+	
+	border: 1pt solid #DBDBDB;
+	background-color: white;
+	border-radius: 2pt;
+	margin-top: 20pt;
+	clear:both;
+	padding: 10pt;
+	
+	/*
+	-moz-box-shadow:    3px 3px 5px 6px #ccc;
+	-webkit-box-shadow: 3px 3px 5px 6px #ccc;
+	*/
+	box-shadow: 1pt 1pt 4pt 0pt rgba(0,0,0,0.38);
+	
+	/*
+Shadow Color: #000000
+Shadow Opacity: 38%
+Shadow Distance: 1pt
+Shadow Size: 4pt
+*/
 }

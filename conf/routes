@@ -10,6 +10,7 @@ GET     /playground                 controllers.Application.playground
 
 # Events
 GET     /events                     controllers.Events.list
+GET     /events/:id                 controllers.Events.get(id: Long)
 
 # Speakers
 GET     /speakers                   controllers.Speakers.list

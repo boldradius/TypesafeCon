@@ -6,6 +6,8 @@ speaker.twitter=Twitter
 speaker.email=E-mail
 speaker.website=Website
 
+event.by=By
+
 about.details=ScalaOne is an application for JavaOne attendees to visualize content related to the Typesafe stack (Scala, Akka and the Play! Framework).
 about.download=Download the app:
 about.typesafe=About Typesafe

@@ -1,0 +1,22 @@
+@(event: S1Event, speakers: List[Speaker])(implicit flash:Flash) 
+
+@import tags._
+
+@main {
+
+	<div id="event">
+		<div class="summary">
+			<div class="pic">
+				<img src="@routes.Assets.at("img/profile/" + speakers(0).id.get + ".jpg")" 
+					onerror="this.src='@routes.Assets.at("img/profile/generic.png")';"  
+					class="img-rounded" 
+					width="80pt">
+			</div>
+			<h2>@event.title</h2>
+			<h4>@Messages("event.by") @speakers.map(_.name).mkString(", ")</h4>
+		</div>
+		
+		<div class="description">@event.description</div>
+
+	</div>
+}
