@@ -1,0 +1,21 @@
+@* Prints a box containing the non-empty fields from the list of name,value fields provided. *@
+@(fields: (String,String)*)
+
+@defining(fields.filter(field => !field._2.isEmpty)) { nonEmptyFields =>
+	
+	@if(nonEmptyFields.size > 0) {
+		<div class="box">
+		@for(field <- nonEmptyFields){
+			<div class="boxRow @if(field == nonEmptyFields.last){lastRow}">
+				<div class="header">
+					@field._1
+				</div>
+				<div class="content">
+					@field._2
+				</div>
+			</div>
+		}
+		</div>
+	}
+}
+

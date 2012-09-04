@@ -1,6 +1,11 @@
 title.about=About ScalaOne
 title.playground=Playground
 
+speaker.about=About
+speaker.twitter=Twitter
+speaker.email=E-mail
+speaker.website=Website
+
 about.details=ScalaOne is an application for JavaOne attendees to visualize content related to the Typesafe stack (Scala, Akka and the Play! Framework).
 about.download=Download the app:
 about.typesafe=About Typesafe

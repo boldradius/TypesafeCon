@@ -1,5 +1,6 @@
 body {
-	padding-top: 10px;
+	padding-top: 10pt;
+	padding-bottom: 40px;
 }
 
 body,html {
@@ -50,6 +51,11 @@ h2 {
 .boxRow {
 	clear: both;
 	padding: 10pt;
+	border-bottom: 1pt solid #DBDBDB;
+}
+
+.lastRow {
+	border-bottom: none;
 }
 	
 .box .header {

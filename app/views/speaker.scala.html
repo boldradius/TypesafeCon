@@ -1,5 +1,7 @@
 @(speaker: Speaker)(implicit flash:Flash) 
 
+@import tags._
+
 @main {
 
 	<div id="speaker">
@@ -14,45 +16,11 @@
 			<p class="title">@speaker.title</p>
 		</div>
 		
-		<div class="box">
-			<div class="boxRow">
-				<div class="header">
-					About
-				</div>
-				<div class="content">
-					@speaker.about
-				</div>
-			</div>
-		</div>
+		@box(Messages("speaker.about") -> speaker.about)
 		
-		<div class="box">
-			<div class="boxRow">
-				<div class="header">
-					Twitter
-				</div>
-				<div class="content">
-					@speaker.twitter
-				</div>
-			</div>
-			
-			<div class="boxRow">
-				<div class="header">
-					E-mail
-				</div>
-				<div class="content">
-					@speaker.email
-				</div>
-			</div>
-		
-			<div class="boxRow">
-				<div class="header">
-					Website
-				</div>
-				<div class="content">
-					@speaker.url
-				</div>
-			</div>
-		</div>
+		@box(	Messages("speaker.twitter") -> speaker.twitter.getOrElse(""), 
+				Messages("speaker.email") -> speaker.email.getOrElse(""), 
+				Messages("speaker.website") -> speaker.url.getOrElse("") )
 	
 	</div>
 }
