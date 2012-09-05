@@ -2,11 +2,8 @@ package controllers
 
 import play.api._
 import play.api.mvc._
-import models.S1Event
-import models.Speaker
-import models.GeneralMessage
+import models._
 import json._
-import models.EventMessage
 
 object DiscussionMessages extends APIController {
 
@@ -32,6 +29,20 @@ object DiscussionMessages extends APIController {
 			case t: Throwable => {
 				t.printStackTrace()
 				Logger.error("Error retrieving messages for event " + id, t)
+				ServerError(t.getMessage)
+			}
+		}
+	}
+	
+	/** Returns all the private messages between two users
+	  */
+	def privateMessages(id1: Long, id2: Long) = Action {
+		try {
+			Success(PrivateMessage.findAll(id1, id2), "messages")(JSONPrivateMessageWriter)
+		} catch {
+			case t: Throwable => {
+				t.printStackTrace()
+				Logger.error("Error retrieving private messages between users " + id1 + " and " + id2, t)
 				ServerError(t.getMessage)
 			}
 		}

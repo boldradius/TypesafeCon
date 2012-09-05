@@ -23,11 +23,17 @@ object InitialData {
 	def insert() = {
 
 		if (User.countAll == 0) {
-			val user = User("ScalaOne", "scala1@example.com", "typesafe", None, None, "http://typesafe.com").create.get
-
+			val scala1 = User("ScalaOne", "scala1@example.com", "typesafe", None, None, "http://typesafe.com").create.get
+			val alex = User("Alex", "alex@tindr.co", "andanthor", None, None, "http://alejandrolujan.com").create.get
+			
 			if (GeneralMessage.countAll == 0) {
-				new GeneralMessage(Id(0), user.id.get, "Welcome to ScalaOne!").create
-				new GeneralMessage(Id(0), user.id.get, "Enjoy the conference and don't be shy - connect to your fellow Scala enthusiasts!").create
+				new GeneralMessage(Id(0), scala1.id.get, "Welcome to ScalaOne!").create
+				new GeneralMessage(Id(0), scala1.id.get, "Enjoy the conference and don't be shy - connect to your fellow Scala enthusiasts!").create
+			}
+			
+			if(PrivateMessage.countAll(scala1.id.get, alex.id.get) == 0) {
+				new PrivateMessage(Id(0), scala1.id.get, "Hi Alex", alex.id.get).create
+				new PrivateMessage(Id(0), alex.id.get, "Hey there!", scala1.id.get).create
 			}
 		}
 
