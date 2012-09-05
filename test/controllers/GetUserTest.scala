@@ -10,6 +10,7 @@ import models.Speaker
 import tools.LoremIpsum
 import models.User
 import tools.TestTools._
+import tools.StringTools._
 
 class GetUserTest extends Specification {
 
