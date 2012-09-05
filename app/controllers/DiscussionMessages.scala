@@ -6,6 +6,7 @@ import models.S1Event
 import models.Speaker
 import models.GeneralMessage
 import json._
+import models.EventMessage
 
 object DiscussionMessages extends APIController {
 
@@ -15,7 +16,10 @@ object DiscussionMessages extends APIController {
 		try {
 			Success(GeneralMessage.findAll, "messages")(JSONGeneralMessageWriter)
 		} catch {
-			case t: Throwable => ServerError(t.getMessage)
+			case t: Throwable => {
+				Logger.error("Error retrieving discussion messages", t)
+				ServerError(t.getMessage)
+			}
 		}
 	}
 	
@@ -23,9 +27,13 @@ object DiscussionMessages extends APIController {
 	  */
 	def event(id: Long) = Action {
 		try {
-			Success(GeneralMessage.findAll, "messages")(JSONGeneralMessageWriter)
+			Success(EventMessage.findAll(id), "messages")(JSONEventMessageWriter)
 		} catch {
-			case t: Throwable => ServerError(t.getMessage)
+			case t: Throwable => {
+				t.printStackTrace()
+				Logger.error("Error retrieving messages for event " + id, t)
+				ServerError(t.getMessage)
+			}
 		}
 	}
 

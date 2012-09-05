@@ -17,7 +17,7 @@ create table speaker (
 );
 
 create table event (
-  id bigint not null DEFAULT nextval('s_eventid'),
+  id bigint not null DEFAULT nextval('s_speakerid'),
   title varchar(255),
   description text,
   starttime timestamp without time zone NOT NULL DEFAULT now(),
