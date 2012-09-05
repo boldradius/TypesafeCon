@@ -27,7 +27,7 @@ object InitialData {
 
 			if (GeneralMessage.countAll == 0) {
 				new GeneralMessage(Id(0), user.id.get, "Welcome to ScalaOne!").create
-				new GeneralMessage(Id(0), user.id.get, "Enjoy the conference and don't be shy - connect to your fellows Scala enthusiasts!").create
+				new GeneralMessage(Id(0), user.id.get, "Enjoy the conference and don't be shy - connect to your fellow Scala enthusiasts!").create
 			}
 		}
 

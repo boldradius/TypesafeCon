@@ -23,7 +23,7 @@ PUT     /users/:id                    controllers.Users.update(id: Long)
 
 # Messages
 GET     /messages/general              controllers.DiscussionMessages.general
-#GET     /messages/event/:id           controllers.DiscussionMessages.event(id: Long)
+GET     /messages/event/:id           controllers.DiscussionMessages.event(id: Long)
 #GET     /messages/private/:lid/:gid   controllers.DiscussionMessages.private(lid: Long, gid: Long)
 
 # Map static resources from the /public folder to the /assets URL path
