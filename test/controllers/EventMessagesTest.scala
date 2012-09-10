@@ -43,7 +43,7 @@ class EventMessagesTest extends Specification {
 					
 				// Verify the result is a 200 code with the proper JSON content type
 				val Some(result) = routeAndCall(FakeRequest(POST, "/messages/event/" + testEvent.id).withFormUrlEncodedBody("senderId" -> testUser.id.get.toString))
-				status(result) must beEqualTo(OK)
+				status(result) must beEqualTo(BAD_REQUEST)
 				contentType(result) must beSome("application/json")
 				
 				// Verify the error message
@@ -64,14 +64,14 @@ class EventMessagesTest extends Specification {
 					
 				// Verify the result is a 200 code with the proper JSON content type
 				val Some(result) = routeAndCall(FakeRequest(POST, "/messages/event/999999").withFormUrlEncodedBody("senderId" -> testUser.id.get.toString, "content" -> content))
-				status(result) must beEqualTo(OK)
+				status(result) must beEqualTo(BAD_REQUEST)
 				contentType(result) must beSome("application/json")
 				
 				// Verify the error message
 				contentAsString(result) match {
 					case ValidResponse(status, message, result) => {
 						status must beEqualTo("ERROR")
-						message must beEqualTo("Missing parameter: senderId")
+						message must beEqualTo("Event does not exist")
 					}
 					case content => failure("Invalid response format: '" + content + "'")
 				}
