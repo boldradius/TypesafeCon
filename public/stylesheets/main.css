@@ -32,6 +32,7 @@ h2 {
 	font-size: 16pt;
 	color: #FFFFFF;
 	text-shadow: -1px -1px rgba(76,76,76,0.5);
+	padding: 4px 18px;
 }
 
 .btn:hover {
@@ -136,12 +137,4 @@ h2 {
 
 .actions {
 	margin-top: 20pt;
-}
-
-.top {
-	width: 25%;
-}
-
-.join {
-	width: 50%;
 }
