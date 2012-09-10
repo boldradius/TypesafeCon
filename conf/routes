@@ -27,7 +27,7 @@ POST    /messages/general             controllers.DiscussionMessages.createGener
 GET     /messages/event/:id           controllers.DiscussionMessages.event(id: Long)
 POST    /messages/event/:id           controllers.DiscussionMessages.createEvent(id:Long)
 GET     /messages/private/:id1/:id2   controllers.DiscussionMessages.privateMessages(id1: Long, id2: Long)
-#POST    /messages/private/:id1/:id2   controllers.DiscussionMessages.createPrivate(id1: Long, id2: Long)
+POST    /messages/private/:from/:to   controllers.DiscussionMessages.createPrivate(from: Long, to: Long)
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file                 controllers.Assets.at(path="/public", file)

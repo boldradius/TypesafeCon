@@ -92,11 +92,10 @@ class EventMessagesTest extends Specification {
 				contentAsString(result) match {
 					case ValidResponse(status, message, result) => {
 						status must beEqualTo("OK")
-						println(message)
+
 						val id = result.toLong
 						EventMessage.findById(id) match {
 							case Some(message) =>
-								testMessage = message
 								message.content must beEqualTo(content)
 								message.senderId must beEqualTo(testUser.id.get)
 								message.eventId must beEqualTo(Some(testEvent.id.get))
@@ -113,7 +112,6 @@ class EventMessagesTest extends Specification {
 trait EventMessagesTestCase extends After {
 	
 	var testUser:User = _
-	var testMessage: EventMessage = _
 	var testEvent: S1Event = _
 	
 	// Create a test user before the test case
@@ -125,5 +123,6 @@ trait EventMessagesTestCase extends After {
 	// Remove the test data
 	def after = running(FakeApplication()) {
 		testUser.delete
+		testEvent.delete
 	}
 }

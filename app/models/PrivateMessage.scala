@@ -56,6 +56,17 @@ object PrivateMessage {
 		}
 	}
 	
+	/** Fetches a Private Message by id */
+	def findById(id: Long) = {
+		DB.withConnection { implicit connection =>
+			SQL("""
+				select m.*, u.name from message m
+				inner join s1user u on u.id = m.senderid
+				where m.id = {id}
+				""").on('id -> id).as(privateMessage singleOpt)
+		}
+	}
+	
 		/** Counts all GeneralMessages
 	 */
 	def countAll(id1: Long, id2: Long)  = {

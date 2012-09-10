@@ -3,46 +3,26 @@ package controllers
 import org.specs2.mutable.After
 import org.specs2.mutable.Specification
 
-import models.GeneralMessage
+import models.PrivateMessage
 import models.User
 import play.api.test.Helpers._
 import play.api.test.FakeApplication
 import play.api.test.FakeRequest
 import tools.TestTools.ValidResponse
 
-class GeneralMessagesTest extends Specification {
+class PrivateMessagesTest extends Specification {
 
-	"The Add general message API call" should {
-		
-		"Return an error if the senderId is missing" in new GeneralMessagesTestCase  {
-			
+	"The Add private message API call" should {
+
+		"Return error when the content is missing" in new PrivateMessagesTestCase {
+
 			running(FakeApplication()) {
-					
-				// Verify the result is a 400 code with the proper JSON content type
-				val Some(result) = routeAndCall(FakeRequest(POST, "/messages/general").withFormUrlEncodedBody("content" -> "If a message gets sent by nobody, can it still be read?"))
+
+				// Verify the result is a 200 code with the proper JSON content type
+				val Some(result) = routeAndCall(FakeRequest(POST, "/messages/private/" + user1.id + "/" + user2.id))
 				status(result) must beEqualTo(BAD_REQUEST)
 				contentType(result) must beSome("application/json")
-				
-				// Verify the error message
-				contentAsString(result) match {
-					case ValidResponse(status, message, result) => {
-						status must beEqualTo("ERROR")
-						message must beEqualTo("Missing parameter: senderId")
-					}
-					case content => failure("Invalid response format: '" + content + "'")
-				}
-			}
-		}
-		
-		"Return an error if the content is missing" in new GeneralMessagesTestCase  {
-			
-			running(FakeApplication()) {
-					
-				// Verify the result is a 400 code with the proper JSON content type
-				val Some(result) = routeAndCall(FakeRequest(POST, "/messages/general").withFormUrlEncodedBody("senderId" -> testUser.id.get.toString))
-				status(result) must beEqualTo(BAD_REQUEST)
-				contentType(result) must beSome("application/json")
-				
+
 				// Verify the error message
 				contentAsString(result) match {
 					case ValidResponse(status, message, result) => {
@@ -53,16 +33,34 @@ class GeneralMessagesTest extends Specification {
 				}
 			}
 		}
-		
-		"Return an error if the sender does not exist" in new GeneralMessagesTestCase  {
-			
+
+		"Return error when the sender does not exist" in new PrivateMessagesTestCase {
+
 			running(FakeApplication()) {
-					
-				// Verify the result is a 400 code with the proper JSON content type
-				val Some(result) = routeAndCall(FakeRequest(POST, "/messages/general").withFormUrlEncodedBody("senderId" -> "9999999","content" -> "If a message gets sent by nobody, can it still be read?"))
+				// Verify the result is a 200 code with the proper JSON content type
+				val Some(result) = routeAndCall(FakeRequest(POST, "/messages/private/999999/" + user2.id).withFormUrlEncodedBody("content" -> "Hey Peter"))
 				status(result) must beEqualTo(BAD_REQUEST)
 				contentType(result) must beSome("application/json")
-				
+
+				// Verify the error message
+				contentAsString(result) match {
+					case ValidResponse(status, message, result) => {
+						status must beEqualTo("ERROR")
+						message must beEqualTo("Sender does not exist")
+					}
+					case content => failure("Invalid response format: '" + content + "'")
+				}
+			}
+		}
+
+		"Return error when the user does not exist" in new PrivateMessagesTestCase {
+
+			running(FakeApplication()) {
+				// Verify the result is a 200 code with the proper JSON content type
+				val Some(result) = routeAndCall(FakeRequest(POST, "/messages/private/" + user1.id + "/999999").withFormUrlEncodedBody("content" -> "Hey Peter"))
+				status(result) must beEqualTo(BAD_REQUEST)
+				contentType(result) must beSome("application/json")
+
 				// Verify the error message
 				contentAsString(result) match {
 					case ValidResponse(status, message, result) => {
@@ -73,27 +71,28 @@ class GeneralMessagesTest extends Specification {
 				}
 			}
 		}
-		
-		"Create a new message when called with the proper parameters" in new GeneralMessagesTestCase  {
-			
+
+		"Create a new message when called with the proper parameters" in new PrivateMessagesTestCase {
+
 			running(FakeApplication()) {
-				val content = "Hi, this is a test message. Neat, eh?"
-					
+				val content = "Hey Peter"
+
 				// Verify the result is a 200 code with the proper JSON content type
-				val Some(result) = routeAndCall(FakeRequest(POST, "/messages/general").withFormUrlEncodedBody("senderId" -> testUser.id.get.toString, "content" -> content))
+				val Some(result) = routeAndCall(FakeRequest(POST, "/messages/private/" + user1.id + "/" + user2.id).withFormUrlEncodedBody("content" -> content))
 				status(result) must beEqualTo(OK)
 				contentType(result) must beSome("application/json")
-				
+
 				// Sanity check to verify our message was created
 				contentAsString(result) match {
 					case ValidResponse(status, message, result) => {
 						status must beEqualTo("OK")
-						
+
 						val id = result.toLong
-						GeneralMessage.findById(id) match {
+						PrivateMessage.findById(id) match {
 							case Some(message) =>
 								message.content must beEqualTo(content)
-								message.senderId must beEqualTo(testUser.id.get)
+								message.senderId must beEqualTo(user1.id.get)
+								message.toUserId must beEqualTo(Some(user2.id.get))
 							case _ => failure("The message was not created")
 						}
 					}
@@ -104,17 +103,19 @@ class GeneralMessagesTest extends Specification {
 	}
 }
 
-trait GeneralMessagesTestCase extends After {
-	
-	var testUser:User = _
-	
-	// Create a test user before the test case
+trait PrivateMessagesTestCase extends After {
+
+	var user1, user2: User = _
+
+	// Create test users before the test case
 	running(FakeApplication()) {
-		testUser = User("john@example.com").create.get
+		user1 = User("john@example.com").create.get
+		user2 = User("peter@example.com").create.get
 	}
-	
+
 	// Remove the test data
 	def after = running(FakeApplication()) {
-		testUser.delete
+		user1.delete
+		user2.delete
 	}
 }

@@ -30,7 +30,7 @@ class EventsTest extends Specification {
 						status must beEqualTo("OK")
 						result must contain("\"location\":\"Room 1\"")
 						result must contain("\"title\":\"Event\"")
-						result must contain("\"code\":\"FAKECODE\"")
+						result must contain("\"code\":\"TEST\"")
 						result must contain("\"speakerIds\":[" + speaker.id.get + "]")
 					}
 					case content => failure("Invalid response format: '" + content + "'")
@@ -49,7 +49,7 @@ trait EventsTestCase extends After {
 	running(FakeApplication()) {
 		speaker = Speaker(Id(0), "John Doe", LoremIpsum.words(3), LoremIpsum.paragraph, 
 					Some("john@example.com"), Some("john"), Some("http://example.com/john")).create.get
-		event = S1Event(Id(0), "FAKECODE", "Event", LoremIpsum.paragraphs(3), new DateTime, new DateTime, "Room 1", Seq(speaker.id.get)).create.get
+		event = S1Event(Id(0), "TEST", "Event", LoremIpsum.paragraphs(3), new DateTime, new DateTime, "Room 1", Seq(speaker.id.get)).create.get
 	}
 	
 	// Remove the test data

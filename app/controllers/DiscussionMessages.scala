@@ -30,12 +30,12 @@ object DiscussionMessages extends APIController {
 			.verifying("Event does not exist", message => S1Event.findById(message.eventId.get).isDefined))
 
 	/** Form for processing private messages */
-	private val privateMessageForm: Form[PrivateMessage] = Form(
-		mapping(
-			"senderId" -> userMapping,
-			"toUserId" -> userMapping,
-			"content" -> contentMapping) 
-			{ PrivateMessage.apply } { message => None })
+	private def privateMessageForm(fromId: Long, toId: Long): Form[PrivateMessage] = Form(
+		mapping("content" -> contentMapping) 
+			{ content => PrivateMessage(fromId, toId, content) } 
+			{ message => None }
+			.verifying("Sender does not exist", message => User.findById(fromId).isDefined)
+			.verifying("User does not exist", message => User.findById(toId).isDefined))
 
 	/** Returns all the general discussion messages */
 	def general = Action {
@@ -56,7 +56,7 @@ object DiscussionMessages extends APIController {
 	def createEvent(eventId: Long) = create(eventMessageForm(eventId))
 	
 	/** Creates a Private Message */
-	def createPrivate = create(privateMessageForm)
+	def createPrivate(fromId: Long, toId: Long) = create(privateMessageForm(fromId, toId))
 	
 	/** Creates a Message based on a concrete form implementation */
 	private def create[A <: Message](form: Form[A]) = Action {
