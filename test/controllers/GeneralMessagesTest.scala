@@ -54,6 +54,26 @@ class GeneralMessagesTest extends Specification {
 			}
 		}
 		
+		"Return an error if the sender does not exist" in new GeneralMessagesTestCase  {
+			
+			running(FakeApplication()) {
+					
+				// Verify the result is a 400 code with the proper JSON content type
+				val Some(result) = routeAndCall(FakeRequest(POST, "/messages/general").withFormUrlEncodedBody("senderId" -> "9999999","content" -> "If a message gets sent by nobody, can it still be read?"))
+				status(result) must beEqualTo(BAD_REQUEST)
+				contentType(result) must beSome("application/json")
+				
+				// Verify the error message
+				contentAsString(result) match {
+					case ValidResponse(status, message, result) => {
+						status must beEqualTo("ERROR")
+						message must beEqualTo("User does not exist")
+					}
+					case content => failure("Invalid response format: '" + content + "'")
+				}
+			}
+		}
+		
 		"Create a new message when called with the proper parameters" in new GeneralMessagesTestCase  {
 			
 			running(FakeApplication()) {
