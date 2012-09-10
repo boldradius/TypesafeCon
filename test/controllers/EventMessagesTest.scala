@@ -67,20 +67,11 @@ class EventMessagesTest extends Specification {
 				status(result) must beEqualTo(OK)
 				contentType(result) must beSome("application/json")
 				
-				// Sanity check to verify our message was created
+				// Verify the error message
 				contentAsString(result) match {
 					case ValidResponse(status, message, result) => {
-						status must beEqualTo("OK")
-						println(message)
-						val id = result.toLong
-						EventMessage.findById(id) match {
-							case Some(message) =>
-								testMessage = message
-								message.content must beEqualTo(content)
-								message.senderId must beEqualTo(testUser.id.get)
-								message.eventId must beEqualTo(Some(testEvent.id.get))
-							case _ => failure("The message was not created")
-						}
+						status must beEqualTo("ERROR")
+						message must beEqualTo("Missing parameter: senderId")
 					}
 					case content => failure("Invalid response format: '" + content + "'")
 				}
