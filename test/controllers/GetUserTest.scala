@@ -20,13 +20,13 @@ class GetUserTest extends Specification {
 			running(FakeApplication()) {
 				val Some(result) = routeAndCall(FakeRequest(GET, "/users/1000000"))
 					
-				status(result) must equalTo(BAD_REQUEST)
+				status(result) must beEqualTo(BAD_REQUEST)
 				contentType(result) must beSome("application/json")
 				
 				contentAsString(result) match {
 					case ValidResponse(status, message, result) =>
-						status must equalTo("ERROR")
-						message must equalTo("User not found")
+						status must beEqualTo("ERROR")
+						message must beEqualTo("User not found")
 					case content => failure("Invalid response format: '" + content + "'")
 				}
 			}
@@ -36,12 +36,12 @@ class GetUserTest extends Specification {
 			running(FakeApplication()) {
 				val Some(result) = routeAndCall(FakeRequest(GET, "/users/" + testUser.id))
 					
-				status(result) must equalTo(OK)
+				status(result) must beEqualTo(OK)
 				contentType(result) must beSome("application/json")
 				
 				contentAsString(result) match {
 					case ValidResponse(status, message, result) =>
-						status must equalTo("OK")
+						status must beEqualTo("OK")
 						result must contain(""""name":"John"""")
 						result must contain(""""email":"john@example.com"""")
 						result must contain(""""twitter":"john"""")

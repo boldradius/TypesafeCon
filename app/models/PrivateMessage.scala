@@ -14,7 +14,7 @@ class PrivateMessage(
 		senderId: Long,
 		content: String,
 		toUserId: Long,
-		senderName: String = "",
+		senderName: Option[String] = None,
 		sentTime: DateTime = new DateTime,
 		index: Long = 0) extends Message(id, senderId, content, senderName, sentTime, index, None, Some(toUserId)){
 
@@ -25,13 +25,15 @@ class PrivateMessage(
 
 object PrivateMessage {
 	
+	def apply(senderId:Long, toUserId: Long, content: String) = new PrivateMessage(Id(0), senderId, content, toUserId)
+	
 	/** Parses a result into a PrivateMessage
 	  */
 	private val privateMessage = {
 		get[Pk[Long]]("id") ~
 		get[Long]("senderid") ~
 		get[String]("content") ~
-		get[String]("name") ~
+		get[Option[String]]("name") ~
 		get[Date]("senttime") ~
 		get[Long]("index") ~
 		get[Long]("touserid") map {

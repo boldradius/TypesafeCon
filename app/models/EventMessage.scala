@@ -12,9 +12,9 @@ class EventMessage(
 		id:Pk[Long],
 		senderId: Long,
 		content: String,
-		senderName: String = "",
-		sentTime: DateTime = new DateTime,
 		eventId: Long,
+		senderName: Option[String] = None,
+		sentTime: DateTime = new DateTime,
 		index: Long = 0) extends Message(id, senderId, content, senderName, sentTime, index, Some(eventId)){
 
 	def nextIndex = "select coalesce(max(index),0) + 1 from message where eventid = " + eventId
@@ -22,18 +22,20 @@ class EventMessage(
 
 object EventMessage {
 	
+	def apply(senderId: Long, eventId: Long, content: String) = new EventMessage(Id(0), senderId, content, eventId)
+	
 	/** Parses a result into an EventMessage
 	  */
 	private val eventMessage = {
 		get[Pk[Long]]("id") ~
 		get[Long]("senderid") ~
 		get[String]("content") ~
-		get[String]("name") ~
+		get[Option[String]]("name") ~
 		get[Date]("senttime") ~
 		get[Long]("index") ~
 		get[Long]("eventid") map {
 			case id ~ senderId ~ content ~ senderName ~ sentTime ~ index ~ eventId =>
-				new EventMessage(id, senderId, content, senderName, new DateTime(sentTime), eventId, index)
+				new EventMessage(id, senderId, content, eventId, senderName, new DateTime(sentTime), index)
 		}
 	}
 		

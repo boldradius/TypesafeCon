@@ -16,11 +16,11 @@ class CreateUserTest extends Specification {
 			running(FakeApplication()) {
 				val Some(result) = routeAndCall(FakeRequest(POST, "/users").withFormUrlEncodedBody("name" -> "John"))
 					
-				status(result) must equalTo(BAD_REQUEST)
+				status(result) must beEqualTo(BAD_REQUEST)
 				contentType(result) must beSome("application/json")
 				
 				contentAsString(result) match {
-					case ValidResponse(status, message, result) => message must equalTo("Missing parameter: email")
+					case ValidResponse(status, message, result) => message must beEqualTo("Missing parameter: email")
 					case content => failure("Invalid response format: '" + content + "'")
 				}
 			}
@@ -37,11 +37,11 @@ class CreateUserTest extends Specification {
 					"name" -> "Peter", 
 					"email" -> "john@example.com"))
 					
-				status(result2) must equalTo(BAD_REQUEST)
+				status(result2) must beEqualTo(BAD_REQUEST)
 				contentType(result2) must beSome("application/json")
 				
 				contentAsString(result2) match {
-					case ValidResponse(status, message, result) => message must equalTo("Email is already registered")
+					case ValidResponse(status, message, result) => message must beEqualTo("Email is already registered")
 					case content => failure("Invalid response format: '" + content + "'")
 				}
 			}
@@ -57,7 +57,7 @@ class CreateUserTest extends Specification {
 					"phone" -> "987-6543210", 
 					"email" -> "john@example.com", 
 					"website" -> "http://example.com"))
-				status(result) must equalTo(OK)
+				status(result) must beEqualTo(OK)
 				contentType(result) must beSome("application/json")
 				
 				val IdResponse = """.+"id":(\d+).+""".r

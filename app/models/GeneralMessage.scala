@@ -1,4 +1,5 @@
 package models
+
 import org.joda.time.DateTime
 import anorm.Pk
 import play.api.db.DB
@@ -12,7 +13,7 @@ class GeneralMessage(
 		id:Pk[Long],
 		senderId: Long,
 		content: String,
-		senderName: String = "",
+		senderName: Option[String] = None,
 		sentTime: DateTime = new DateTime,
 		index: Long = 0) extends Message(id, senderId, content, senderName, sentTime, index){
 
@@ -21,13 +22,15 @@ class GeneralMessage(
 
 object GeneralMessage {
 	
+	def apply(senderId: Long, content: String) = new GeneralMessage(Id(0), senderId, content)
+	
 	/** Parses a result into a GeneralMessage
 	  */
 	private val generalMessage = {
 		get[Pk[Long]]("id") ~
 		get[Long]("senderid") ~
 		get[String]("content") ~
-		get[String]("name") ~
+		get[Option[String]]("name") ~
 		get[Date]("senttime") ~
 		get[Long]("index")  map {
 			case id ~ senderId ~ content ~ senderName ~ sentTime ~ index  =>
@@ -45,6 +48,19 @@ object GeneralMessage {
 				where eventid is null and touserid is null
 				order by index
 				""").as(generalMessage *)
+		}
+	}
+	
+	/** Fetches a General Messages\ by id
+	 */
+	def findById(id: Long) = {
+		DB.withConnection { implicit connection =>
+			SQL("""
+				select m.*, u.name from message m
+				inner join s1user u on u.id = m.senderid
+				where eventid is null and touserid is null and m.id = {id}
+				order by index
+				""").on('id -> id).as(generalMessage.singleOpt)
 		}
 	}
 	

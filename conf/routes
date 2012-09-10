@@ -23,6 +23,7 @@ PUT     /users/:id                    controllers.Users.update(id: Long)
 
 # Messages
 GET     /messages/general             controllers.DiscussionMessages.general
+POST    /messages/general             controllers.DiscussionMessages.createGeneral
 GET     /messages/event/:id           controllers.DiscussionMessages.event(id: Long)
 GET     /messages/private/:id1/:id2   controllers.DiscussionMessages.privateMessages(id1: Long, id2: Long)
 

@@ -64,7 +64,7 @@ case class User(var id: Pk[Long],
 		} > 0
 	}
 	
-		/** Deletes the speaker from the DB
+	/** Deletes the speaker from the DB
 	  */
 	def delete = {
 		DB.withConnection { implicit connection =>

@@ -16,13 +16,13 @@ class UpdateUserTest extends Specification {
 			running(FakeApplication()) {
 				val Some(result) = routeAndCall(FakeRequest(PUT, "/users/" + testUser.id).withFormUrlEncodedBody("name" -> "John"))
 					
-				status(result) must equalTo(BAD_REQUEST)
+				status(result) must beEqualTo(BAD_REQUEST)
 				contentType(result) must beSome("application/json")
 				
 				contentAsString(result) match {
 					case ValidResponse(status, message, result) => 
-						status must equalTo("ERROR")
-						message must equalTo("Missing parameter: email")
+						status must beEqualTo("ERROR")
+						message must beEqualTo("Missing parameter: email")
 					case content => failure("Invalid response format: '" + content + "'")
 				}
 			}
@@ -32,13 +32,13 @@ class UpdateUserTest extends Specification {
 			running(FakeApplication()) {
 				val Some(result) = routeAndCall(FakeRequest(PUT, "/users/" + 1000000).withFormUrlEncodedBody("name" -> "John"))
 					
-				status(result) must equalTo(BAD_REQUEST)
+				status(result) must beEqualTo(BAD_REQUEST)
 				contentType(result) must beSome("application/json")
 				
 				contentAsString(result) match {
 					case ValidResponse(status, message, result) => 
-						status must equalTo("ERROR")
-						message must equalTo("User not found")
+						status must beEqualTo("ERROR")
+						message must beEqualTo("User not found")
 					case content => failure("Invalid response format: '" + content + "'")
 				}
 			}
@@ -55,13 +55,13 @@ class UpdateUserTest extends Specification {
 				val Some(updateResult) = routeAndCall(FakeRequest(PUT, "/users/" + testUser.id).withFormUrlEncodedBody(
 					"email" -> "john2@example.com"))
 					
-				status(updateResult) must equalTo(BAD_REQUEST)
+				status(updateResult) must beEqualTo(BAD_REQUEST)
 				contentType(updateResult) must beSome("application/json")
 				
 				contentAsString(updateResult) match {
 					case ValidResponse(status, message, result) => 
-						status must equalTo("ERROR")
-						message must equalTo("Email is already registered")
+						status must beEqualTo("ERROR")
+						message must beEqualTo("Email is already registered")
 					case content => failure("Invalid response format: '" + content + "'")
 				}
 			}
@@ -76,12 +76,12 @@ class UpdateUserTest extends Specification {
 					"phone" -> "987-6543210", 
 					"email" -> "john@example.com", 
 					"website" -> "http://example.com"))
-				status(result) must equalTo(OK)
+				status(result) must beEqualTo(OK)
 				contentType(result) must beSome("application/json")
 				
 				contentAsString(result) match {
 					case ValidResponse(status, message, result) => 
-						status must equalTo("OK")
+						status must beEqualTo("OK")
 						User.findById(testUser.id.get) match {
 							case None => failure("User with email john@example.com was not found")
 							case Some(user) => {
@@ -108,12 +108,12 @@ class UpdateUserTest extends Specification {
 					"phone" -> "", 
 					"email" -> "johnny@example.com", 
 					"website" -> "http://example.com"))
-				status(result) must equalTo(OK)
+				status(result) must beEqualTo(OK)
 				contentType(result) must beSome("application/json")
 				
 				contentAsString(result) match {
 					case ValidResponse(status, message, result) => 
-						status must equalTo("OK")
+						status must beEqualTo("OK")
 						User.findById(testUser.id.get) match {
 							case None => failure("User with email john@example.com was not found")
 							case Some(user) => {

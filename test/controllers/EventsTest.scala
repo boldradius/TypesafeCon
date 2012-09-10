@@ -21,13 +21,13 @@ class EventsTest extends Specification {
 			running(FakeApplication()) {
 				// Verify the result is a 200 code with the proper JSON content type
 				val Some(result) = routeAndCall(FakeRequest(GET, "/events"))
-				status(result) must equalTo(OK)
+				status(result) must beEqualTo(OK)
 				contentType(result) must beSome("application/json")
 				
 				// Sanity check to verify our event is in the results
 				contentAsString(result) match {
 					case ValidResponse(status, message, result) => {
-						status must equalTo("OK")
+						status must beEqualTo("OK")
 						result must contain("\"location\":\"Room 1\"")
 						result must contain("\"title\":\"Event\"")
 						result must contain("\"code\":\"FAKECODE\"")
