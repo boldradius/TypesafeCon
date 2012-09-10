@@ -51,7 +51,7 @@ object GeneralMessage {
 		}
 	}
 	
-	/** Fetches a General Messages\ by id
+	/** Fetches a General Message by id
 	 */
 	def findById(id: Long) = {
 		DB.withConnection { implicit connection =>
@@ -59,7 +59,6 @@ object GeneralMessage {
 				select m.*, u.name from message m
 				inner join s1user u on u.id = m.senderid
 				where eventid is null and touserid is null and m.id = {id}
-				order by index
 				""").on('id -> id).as(generalMessage.singleOpt)
 		}
 	}

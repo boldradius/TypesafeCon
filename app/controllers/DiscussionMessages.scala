@@ -9,23 +9,27 @@ import play.api.data.Forms._
 
 object DiscussionMessages extends APIController {
 
+	// Form mappings for message fields
 	private val userMapping = longNumber.verifying("User does not exist", userid => User.findById(userid).isDefined)
-	private val eventMapping = longNumber.verifying("Event does not exist", eventid => S1Event.findById(eventid).isDefined)
 	private val contentMapping = text(minLength = 1, maxLength = 255)
 
+	/** Form for processing general messages */
 	private val generalMessageForm: Form[GeneralMessage] = Form(
 		mapping(
 			"senderId" -> userMapping,
 			"content" -> contentMapping) 
 			{ GeneralMessage.apply } { message => None })
 
-	private val eventMessageForm: Form[EventMessage] = Form(
+	/** Form for processing event messages */
+	private def eventMessageForm(eventId: Long): Form[EventMessage] = Form(
 		mapping(
 			"senderId" -> userMapping,
-			"eventId" -> eventMapping,
 			"content" -> contentMapping) 
-			{ EventMessage.apply } { message => None })
+			{ (senderId, content) => EventMessage(senderId, eventId, content) } 
+			{ message => None }
+			.verifying("Event does not exist", message => S1Event.findById(message.eventId.get).isDefined))
 
+	/** Form for processing private messages */
 	private val privateMessageForm: Form[PrivateMessage] = Form(
 		mapping(
 			"senderId" -> userMapping,
@@ -33,9 +37,7 @@ object DiscussionMessages extends APIController {
 			"content" -> contentMapping) 
 			{ PrivateMessage.apply } { message => None })
 
-	/**
-	 * Returns all the general discussion messages
-	 */
+	/** Returns all the general discussion messages */
 	def general = Action {
 		try {
 			Success(GeneralMessage.findAll, "messages")(JSONGeneralMessageWriter)
@@ -47,11 +49,21 @@ object DiscussionMessages extends APIController {
 		}
 	}
 
-	def createGeneral = Action {
+	/** Creates a General Message */
+	def createGeneral = create(generalMessageForm)
+	
+	/** Creates an Event Message */
+	def createEvent(eventId: Long) = create(eventMessageForm(eventId))
+	
+	/** Creates a Private Message */
+	def createPrivate = create(privateMessageForm)
+	
+	/** Creates a Message based on a concrete form implementation */
+	private def create[A <: Message](form: Form[A]) = Action {
 		implicit request =>
 			{
 				try {
-					generalMessageForm.bindFromRequest.fold(
+					form.bindFromRequest.fold(
 
 						// Error on the user parameters, send proper json error
 						formWithErrors => ParamError(formWithErrors.errors(0)),
@@ -71,9 +83,7 @@ object DiscussionMessages extends APIController {
 			}
 	}
 
-	/**
-	 * Returns all the discussion messages specific to an event
-	 */
+	/** Returns all the discussion messages specific to an event */
 	def event(id: Long) = Action {
 		try {
 			Success(EventMessage.findAll(id), "messages")(JSONEventMessageWriter)
@@ -85,9 +95,7 @@ object DiscussionMessages extends APIController {
 		}
 	}
 
-	/**
-	 * Returns all the private messages between two users
-	 */
+	/** Returns all the private messages between two users */
 	def privateMessages(id1: Long, id2: Long) = Action {
 		try {
 			Success(PrivateMessage.findAll(id1, id2), "messages")(JSONPrivateMessageWriter)

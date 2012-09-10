@@ -51,4 +51,15 @@ object EventMessage {
 				""").on('eventId -> eventId).as(eventMessage *)
 		}
 	}
+	
+	/** Fetches an Event Message by id */
+	def findById(id: Long) = {
+		DB.withConnection { implicit connection =>
+			SQL("""
+				select m.*, u.name from message m
+				inner join s1user u on u.id = m.senderid
+				where m.id = {id}
+				""").on('id -> id).as(eventMessage singleOpt)
+		}
+	}
 }
