@@ -121,11 +121,11 @@ object Users extends APIController {
 							case None => MissingParam("picture")
 							case Some(picture) => {
 								try {
-									val resizeCommand = "convert -resize 300x300 " + picture.ref.file.getAbsolutePath() + " ./public/img/profile/" + user.id.get + ".jpg"
+									val resizeCommand = "convert -resize 300x300 " + picture.ref.file.getAbsolutePath() + " ./public/img/user/" + user.id.get + ".jpg"
 									val res = resizeCommand.!!
 
 									// Copy generated file to asset folder
-									val cpCommand = "cp ./public/img/profile/" + user.id.get + ".jpg target/scala-2.9.1/classes/public/img/profile"
+									val cpCommand = "cp ./public/img/user/" + user.id.get + ".jpg target/scala-2.9.1/classes/public/img/user"
 									val res2 = cpCommand.!!
 
 									Success("")
