@@ -6,6 +6,7 @@ import models._
 import json._
 import play.api.data.Form
 import play.api.data.Forms._
+import com.tindr.pusher.Pusher
 
 object DiscussionMessages extends APIController {
 
@@ -50,16 +51,25 @@ object DiscussionMessages extends APIController {
 	}
 
 	/** Creates a General Message */
-	def createGeneral = create(generalMessageForm)
+	def createGeneral = create(generalMessageForm){
+		// Send the new message to the general Pusher channel
+		message => Pusher().trigger("general", "newMessage", message.content)
+	}
 	
 	/** Creates an Event Message */
-	def createEvent(eventId: Long) = create(eventMessageForm(eventId))
+	def createEvent(eventId: Long) = create(eventMessageForm(eventId)){
+		// Send the new message to the event Pusher channel
+		message => Pusher().trigger("event-" + message.eventId.get, "newMessage", message.content)
+	}
 	
 	/** Creates a Private Message */
-	def createPrivate(fromId: Long, toId: Long) = create(privateMessageForm(fromId, toId))
+	def createPrivate(fromId: Long, toId: Long) = create(privateMessageForm(fromId, toId)){
+		// Send the new message to the private Pusher channel
+		message => Pusher().trigger(privateChannel(fromId, toId), "newMessage", message.content)
+	}
 	
 	/** Creates a Message based on a concrete form implementation */
-	private def create[A <: Message](form: Form[A]) = Action {
+	private def create[A <: Message](form: Form[A])(onSuccess: A => Unit) = Action {
 		implicit request =>
 			{
 				try {
@@ -71,7 +81,11 @@ object DiscussionMessages extends APIController {
 						// Parameters are fine, create user
 						message => {
 							message.create match {
-								case Some(newMessage) => Success(newMessage.id.get)
+								case Some(newMessage) => {
+									onSuccess(message)
+									Success(newMessage.id.get)
+									
+								}
 								case _ => Error("Message could not be created")
 							}
 						})
@@ -106,5 +120,6 @@ object DiscussionMessages extends APIController {
 			}
 		}
 	}
-
+	
+	private def privateChannel(id1: Long, id2: Long) = "private-" + (if(id1<id2) id1 + "-" + id2 else id2 + "-" + id1)
 }
