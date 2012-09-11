@@ -11,7 +11,7 @@ create table message (
   content varchar(255) not null,
   index bigint not null DEFAULT 0,
   eventid bigint references event(id),
-  touserid bigint references s1user(id),
+  touserid bigint references s1user(id) ON DELETE CASCADE,
   CONSTRAINT message_pkey PRIMARY KEY (id)
 );
 

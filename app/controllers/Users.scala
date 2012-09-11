@@ -13,17 +13,32 @@ object Users extends APIController {
 
 	private val userForm: Form[User] = Form(
 		mapping(
-			"name" -> optional(text(maxLength = 255)),
 			"email" -> email,
+			"name" -> optional(text(maxLength = 255)),
 			"twitter" -> optional(text(maxLength = 255)),
 			"facebook" -> optional(text(maxLength = 255)),
 			"phone" -> optional(text(maxLength = 255)),
 			"website" -> optional(text(maxLength = 255))) {
 				User.apply
 			} {
-				user => None // TODO implement if necessary
+				user => None // implement if necessary
 			})
 
+	def list(location: Option[Boolean]) = Action {
+		try {
+			//val users = if(location) User.findWithLocation else User.findAll
+			
+			val users = location match {
+				case Some(true) => User.findWithLocation
+				case _ => User.findAll
+			}
+			
+			Success(users, "users")(JsonUserWriter)
+		} catch {
+			case t: Throwable => ServerError(t.getMessage)
+		}
+	}
+	
 	def get(id: Long) = Action {
 		implicit request =>
 			{

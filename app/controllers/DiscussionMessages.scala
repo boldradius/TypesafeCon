@@ -84,7 +84,6 @@ object DiscussionMessages extends APIController {
 								case Some(newMessage) => {
 									onSuccess(message)
 									Success(newMessage.id.get)
-									
 								}
 								case _ => Error("Message could not be created")
 							}

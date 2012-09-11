@@ -62,7 +62,7 @@ trait GetUserTestCase extends After {
 	
 	// Create a test user before the test case
 	running(FakeApplication()) {
-		testUser = User("John", "john@example.com","john", "JohnDoe", "987-1234567", "example.com").create.get
+		testUser = User("john@example.com","John", "john", "JohnDoe", "987-1234567", "example.com").create.get
 	}
 		
 	// Remove the test data
