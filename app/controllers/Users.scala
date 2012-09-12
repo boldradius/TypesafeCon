@@ -8,9 +8,11 @@ import play.api.Logger
 import models.User
 import scala.sys.process._
 import json.JsonUserWriter
+import json.JSONLocationGenerator._
 import play.api.data.format.Formatter
 import play.api.data.FormError
 import tools.BigDecimalFormatter
+import com.tindr.pusher.Pusher
 
 object Users extends APIController {
 
@@ -179,10 +181,12 @@ object Users extends APIController {
 							// Parameter are ok, update user with new location and send response
 							location => {
 								user.setLocation(location.latitude, location.longitude)
-								if (user.update)
+								if (user.update) {
+									Pusher().trigger("locations", "newLocation", json(location, user).toString())
 									Success("Success")
-								else
+								} else {
 									ServerError("The location could not be updated")
+								}
 							})
 					}
 				}
