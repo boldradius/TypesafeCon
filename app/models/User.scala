@@ -36,7 +36,7 @@ case class User(var id: Pk[Long],
 						'website -> website,
 						'latitude -> latitude.map(_.toString),
 						'longitude -> longitude.map(_.toString),
-						'locationTime -> locationTime.map(a => new Date(a.getMillis))).executeInsert()
+						'locationTime -> locationTime.map(l => new Date(l.getMillis))).executeInsert()
 						
 			id.map {
 				case id => {
