@@ -23,7 +23,7 @@ class APIController extends Controller {
 								
 	def MissingParam(name: String) = Error("Missing parameter: " + name)
 	
-	def InvalidParam(name: String, details: String) = Error("Invalid parameter: " + name + " (" + details + ")")
+	def InvalidParam(name: String, details: String) = Error("Invalid parameter: " + name)
 	
 	def ParamError(error: FormError) = {
 		error.message match {

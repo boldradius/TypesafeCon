@@ -13,7 +13,115 @@ import models.User
 
 class LocationsTest extends Specification {
 
-	// TODO move to users tests, add location update tests
+	"The Set Location API call" should {
+		"Return error if the latitude is missing" in new LocationsTestCase {
+			running(FakeApplication()) {
+				// Verify the result is a 200 code with the proper JSON content type
+				val Some(result) = routeAndCall(FakeRequest(PUT, "/users/" + testUser.id + "/location").withFormUrlEncodedBody("longitude" -> "0"))
+				status(result) must beEqualTo(BAD_REQUEST)
+				contentType(result) must beSome("application/json")
+				
+				// Sanity check to verify our event is in the results
+				contentAsString(result) match {
+					case ValidResponse(status, message, result) => {
+						status must beEqualTo("ERROR")
+						message must beEqualTo("Missing parameter: latitude")
+					}
+					case content => failure("Invalid response format: '" + content + "'")
+				}
+			}
+		}
+		
+		"Return error if the longitude is missing" in new LocationsTestCase {
+			running(FakeApplication()) {
+				// Verify the result is a 200 code with the proper JSON content type
+				val Some(result) = routeAndCall(FakeRequest(PUT, "/users/" + testUser.id + "/location").withFormUrlEncodedBody("latitude" -> "0"))
+				status(result) must beEqualTo(BAD_REQUEST)
+				contentType(result) must beSome("application/json")
+				
+				// Sanity check to verify our event is in the results
+				contentAsString(result) match {
+					case ValidResponse(status, message, result) => {
+						status must beEqualTo("ERROR")
+						message must beEqualTo("Missing parameter: longitude")
+					}
+					case content => failure("Invalid response format: '" + content + "'")
+				}
+			}
+		}
+		
+		"Return error if the user does not exist" in new LocationsTestCase {
+			running(FakeApplication()) {
+				// Verify the result is a 200 code with the proper JSON content type
+				val Some(result) = routeAndCall(FakeRequest(PUT, "/users/999999/location").withFormUrlEncodedBody("latitude" -> "0", "longitude" -> "0"))
+				status(result) must beEqualTo(BAD_REQUEST)
+				contentType(result) must beSome("application/json")
+				
+				// Sanity check to verify our event is in the results
+				contentAsString(result) match {
+					case ValidResponse(status, message, result) => {
+						status must beEqualTo("ERROR")
+						message must beEqualTo("User not found")
+					}
+					case content => failure("Invalid response format: '" + content + "'")
+				}
+			}
+		}
+		
+		"Return error if the longitude is invalid" in new LocationsTestCase {
+			running(FakeApplication()) {
+				// Verify the result is a 200 code with the proper JSON content type
+				val Some(result) = routeAndCall(FakeRequest(PUT, "/users/" + testUser.id + "/location").withFormUrlEncodedBody("latitude" -> "10", "longitude" -> "0a"))
+				status(result) must beEqualTo(BAD_REQUEST)
+				contentType(result) must beSome("application/json")
+				
+				// Sanity check to verify our event is in the results
+				contentAsString(result) match {
+					case ValidResponse(status, message, result) => {
+						status must beEqualTo("ERROR")
+						message must beEqualTo("Invalid parameter: longitude")
+					}
+					case content => failure("Invalid response format: '" + content + "'")
+				}
+			}
+		}
+		
+		"Return error if the latitude is invalid" in new LocationsTestCase {
+			running(FakeApplication()) {
+				// Verify the result is a 200 code with the proper JSON content type
+				val Some(result) = routeAndCall(FakeRequest(PUT, "/users/" + testUser.id + "/location").withFormUrlEncodedBody("latitude" -> "10%", "longitude" -> "0"))
+				status(result) must beEqualTo(BAD_REQUEST)
+				contentType(result) must beSome("application/json")
+				
+				// Sanity check to verify our event is in the results
+				contentAsString(result) match {
+					case ValidResponse(status, message, result) => {
+						status must beEqualTo("ERROR")
+						message must beEqualTo("Invalid parameter: latitude")
+					}
+					case content => failure("Invalid response format: '" + content + "'")
+				}
+			}
+		}
+		
+		"Succeed when the location is valid" in new LocationsTestCase {
+			running(FakeApplication()) {
+				// Verify the result is a 200 code with the proper JSON content type
+				val Some(result) = routeAndCall(FakeRequest(PUT, "/users/" + testUser.id + "/location").withFormUrlEncodedBody("latitude" -> "42", "longitude" -> "42"))
+				status(result) must beEqualTo(OK)
+				contentType(result) must beSome("application/json")
+				
+				// Sanity check to verify our event is in the results
+				contentAsString(result) match {
+					case ValidResponse(status, message, result) => {
+						status must beEqualTo("OK")
+					}
+					case content => failure("Invalid response format: '" + content + "'")
+				}
+			}
+		}
+	}
+	
 	"The List Locations API call" should {
 		
 		"Retrieve a list of locations" in new LocationsTestCase  {

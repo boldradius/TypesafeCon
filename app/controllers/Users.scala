@@ -8,6 +8,9 @@ import play.api.Logger
 import models.User
 import scala.sys.process._
 import json.JsonUserWriter
+import play.api.data.format.Formatter
+import play.api.data.FormError
+import tools.BigDecimalFormatter
 
 object Users extends APIController {
 
@@ -22,24 +25,27 @@ object Users extends APIController {
 			"website" -> optional(text(maxLength = 255))) {
 				User.apply
 			} {
-				user => None // implement if necessary
+				_ => None // implement if necessary
 			})
+
+	private val locationForm = Form(
+		mapping(
+			"longitude" -> of[BigDecimal](BigDecimalFormatter),
+			"latitude" -> of[BigDecimal](BigDecimalFormatter)) { Location.apply } { _ => None })
 
 	def list(location: Option[Boolean]) = Action {
 		try {
-			//val users = if(location) User.findWithLocation else User.findAll
-			
 			val users = location match {
 				case Some(true) => User.findWithLocation
 				case _ => User.findAll
 			}
-			
+
 			Success(users, "users")(JsonUserWriter)
 		} catch {
 			case t: Throwable => ServerError(t.getMessage)
 		}
 	}
-	
+
 	def get(id: Long) = Action {
 		implicit request =>
 			{
@@ -115,10 +121,8 @@ object Users extends APIController {
 												ServerError("The user could not be updated")
 										}
 									}
-
 								})
 					}
-
 				} catch {
 					case t: Throwable =>
 						Logger.error("Error updating user", t)
@@ -154,10 +158,36 @@ object Users extends APIController {
 								}
 							}
 						}
+					}
+				}
+			}
+	}
 
+	def setLocation(userId: Long) = Action {
+		implicit request =>
+			{
+				// Verify user exists
+				User.findById(userId) match {
+					case None => Error("User not found")
+					case Some(user) => {
+						// Grab data from the request, validate
+						locationForm.bindFromRequest.fold(
+
+							// Error on the user parameters, send proper json error
+							formWithErrors => ParamError(formWithErrors.errors(0)),
+
+							// Parameter are ok, update user with new location and send response
+							location => {
+								user.setLocation(location.latitude, location.longitude)
+								if (user.update)
+									Success("Success")
+								else
+									ServerError("The location could not be updated")
+							})
 					}
 				}
 			}
 	}
 }
 
+case class Location(latitude: BigDecimal, longitude: BigDecimal)
