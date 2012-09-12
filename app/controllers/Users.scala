@@ -14,7 +14,8 @@ object Users extends APIController {
 	private val userForm: Form[User] = Form(
 		mapping(
 			"email" -> email,
-			"name" -> optional(text(maxLength = 255)),
+			"firstName" -> optional(text(maxLength = 255)),
+			"lastName" -> optional(text(maxLength = 255)),
 			"twitter" -> optional(text(maxLength = 255)),
 			"facebook" -> optional(text(maxLength = 255)),
 			"phone" -> optional(text(maxLength = 255)),
@@ -101,7 +102,8 @@ object Users extends APIController {
 									User.findByEmail(user.email) match {
 										case Some(user) if (user.id.get != id) => Error("Email is already registered")
 										case _ => {
-											existingUser.name = user.name
+											existingUser.firstName = user.firstName
+											existingUser.lastName = user.lastName
 											existingUser.email = user.email
 											existingUser.twitter = user.twitter
 											existingUser.facebook = user.facebook

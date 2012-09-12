@@ -14,7 +14,7 @@ class UpdateUserTest extends Specification {
 		
 		"Return error when email is not provided" in new UpdateUserTestCase {
 			running(FakeApplication()) {
-				val Some(result) = routeAndCall(FakeRequest(PUT, "/users/" + testUser.id).withFormUrlEncodedBody("name" -> "John"))
+				val Some(result) = routeAndCall(FakeRequest(PUT, "/users/" + testUser.id).withFormUrlEncodedBody("firstName" -> "John"))
 					
 				status(result) must beEqualTo(BAD_REQUEST)
 				contentType(result) must beSome("application/json")
@@ -30,7 +30,7 @@ class UpdateUserTest extends Specification {
 		
 		"Return error when updating a user that does not exist" in new UpdateUserTestCase {
 			running(FakeApplication()) {
-				val Some(result) = routeAndCall(FakeRequest(PUT, "/users/" + 1000000).withFormUrlEncodedBody("name" -> "John"))
+				val Some(result) = routeAndCall(FakeRequest(PUT, "/users/" + 1000000).withFormUrlEncodedBody("firstName" -> "John"))
 					
 				status(result) must beEqualTo(BAD_REQUEST)
 				contentType(result) must beSome("application/json")
@@ -48,7 +48,7 @@ class UpdateUserTest extends Specification {
 			running(FakeApplication()) {
 				// Create a second user with a new email
 				val Some(result) = routeAndCall(FakeRequest(POST, "/users").withFormUrlEncodedBody(
-					"name" -> "Peter", 
+					"firstName" -> "Peter", 
 					"email" -> "john2@example.com"))
 					
 				// Update our test user to match Peter's email
@@ -70,7 +70,8 @@ class UpdateUserTest extends Specification {
 		"Update a user when passed all valid parameters, without changing his email" in new UpdateUserTestCase {
 			running(FakeApplication()) {
 				val Some(result) = routeAndCall(FakeRequest(PUT, "/users/" + testUser.id).withFormUrlEncodedBody(
-					"name" -> "John", 
+					"firstName" -> "John",
+					"lastName" -> "Doe",
 					"twitter" -> "john", 
 					"facebook" -> "johnDoe",
 					"phone" -> "987-6543210", 
@@ -85,7 +86,8 @@ class UpdateUserTest extends Specification {
 						User.findById(testUser.id.get) match {
 							case None => failure("User with email john@example.com was not found")
 							case Some(user) => {
-								user.name must beEqualTo(Some("John"))
+								user.firstName must beEqualTo(Some("John"))
+								user.lastName must beEqualTo(Some("Doe"))
 								user.twitter must beEqualTo(Some("john"))
 								user.facebook must beEqualTo(Some("johnDoe"))
 								user.phone must beEqualTo(Some("987-6543210"))
@@ -102,7 +104,8 @@ class UpdateUserTest extends Specification {
 		"Update a user when passed all valid parameters, including changing his email" in new UpdateUserTestCase {
 			running(FakeApplication()) {
 				val Some(result) = routeAndCall(FakeRequest(PUT, "/users/" + testUser.id).withFormUrlEncodedBody(
-					"name" -> "John", 
+					"firstName" -> "John",
+					"lastName" -> "Doe",
 					"twitter" -> "john", 
 					"facebook" -> "johnDoe",
 					"phone" -> "", 
@@ -117,7 +120,8 @@ class UpdateUserTest extends Specification {
 						User.findById(testUser.id.get) match {
 							case None => failure("User with email john@example.com was not found")
 							case Some(user) => {
-								user.name must beEqualTo(Some("John"))
+								user.firstName must beEqualTo(Some("John"))
+								user.lastName must beEqualTo(Some("Doe"))
 								user.twitter must beEqualTo(Some("john"))
 								user.facebook must beEqualTo(Some("johnDoe"))
 								user.phone must beEqualTo(None)

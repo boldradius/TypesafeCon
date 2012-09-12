@@ -8,6 +8,7 @@ import anorm._
 import play.api.Play.current
 import java.util.Date
 import play.api.Logger
+import Message._
 
 class PrivateMessage(
 		id:Pk[Long],
@@ -33,12 +34,13 @@ object PrivateMessage {
 		get[Pk[Long]]("id") ~
 		get[Long]("senderid") ~
 		get[String]("content") ~
-		get[Option[String]]("name") ~
+		get[Option[String]]("firstName") ~
+		get[Option[String]]("lastName") ~
 		get[Date]("senttime") ~
 		get[Long]("index") ~
 		get[Long]("touserid") map {
-			case id ~ senderId ~ content ~ senderName ~ sentTime ~ index ~ toUserId =>
-				new PrivateMessage(id, senderId, content, toUserId, senderName, new DateTime(sentTime), index)
+			case id ~ senderId ~ content ~ firstName ~ lastName ~ sentTime ~ index ~ toUserId =>
+				new PrivateMessage(id, senderId, content, toUserId, displayName(firstName, lastName), new DateTime(sentTime), index)
 		}
 	}
 		
@@ -47,7 +49,7 @@ object PrivateMessage {
 	def findAll(id1: Long, id2: Long) = {
 		DB.withConnection { implicit connection =>
 			SQL("""
-				select m.*, u.name from message m
+				select m.*, u.firstname, u.lastname from message m
 				inner join s1user u on u.id = m.senderid
 				where (touserid  = {id1} and senderid = {id2}) 
 				OR (touserid  = {id2} and senderid = {id1})
@@ -60,7 +62,7 @@ object PrivateMessage {
 	def findById(id: Long) = {
 		DB.withConnection { implicit connection =>
 			SQL("""
-				select m.*, u.name from message m
+				select m.*, u.firstname, u.lastname from message m
 				inner join s1user u on u.id = m.senderid
 				where m.id = {id}
 				""").on('id -> id).as(privateMessage singleOpt)

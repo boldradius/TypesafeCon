@@ -14,7 +14,7 @@ class CreateUserTest extends Specification {
 		
 		"Return error when email is not provided" in new CreateUserTestCase {
 			running(FakeApplication()) {
-				val Some(result) = routeAndCall(FakeRequest(POST, "/users").withFormUrlEncodedBody("name" -> "John"))
+				val Some(result) = routeAndCall(FakeRequest(POST, "/users").withFormUrlEncodedBody("firstName" -> "John"))
 					
 				status(result) must beEqualTo(BAD_REQUEST)
 				contentType(result) must beSome("application/json")
@@ -30,11 +30,11 @@ class CreateUserTest extends Specification {
 		"Return error when creating user with an email already registered" in new CreateUserTestCase {
 			running(FakeApplication()) {
 				val Some(result) = routeAndCall(FakeRequest(POST, "/users").withFormUrlEncodedBody(
-					"name" -> "John", 
+					"firstName" -> "John", 
 					"email" -> "john@example.com"))
 					
 				val Some(result2) = routeAndCall(FakeRequest(POST, "/users").withFormUrlEncodedBody(
-					"name" -> "Peter", 
+					"firstName" -> "Peter", 
 					"email" -> "john@example.com"))
 					
 				status(result2) must beEqualTo(BAD_REQUEST)
@@ -51,7 +51,8 @@ class CreateUserTest extends Specification {
 		"Create a user when passed all valid parameters" in new CreateUserTestCase {
 			running(FakeApplication()) {
 				val Some(result) = routeAndCall(FakeRequest(POST, "/users").withFormUrlEncodedBody(
-					"name" -> "John", 
+					"firstName" -> "John",
+					"lastName" -> "Doe",
 					"twitter" -> "john", 
 					"facebook" -> "johnDoe",
 					"phone" -> "987-6543210", 
@@ -67,7 +68,8 @@ class CreateUserTest extends Specification {
 						User.findById(id.toLong) match {
 							case None => failure("User with id " + id + " was not found")
 							case Some(user) => {
-								user.name must beEqualTo(Some("John"))
+								user.firstName must beEqualTo(Some("John"))
+								user.lastName must beEqualTo(Some("Doe"))
 								user.twitter must beEqualTo(Some("john"))
 								user.facebook must beEqualTo(Some("johnDoe"))
 								user.phone must beEqualTo(Some("987-6543210"))

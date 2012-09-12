@@ -10,7 +10,8 @@ import play.api.libs.json.Writes
 object JsonUserWriter extends Writes[User] {
 	override def writes(user: User): JsValue = {
 		toJson(
-			Map("name" ->         user.name.getOrElse(""),
+			Map("firstName" ->    user.firstName.getOrElse(""),
+				"lastName" ->     user.lastName.getOrElse(""),
 				"email" ->        user.email,
 				"twitter" ->      user.twitter.getOrElse(""),
 				"facebook" ->     user.facebook.getOrElse(""),

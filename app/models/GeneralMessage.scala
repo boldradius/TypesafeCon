@@ -8,6 +8,7 @@ import anorm._
 import play.api.Play.current
 import java.util.Date
 import play.api.Logger
+import Message._
 
 class GeneralMessage(
 		id:Pk[Long],
@@ -30,11 +31,12 @@ object GeneralMessage {
 		get[Pk[Long]]("id") ~
 		get[Long]("senderid") ~
 		get[String]("content") ~
-		get[Option[String]]("name") ~
+		get[Option[String]]("firstname") ~
+		get[Option[String]]("lastname") ~
 		get[Date]("senttime") ~
 		get[Long]("index")  map {
-			case id ~ senderId ~ content ~ senderName ~ sentTime ~ index  =>
-				new GeneralMessage(id, senderId, content, senderName, new DateTime(sentTime), index)
+			case id ~ senderId ~ content ~ firstName ~ lastName ~ sentTime ~ index  =>
+				new GeneralMessage(id, senderId, content, displayName(firstName, lastName), new DateTime(sentTime), index)
 		}
 	}
 		
@@ -43,7 +45,7 @@ object GeneralMessage {
 	def findAll = {
 		DB.withConnection { implicit connection =>
 			SQL("""
-				select m.*, u.name from message m
+				select m.*, u.firstname, u.lastname from message m
 				inner join s1user u on u.id = m.senderid
 				where eventid is null and touserid is null
 				order by index
@@ -56,7 +58,7 @@ object GeneralMessage {
 	def findById(id: Long) = {
 		DB.withConnection { implicit connection =>
 			SQL("""
-				select m.*, u.name from message m
+				select m.*, u.firstname, u.lastname from message m
 				inner join s1user u on u.id = m.senderid
 				where eventid is null and touserid is null and m.id = {id}
 				""").on('id -> id).as(generalMessage.singleOpt)

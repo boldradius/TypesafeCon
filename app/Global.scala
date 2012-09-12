@@ -23,8 +23,8 @@ object InitialData {
 	def insert() = {
 
 		if (User.countAll == 0) {
-			val scala1 = User("Scala1", "scala1@example.com", "typesafe", None, None, "http://typesafe.com").create.get
-			val alex = User("Alex", "alex@tindr.co", "andanthor", None, None, "http://alejandrolujan.com").create.get
+			val scala1 = User("Scala1", None, "scala1@example.com", "typesafe", None, None, "http://typesafe.com").create.get
+			val alex = User("Alejandro", "Lujan", "alex@tindr.co", "andanthor", None, None, "http://alejandrolujan.com").create.get
 			
 			if (GeneralMessage.countAll == 0) {
 				new GeneralMessage(Id(0), scala1.id.get, "Welcome to Scala1!").create

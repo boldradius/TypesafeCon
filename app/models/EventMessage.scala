@@ -1,4 +1,5 @@
 package models
+
 import org.joda.time.DateTime
 import anorm.Pk
 import play.api.db.DB
@@ -7,6 +8,7 @@ import anorm._
 import play.api.Play.current
 import java.util.Date
 import play.api.Logger
+import Message._
 
 class EventMessage(
 		id:Pk[Long],
@@ -30,12 +32,13 @@ object EventMessage {
 		get[Pk[Long]]("id") ~
 		get[Long]("senderid") ~
 		get[String]("content") ~
-		get[Option[String]]("name") ~
+		get[Option[String]]("firstname") ~
+		get[Option[String]]("lastname") ~
 		get[Date]("senttime") ~
 		get[Long]("index") ~
 		get[Long]("eventid") map {
-			case id ~ senderId ~ content ~ senderName ~ sentTime ~ index ~ eventId =>
-				new EventMessage(id, senderId, content, eventId, senderName, new DateTime(sentTime), index)
+			case id ~ senderId ~ content ~ firstName ~ lastName ~ sentTime ~ index ~ eventId =>
+				new EventMessage(id, senderId, content, eventId, displayName(firstName, lastName), new DateTime(sentTime), index)
 		}
 	}
 		
@@ -44,7 +47,7 @@ object EventMessage {
 	def findAll(eventId: Long) = {
 		DB.withConnection { implicit connection =>
 			SQL("""
-				select m.*, u.name from message m
+				select m.*, u.firstname, u.lastname from message m
 				inner join s1user u on u.id = m.senderid
 				where eventid = {eventId}
 				order by index
@@ -56,7 +59,7 @@ object EventMessage {
 	def findById(id: Long) = {
 		DB.withConnection { implicit connection =>
 			SQL("""
-				select m.*, u.name from message m
+				select m.*, u.firstname, u.lastname from message m
 				inner join s1user u on u.id = m.senderid
 				where m.id = {id}
 				""").on('id -> id).as(eventMessage singleOpt)

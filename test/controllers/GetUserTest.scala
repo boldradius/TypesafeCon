@@ -42,7 +42,8 @@ class GetUserTest extends Specification {
 				contentAsString(result) match {
 					case ValidResponse(status, message, result) =>
 						status must beEqualTo("OK")
-						result must contain(""""name":"John"""")
+						result must contain(""""firstName":"John"""")
+						result must contain(""""lastName":"Doe"""")
 						result must contain(""""email":"john@example.com"""")
 						result must contain(""""twitter":"john"""")
 						result must contain(""""facebook":"JohnDoe"""")
@@ -62,7 +63,7 @@ trait GetUserTestCase extends After {
 	
 	// Create a test user before the test case
 	running(FakeApplication()) {
-		testUser = User("john@example.com","John", "john", "JohnDoe", "987-1234567", "example.com").create.get
+		testUser = User("john@example.com","John", "Doe", "john", "JohnDoe", "987-1234567", "example.com").create.get
 	}
 		
 	// Remove the test data

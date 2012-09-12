@@ -11,7 +11,8 @@ import java.util.Date
 
 case class User(var id: Pk[Long],
 				var email: String,
-				var name: Option[String] = None,
+				var firstName: Option[String] = None,
+				var lastName: Option[String] = None,
 				var twitter: Option[String] = None,
 				var facebook: Option[String] = None,
 				var phone: Option[String] = None,
@@ -26,9 +27,12 @@ case class User(var id: Pk[Long],
 		Logger.debug("Creating User " + this)
 		
 		DB.withConnection { implicit connection =>
-			val id = SQL("""insert into s1user (name, email, twitter, facebook, phone, website, latitude, longitude, locationtime) 
-							values ({name}, {email}, {twitter}, {facebook}, {phone}, {website}, {latitude}, {longitude}, {locationTime})""").on(
-						'name -> name,
+			val id = SQL("""insert into s1user (firstname, lastname, email, twitter, facebook, 
+								phone, website, latitude, longitude, locationtime) 
+							values ({firstName}, {lastName}, {email}, {twitter}, {facebook}, 
+								{phone}, {website}, {latitude}, {longitude}, {locationTime})""").on(
+						'firstName -> firstName,
+						'lastName -> lastName,
 						'email -> email,
 						'twitter -> twitter,
 						'facebook -> facebook,
@@ -54,14 +58,16 @@ case class User(var id: Pk[Long],
 		
 		DB.withConnection { implicit connection =>
 			SQL("""update s1user set 
-						name = {name}, 
+						firstname = {firstName},
+						lastname = {lastName},
 						email = {email}, 
 						twitter = {twitter}, 
 						facebook = {facebook}, 
 						phone = {phone}, 
 						website = {website}
 					where id = {id}""").on(
-				'name -> name,
+				'firstName -> firstName,
+				'lastName -> lastName,
 				'email -> email,
 				'twitter -> twitter,
 				'facebook -> facebook,
@@ -91,12 +97,13 @@ case class User(var id: Pk[Long],
 object User {
 	
 	def apply(email: String,
-				name: Option[String],
+				firstName: Option[String],
+				lastName: Option[String],
 				twitter: Option[String],
 				facebook: Option[String],
 				phone: Option[String],
 				website: Option[String]):User  = {
-		User(Id(0), email, name, twitter, facebook, phone, website)
+		User(Id(0), email, firstName, lastName, twitter, facebook, phone, website)
 	}
 	
 	def apply(email: String):User  = {
@@ -105,7 +112,8 @@ object User {
 	
 	private val user = {
 		get[Pk[Long]]("id") ~
-		get[Option[String]]("name") ~
+		get[Option[String]]("firstName") ~
+		get[Option[String]]("lastName") ~
 		get[String]("email") ~
 		get[Option[String]]("twitter") ~
 		get[Option[String]]("facebook") ~ 
@@ -114,8 +122,8 @@ object User {
 		get[Option[String]]("latitude") ~ 
 		get[Option[String]]("longitude") ~ 
 		get[Option[Date]]("locationtime") map {
-			case id ~ name ~ email ~ twitter ~ facebook ~ phone ~ website ~ latitude ~ longitude ~ locationTime => 
-				User(id, email, name, twitter, facebook, phone, website, 
+			case id ~ firstName ~ lastName ~ email ~ twitter ~ facebook ~ phone ~ website ~ latitude ~ longitude ~ locationTime => 
+				User(id, email, firstName, lastName, twitter, facebook, phone, website, 
 						latitude.map(BigDecimal(_)), longitude.map(BigDecimal(_)), 
 						locationTime.map(new DateTime(_)))
 		}

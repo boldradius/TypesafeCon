@@ -54,3 +54,7 @@ abstract class Message(
 	def nextIndex: String
 
 }
+
+object Message {
+	def displayName(first: Option[String], last: Option[String]) = Some((first.getOrElse("") + last.getOrElse("")).trim)
+}
