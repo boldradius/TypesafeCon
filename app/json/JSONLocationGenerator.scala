@@ -8,7 +8,7 @@ import models.User
 import controllers.Location
 
 object JSONLocationGenerator {
-	def json(location: Location, user: User): JsValue = {
+	def buildJson(location: Location, user: User): JsValue = {
 		toJson(
 			Map("userId" ->          toJson(user.id.get),
 				"latitude" ->        toJson(location.latitude.toString),

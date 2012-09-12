@@ -8,8 +8,14 @@ import play.api.Logger
 import play.api.data._
 import play.api.mvc.SimpleResult
 import play.api.libs.json.JsValue
+import play.api.mvc.Action
+import play.api.mvc.Result
+import play.api.mvc.Request
+import play.api.mvc.AnyContent
 
 class APIController extends Controller {
+	
+	private val securityToken = current.configuration.getString("security.token").get
 	
 	def Error(message: String) = 
 		BadRequest(toJson(Map(	"status" -> "ERROR",
@@ -48,4 +54,22 @@ class APIController extends Controller {
 		Ok(toJson(Map(	"status" -> toJson("OK"),
 						"message" -> toJson("Success"),
 						"result" -> toJson(Map(listName -> toJson(list))))))
+						
+	def SecuredAction(f: Request[AnyContent] => Result) = Action {
+		implicit request =>
+			
+		request.queryString.getOrElse("token", List()).toList match {
+			case token :: Nil if(token==securityToken) => f(request)
+			case _ => UnauthorizedAccess
+		}
+	}
+	
+	def SecuredAction(f: => Result) = Action {
+		implicit request =>
+			
+		request.queryString.getOrElse("token", List()).toList match {
+			case token :: Nil if(token==securityToken) => f
+			case _ => UnauthorizedAccess
+		}
+	}
 }

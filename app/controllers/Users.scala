@@ -1,18 +1,20 @@
 package controllers
 
-import anorm.Id
-import play.api.data.Forms._
-import play.api.data.Form
-import play.api.mvc.Action
-import play.api.Logger
-import models.User
 import scala.sys.process._
-import json.JsonUserWriter
-import json.JSONLocationGenerator._
-import play.api.data.format.Formatter
-import play.api.data.FormError
-import tools.BigDecimalFormatter
 import com.tindr.pusher.Pusher
+import json.JSONLocationGenerator._
+import json.JsonUserWriter
+import models.User
+import play.api.data.Forms._
+import play.api.data.format.Formatter
+import play.api.data.Form
+import play.api.data.FormError
+import play.api.mvc.Action
+import play.api.mvc.AnyContent
+import play.api.Logger
+import tools.BigDecimalFormatter
+import play.api.mvc.Request
+import play.api.mvc.Result
 
 object Users extends APIController {
 
@@ -35,7 +37,8 @@ object Users extends APIController {
 			"longitude" -> of[BigDecimal](BigDecimalFormatter),
 			"latitude" -> of[BigDecimal](BigDecimalFormatter)) { Location.apply } { _ => None })
 
-	def list(location: Option[Boolean]) = Action {
+	// TODO secure
+	def list(location: Option[Boolean]) = SecuredAction {
 		try {
 			val users = location match {
 				case Some(true) => User.findWithLocation
@@ -48,8 +51,8 @@ object Users extends APIController {
 		}
 	}
 
-	def get(id: Long) = Action {
-		implicit request =>
+	// TODO secure
+	def get(id: Long) = SecuredAction {
 			{
 				try {
 					User.findById(id) match {
@@ -64,7 +67,8 @@ object Users extends APIController {
 			}
 	}
 
-	def create = Action {
+	// TODO secure
+	def create = SecuredAction {
 		implicit request =>
 			{
 				try {
@@ -92,7 +96,8 @@ object Users extends APIController {
 			}
 	}
 
-	def update(id: Long) = Action {
+	// TODO secure
+	def update(id: Long) = SecuredAction {
 		implicit request =>
 			{
 				try {
@@ -133,8 +138,9 @@ object Users extends APIController {
 			}
 	}
 
+	// TODO secure
 	// Uses ImageMagick to resize and convert images to JPG
-	def uploadImage(userid: Long) = Action {
+	def uploadImage(userid: Long) = SecuredAction {
 		implicit request =>
 			{
 				User.findById(userid) match {
@@ -164,8 +170,9 @@ object Users extends APIController {
 				}
 			}
 	}
-
-	def setLocation(userId: Long) = Action {
+	
+	// TODO secure
+	def setLocation(userId: Long) = SecuredAction {
 		implicit request =>
 			{
 				// Verify user exists
@@ -182,7 +189,7 @@ object Users extends APIController {
 							location => {
 								user.setLocation(location.latitude, location.longitude)
 								if (user.update) {
-									Pusher().trigger("locations", "newLocation", json(location, user).toString())
+									Pusher().trigger("locations", "newLocation", buildJson(location, user).toString())
 									Success("Success")
 								} else {
 									ServerError("The location could not be updated")

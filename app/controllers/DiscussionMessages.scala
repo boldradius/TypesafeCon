@@ -69,7 +69,7 @@ object DiscussionMessages extends APIController {
 	}
 	
 	/** Creates a Message based on a concrete form implementation */
-	private def create[A <: Message](form: Form[A])(onSuccess: A => Unit) = Action {
+	private def create[A <: Message](form: Form[A])(onSuccess: A => Unit) = SecuredAction {
 		implicit request =>
 			{
 				try {
@@ -108,8 +108,9 @@ object DiscussionMessages extends APIController {
 		}
 	}
 
+	// TODO secure
 	/** Returns all the private messages between two users */
-	def privateMessages(id1: Long, id2: Long) = Action {
+	def privateMessages(id1: Long, id2: Long) = SecuredAction {
 		try {
 			Success(PrivateMessage.findAll(id1, id2), "messages")(JSONPrivateMessageWriter)
 		} catch {
