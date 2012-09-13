@@ -10,6 +10,7 @@ speaker.website=Website
 
 event.by=By
 event.discussion=Join the discussion
+event.share=Share this on Facebook
 
 about.details=Scala1 is an application for conference attendees to visualize content related to the Typesafe Stack (Scala, Akka and the Play! Framework) and interact with other Scala enthusiasts near them.
 about.download=Download the app:

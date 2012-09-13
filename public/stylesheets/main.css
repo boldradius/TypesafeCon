@@ -138,3 +138,9 @@ h2 {
 .actions {
 	margin-top: 20pt;
 }
+
+#event .share {
+	margin-top: 5pt;
+	padding: 4px 35px;
+}
+}
