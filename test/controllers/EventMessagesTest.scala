@@ -1,99 +1,64 @@
 package controllers
 
+import org.joda.time.DateTime
 import org.specs2.mutable.After
-import org.specs2.mutable.Specification
+
+import anorm.Id
 import models.EventMessage
+import models.S1Event
 import models.User
 import play.api.test.Helpers._
 import play.api.test.FakeApplication
 import play.api.test.FakeRequest
-import tools.TestTools.ValidResponse
-import models.S1Event
-import anorm.Id
-import org.joda.time.DateTime
 
-class EventMessagesTest extends Specification {
-
+class EventMessagesTest extends APISpecification {
+	
 	"The Add event message API call" should {
 		
-		"Return error when the sender id is missing" in new EventMessagesTestCase  {
-			
+		"Return error when the token is missing" in new EventMessagesTestCase  {
 			running(FakeApplication()) {
-				val content = "This event is awesome."
-					
-				// Verify the result is a 200 code with the proper JSON content type
-				val Some(result) = routeAndCall(FakeRequest(POST, "/messages/event/" + testEvent.id).withFormUrlEncodedBody("content" -> content))
-				status(result) must beEqualTo(BAD_REQUEST)
-				contentType(result) must beSome("application/json")
-				
-				// Verify the error message
-				contentAsString(result) match {
-					case ValidResponse(status, message, result) => {
-						status must beEqualTo("ERROR")
-						message must beEqualTo("Missing parameter: senderId")
-					}
-					case content => failure("Invalid response format: '" + content + "'")
-				}
+				val Some(result) = routeAndCall(FakeRequest(POST, "/messages/event/" + testEvent.id))
+				verifyBadResult(result, "Unauthorized access")
+			}
+		}
+		
+		"Return error when the token is invalid" in new EventMessagesTestCase  {
+			running(FakeApplication()) {
+				val Some(result) = routeAndCall(FakeRequest(POST, "/messages/event/" + testEvent.id).withFormUrlEncodedBody("token" -> invalidToken))
+				verifyBadResult(result, "Unauthorized access")
+			}
+		}
+		
+		"Return error when the sender id is missing" in new EventMessagesTestCase  {
+			running(FakeApplication()) {
+				val Some(result) = routeAndCall(FakeRequest(POST, "/messages/event/" + testEvent.id).withFormUrlEncodedBody("token" -> validToken))
+				verifyBadResult(result, "Missing parameter: senderId")
 			}
 		}
 		
 		"Return error when the content is missing" in new EventMessagesTestCase  {
-			
 			running(FakeApplication()) {
-					
-				// Verify the result is a 200 code with the proper JSON content type
-				val Some(result) = routeAndCall(FakeRequest(POST, "/messages/event/" + testEvent.id).withFormUrlEncodedBody("senderId" -> testUser.id.get.toString))
-				status(result) must beEqualTo(BAD_REQUEST)
-				contentType(result) must beSome("application/json")
-				
-				// Verify the error message
-				contentAsString(result) match {
-					case ValidResponse(status, message, result) => {
-						status must beEqualTo("ERROR")
-						message must beEqualTo("Missing parameter: content")
-					}
-					case content => failure("Invalid response format: '" + content + "'")
-				}
+				val Some(result) = routeAndCall(FakeRequest(POST, "/messages/event/" + testEvent.id).withFormUrlEncodedBody("senderId" -> testUser.id.get.toString, "token" -> validToken))
+				verifyBadResult(result, "Missing parameter: content")
 			}
 		}
 		
 		"Return error when the event does not exist" in new EventMessagesTestCase  {
-			
 			running(FakeApplication()) {
-				val content = "This event is awesome."
-					
-				// Verify the result is a 200 code with the proper JSON content type
-				val Some(result) = routeAndCall(FakeRequest(POST, "/messages/event/999999").withFormUrlEncodedBody("senderId" -> testUser.id.get.toString, "content" -> content))
-				status(result) must beEqualTo(BAD_REQUEST)
-				contentType(result) must beSome("application/json")
-				
-				// Verify the error message
-				contentAsString(result) match {
-					case ValidResponse(status, message, result) => {
-						status must beEqualTo("ERROR")
-						message must beEqualTo("Event does not exist")
-					}
-					case content => failure("Invalid response format: '" + content + "'")
-				}
+				val Some(result) = routeAndCall(FakeRequest(POST, "/messages/event/999999").withFormUrlEncodedBody("senderId" -> testUser.id.get.toString, "content" -> "Test", "token" -> validToken))
+				verifyBadResult(result, "Event does not exist")
 			}
 		}
 		
 		"Create a new message when called with the proper parameters" in new EventMessagesTestCase  {
-			
 			running(FakeApplication()) {
 				val content = "This event is awesome."
 					
-				// Verify the result is a 200 code with the proper JSON content type
-				val Some(result) = routeAndCall(FakeRequest(POST, "/messages/event/" + testEvent.id).withFormUrlEncodedBody("senderId" -> testUser.id.get.toString, "content" -> content))
-				status(result) must beEqualTo(OK)
-				contentType(result) must beSome("application/json")
-				
-				// Sanity check to verify our message was created
-				contentAsString(result) match {
-					case ValidResponse(status, message, result) => {
-						status must beEqualTo("OK")
-
-						val id = result.toLong
+				val Some(result) = routeAndCall(FakeRequest(POST, "/messages/event/" + testEvent.id).withFormUrlEncodedBody(
+						"senderId" -> testUser.id.get.toString, "content" -> content, "token" -> validToken))
+				verifyGoodResult(result) {
+					response => {
+						val id = response.result.toLong
 						EventMessage.findById(id) match {
 							case Some(message) =>
 								message.content must beEqualTo(content)
@@ -102,7 +67,6 @@ class EventMessagesTest extends Specification {
 							case _ => failure("The message was not created")
 						}
 					}
-					case content => failure("Invalid response format: '" + content + "'")
 				}
 			}
 		}

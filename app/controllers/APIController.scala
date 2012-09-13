@@ -14,23 +14,23 @@ import play.api.mvc.Request
 import play.api.mvc.AnyContent
 
 class APIController extends Controller {
-	
+
 	private val securityToken = current.configuration.getString("security.token").get
-	
-	def Error(message: String) = 
-		BadRequest(toJson(Map(	"status" -> "ERROR",
-								"message" -> message,
-								"result" -> "")))
-								
-	def ServerError(message: String) = 
-		InternalServerError(toJson(Map(	"status" -> "ERROR",
-										"message" -> message,
-										"result" -> "")))
-								
+
+	def Error(message: String) =
+		BadRequest(toJson(Map("status" -> "ERROR",
+			"message" -> message,
+			"result" -> "")))
+
+	def ServerError(message: String) =
+		InternalServerError(toJson(Map("status" -> "ERROR",
+			"message" -> message,
+			"result" -> "")))
+
 	def MissingParam(name: String) = Error("Missing parameter: " + name)
-	
+
 	def InvalidParam(name: String, details: String) = Error("Invalid parameter: " + name)
-	
+
 	def ParamError(error: FormError) = {
 		error.message match {
 			case "error.required" => MissingParam(error.key)
@@ -42,34 +42,40 @@ class APIController extends Controller {
 	}
 
 	def UnauthorizedAccess = Error("Unauthorized access")
-								
-	def Success(message:String): SimpleResult[JsValue] = Success(message, "")
-	
+
+	def Success(message: String): SimpleResult[JsValue] = Success(message, "")
+
 	def Success[A](result: A, message: String = "success")(implicit formatter: Writes[A]) =
-		Ok(toJson(Map(	"status" -> toJson("OK"),
-						"message" -> toJson(message),
-						"result" -> toJson(result))))
-						
+		Ok(toJson(Map("status" -> toJson("OK"),
+			"message" -> toJson(message),
+			"result" -> toJson(result))))
+
 	def Success[A](list: Seq[A], listName: String)(implicit formatter: Writes[A]) =
-		Ok(toJson(Map(	"status" -> toJson("OK"),
-						"message" -> toJson("Success"),
-						"result" -> toJson(Map(listName -> toJson(list))))))
-						
+		Ok(toJson(Map("status" -> toJson("OK"),
+			"message" -> toJson("Success"),
+			"result" -> toJson(Map(listName -> toJson(list))))))
+
 	def SecuredAction(f: Request[AnyContent] => Result) = Action {
 		implicit request =>
-			
-		request.queryString.getOrElse("token", List()).toList match {
-			case token :: Nil if(token==securityToken) => f(request)
-			case _ => UnauthorizedAccess
-		}
+			getToken(request) match {
+				case Some(token) if (token == securityToken) => f(request)
+				case _ => UnauthorizedAccess
+			}
 	}
-	
+
 	def SecuredAction(f: => Result) = Action {
 		implicit request =>
-			
-		request.queryString.getOrElse("token", List()).toList match {
-			case token :: Nil if(token==securityToken) => f
-			case _ => UnauthorizedAccess
-		}
+			getToken(request) match {
+				case Some(token) if (token == securityToken) => f
+				case _ => UnauthorizedAccess
+			}
+	}
+
+	private def getToken(request: Request[AnyContent]) = {
+		request.queryString.getOrElse("token",
+			request.body.asFormUrlEncoded.map(body => body.getOrElse("token", List())).getOrElse(List())).toList match {
+				case token :: Nil => Some(token)
+				case _ => None
+			}
 	}
 }

@@ -6,15 +6,42 @@ import org.specs2.mutable.Specification
 import models.User
 import play.api.test.Helpers._
 import play.api.test._
-import tools.TestTools.ValidResponse
 
-class CreateUserTest extends Specification {
+class CreateUserTest extends APISpecification {
 	
 	"The Create User API call" should {
 		
-		"Return error when email is not provided" in new CreateUserTestCase {
+		"Return error when token is not provided" in new CreateUserTestCase {
 			running(FakeApplication()) {
 				val Some(result) = routeAndCall(FakeRequest(POST, "/users").withFormUrlEncodedBody("firstName" -> "John"))
+					
+				status(result) must beEqualTo(BAD_REQUEST)
+				contentType(result) must beSome("application/json")
+				
+				contentAsString(result) match {
+					case ValidResponse(status, message, result) => message must beEqualTo("Unauthorized access")
+					case content => failure("Invalid response format: '" + content + "'")
+				}
+			}
+		}
+		
+		"Return error when token is incorrect" in new CreateUserTestCase {
+			running(FakeApplication()) {
+				val Some(result) = routeAndCall(FakeRequest(POST, "/users").withFormUrlEncodedBody("firstName" -> "John", "token" -> invalidToken))
+					
+				status(result) must beEqualTo(BAD_REQUEST)
+				contentType(result) must beSome("application/json")
+				
+				contentAsString(result) match {
+					case ValidResponse(status, message, result) => message must beEqualTo("Unauthorized access")
+					case content => failure("Invalid response format: '" + content + "'")
+				}
+			}
+		}
+		
+		"Return error when email is not provided" in new CreateUserTestCase {
+			running(FakeApplication()) {
+				val Some(result) = routeAndCall(FakeRequest(POST, "/users").withFormUrlEncodedBody("firstName" -> "John", "token" -> validToken))
 					
 				status(result) must beEqualTo(BAD_REQUEST)
 				contentType(result) must beSome("application/json")
@@ -31,11 +58,13 @@ class CreateUserTest extends Specification {
 			running(FakeApplication()) {
 				val Some(result) = routeAndCall(FakeRequest(POST, "/users").withFormUrlEncodedBody(
 					"firstName" -> "John", 
-					"email" -> "john@example.com"))
+					"email" -> "john@example.com", 
+					"token" -> validToken))
 					
 				val Some(result2) = routeAndCall(FakeRequest(POST, "/users").withFormUrlEncodedBody(
 					"firstName" -> "Peter", 
-					"email" -> "john@example.com"))
+					"email" -> "john@example.com", 
+					"token" -> validToken))
 					
 				status(result2) must beEqualTo(BAD_REQUEST)
 				contentType(result2) must beSome("application/json")
@@ -57,7 +86,8 @@ class CreateUserTest extends Specification {
 					"facebook" -> "johnDoe",
 					"phone" -> "987-6543210", 
 					"email" -> "john@example.com", 
-					"website" -> "http://example.com"))
+					"website" -> "http://example.com", 
+					"token" -> validToken))
 				status(result) must beEqualTo(OK)
 				contentType(result) must beSome("application/json")
 				

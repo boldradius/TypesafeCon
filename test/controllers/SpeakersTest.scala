@@ -8,7 +8,8 @@ import play.api.test.Helpers.running
 import play.api.test.FakeApplication
 import tools.LoremIpsum
 
-trait SpeakerTestCase extends After {
+// TODO remove
+trait SpeakerTestCasea extends After {
 	
 	var speaker: Speaker = _
 	
