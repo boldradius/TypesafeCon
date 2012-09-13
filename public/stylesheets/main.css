@@ -111,6 +111,7 @@ h2 {
 	font-size: 12pt;
 	line-height: 14pt;
 	color: #262626;
+	word-wrap: break-word;
 }
 
 .box .fullwidth {
