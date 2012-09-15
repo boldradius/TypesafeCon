@@ -10,16 +10,17 @@ import play.api.libs.json.Writes
 object JsonUserWriter extends Writes[User] {
 	override def writes(user: User): JsValue = {
 		toJson(
-			Map("firstName" ->    user.firstName.getOrElse(""),
-				"lastName" ->     user.lastName.getOrElse(""),
-				"email" ->        user.email,
-				"twitter" ->      user.twitter.getOrElse(""),
-				"facebook" ->     user.facebook.getOrElse(""),
-				"phone" ->        user.phone.getOrElse(""),
-				"website" ->      user.website.getOrElse(""),
-				"latitude" ->     user.latitude.map(_.toString).getOrElse(""),
-				"longitude" ->    user.longitude.map(_.toString).getOrElse(""),
-				"locationTime" -> user.locationTime.map(_.toString()).getOrElse(""))
+			Map("id" ->           toJson(user.id.get),
+				"firstName" ->    toJson(user.firstName.getOrElse("")),
+				"lastName" ->     toJson(user.lastName.getOrElse("")),
+				"email" ->        toJson(user.email),
+				"twitter" ->      toJson(user.twitter.getOrElse("")),
+				"facebook" ->     toJson(user.facebook.getOrElse("")),
+				"phone" ->        toJson(user.phone.getOrElse("")),
+				"website" ->      toJson(user.website.getOrElse("")),
+				"latitude" ->     toJson(user.latitude.map(_.toString).getOrElse("")),
+				"longitude" ->    toJson(user.longitude.map(_.toString).getOrElse("")),
+				"locationTime" -> toJson(user.locationTime.map(_.toString()).getOrElse("")))
 			)
 	}
 }
