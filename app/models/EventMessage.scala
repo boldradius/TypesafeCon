@@ -44,14 +44,15 @@ object EventMessage {
 		
 	/** Fetches all Event Messages
 	 */
-	def findAll(eventId: Long) = {
+	def findAll(eventId: Long, fromIndex: Option[Long]) = {
 		DB.withConnection { implicit connection =>
 			SQL("""
 				select m.*, u.firstname, u.lastname from message m
 				inner join s1user u on u.id = m.senderid
 				where eventid = {eventId}
+					and index > {index}
 				order by index
-				""").on('eventId -> eventId).as(eventMessage *)
+				""").on('eventId -> eventId, 'index -> fromIndex.getOrElse(0)).as(eventMessage *)
 		}
 	}
 	

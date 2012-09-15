@@ -25,11 +25,11 @@ POST    /users/:id/image              controllers.Users.uploadImage(id: Long)
 PUT     /users/:id/location           controllers.Users.setLocation(id: Long)
 
 # Messages
-GET     /messages/general             controllers.DiscussionMessages.general
+GET     /messages/general             controllers.DiscussionMessages.general(fromIndex: Option[Long])
 POST    /messages/general             controllers.DiscussionMessages.createGeneral
-GET     /messages/event/:id           controllers.DiscussionMessages.event(id: Long)
+GET     /messages/event/:id           controllers.DiscussionMessages.event(id: Long, fromIndex: Option[Long])
 POST    /messages/event/:id           controllers.DiscussionMessages.createEvent(id:Long)
-GET     /messages/private/:id1/:id2   controllers.DiscussionMessages.privateMessages(id1: Long, id2: Long)
+GET     /messages/private/:id1/:id2   controllers.DiscussionMessages.privateMessages(id1: Long, id2: Long, fromIndex: Option[Long])
 POST    /messages/private/:from/:to   controllers.DiscussionMessages.createPrivate(from: Long, to: Long)
 
 # Map static resources from the /public folder to the /assets URL path

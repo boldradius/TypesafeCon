@@ -39,9 +39,9 @@ object DiscussionMessages extends APIController {
 			.verifying("User does not exist", message => User.findById(toId).isDefined))
 
 	/** Returns all the general discussion messages */
-	def general = Action {
+	def general(fromIndex: Option[Long]) = Action {
 		try {
-			Success(GeneralMessage.findAll, "messages")(JSONGeneralMessageWriter)
+			Success(GeneralMessage.findAll(fromIndex), "messages")(JSONGeneralMessageWriter)
 		} catch {
 			case t: Throwable => {
 				Logger.error("Error retrieving discussion messages", t)
@@ -97,9 +97,9 @@ object DiscussionMessages extends APIController {
 	}
 
 	/** Returns all the discussion messages specific to an event */
-	def event(id: Long) = Action {
+	def event(id: Long, fromIndex: Option[Long]) = Action {
 		try {
-			Success(EventMessage.findAll(id), "messages")(JSONEventMessageWriter)
+			Success(EventMessage.findAll(id, fromIndex), "messages")(JSONEventMessageWriter)
 		} catch {
 			case t: Throwable => {
 				Logger.error("Error retrieving messages for event " + id, t)
@@ -110,9 +110,9 @@ object DiscussionMessages extends APIController {
 
 	// TODO secure
 	/** Returns all the private messages between two users */
-	def privateMessages(id1: Long, id2: Long) = SecuredAction {
+	def privateMessages(id1: Long, id2: Long, fromIndex: Option[Long]) = SecuredAction {
 		try {
-			Success(PrivateMessage.findAll(id1, id2), "messages")(JSONPrivateMessageWriter)
+			Success(PrivateMessage.findAll(id1, id2, fromIndex), "messages")(JSONPrivateMessageWriter)
 		} catch {
 			case t: Throwable => {
 				Logger.error("Error retrieving private messages between users " + id1 + " and " + id2, t)

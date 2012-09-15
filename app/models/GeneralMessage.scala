@@ -42,14 +42,16 @@ object GeneralMessage {
 		
 	/** Fetches all General Messages
 	 */
-	def findAll = {
+	def findAll(fromIndex: Option[Long]) = {
 		DB.withConnection { implicit connection =>
 			SQL("""
 				select m.*, u.firstname, u.lastname from message m
 				inner join s1user u on u.id = m.senderid
-				where eventid is null and touserid is null
+				where eventid is null 
+					and touserid is null
+					and index > {index}
 				order by index
-				""").as(generalMessage *)
+				""").on('index -> fromIndex.getOrElse(0)).as(generalMessage *)
 		}
 	}
 	

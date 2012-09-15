@@ -46,15 +46,17 @@ object PrivateMessage {
 		
 	/** Fetches all Private Messages between users id1 and id1
 	 */
-	def findAll(id1: Long, id2: Long) = {
+	def findAll(id1: Long, id2: Long, fromIndex: Option[Long]) = {
 		DB.withConnection { implicit connection =>
 			SQL("""
 				select m.*, u.firstname, u.lastname from message m
 				inner join s1user u on u.id = m.senderid
-				where (touserid  = {id1} and senderid = {id2}) 
-				OR (touserid  = {id2} and senderid = {id1})
+				where 
+					index > {index}
+					AND ((touserid  = {id1} and senderid = {id2}) 
+					OR (touserid  = {id2} and senderid = {id1}))
 				order by index
-				""").on('id1 -> id1, 'id2 -> id2).as(privateMessage *)
+				""").on('id1 -> id1, 'id2 -> id2, 'index -> fromIndex.getOrElse(0)).as(privateMessage *)
 		}
 	}
 	
