@@ -37,7 +37,6 @@ object Users extends APIController {
 			"longitude" -> of[BigDecimal](BigDecimalFormatter),
 			"latitude" -> of[BigDecimal](BigDecimalFormatter)) { Location.apply } { _ => None })
 
-	// TODO secure
 	def list(location: Option[Boolean]) = SecuredAction {
 		try {
 			val users = location match {
@@ -51,7 +50,6 @@ object Users extends APIController {
 		}
 	}
 
-	// TODO secure
 	def get(id: Long) = SecuredAction {
 			{
 				try {
@@ -67,7 +65,6 @@ object Users extends APIController {
 			}
 	}
 
-	// TODO secure
 	def create = SecuredAction {
 		implicit request =>
 			{
@@ -96,7 +93,6 @@ object Users extends APIController {
 			}
 	}
 
-	// TODO secure
 	def update(id: Long) = SecuredAction {
 		implicit request =>
 			{
@@ -138,7 +134,6 @@ object Users extends APIController {
 			}
 	}
 
-	// TODO secure
 	// Uses ImageMagick to resize and convert images to JPG
 	def uploadImage(userid: Long) = SecuredAction {
 		implicit request =>
@@ -171,7 +166,6 @@ object Users extends APIController {
 			}
 	}
 	
-	// TODO secure
 	def setLocation(userId: Long) = SecuredAction {
 		implicit request =>
 			{
