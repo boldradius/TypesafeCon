@@ -8,10 +8,12 @@
 	<div id="event">
 		<div class="summary">
 			<div class="pic">
-				<img src="@routes.Assets.at("img/profile/" + speakers(0).id.get + ".jpg")" 
-					onerror="this.src='@routes.Assets.at("img/profile/generic.png")';"  
-					class="img-rounded" 
-					width="80pt">
+				<a href="scala1://speakers/@speakers(0).id.get">
+					<img src="@routes.Assets.at("img/profile/" + speakers(0).id.get + ".jpg")" 
+						onerror="this.src='@routes.Assets.at("img/profile/generic.png")';"  
+						class="img-rounded" 
+						width="80pt">
+				</a>
 			</div>
 			<h2>@event.title</h2>
 			<h4>@Messages("event.by") @speakers.map(_.name).mkString(", ")</h4>
