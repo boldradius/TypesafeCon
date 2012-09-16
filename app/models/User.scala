@@ -65,6 +65,9 @@ case class User(var id: Pk[Long],
 						facebook = {facebook}, 
 						phone = {phone}, 
 						website = {website}
+						latitude = {latitude}
+						longitude = {longitude}
+						locationtime = {locationTime}
 					where id = {id}""").on(
 				'firstName -> firstName,
 				'lastName -> lastName,
@@ -73,6 +76,9 @@ case class User(var id: Pk[Long],
 				'facebook -> facebook,
 				'phone -> phone,
 				'website -> website,
+				'latitude -> latitude,
+				'longitude -> longitude,
+				'locationTime -> locationTime,
 				'id -> id).executeUpdate()
 		} > 0
 	}
