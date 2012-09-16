@@ -64,9 +64,9 @@ case class User(var id: Pk[Long],
 						twitter = {twitter}, 
 						facebook = {facebook}, 
 						phone = {phone}, 
-						website = {website}
-						latitude = {latitude}
-						longitude = {longitude}
+						website = {website},
+						latitude = {latitude},
+						longitude = {longitude},
 						locationtime = {locationTime}
 					where id = {id}""").on(
 				'firstName -> firstName,
