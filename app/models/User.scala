@@ -76,9 +76,9 @@ case class User(var id: Pk[Long],
 				'facebook -> facebook,
 				'phone -> phone,
 				'website -> website,
-				'latitude -> latitude,
-				'longitude -> longitude,
-				'locationTime -> locationTime,
+				'latitude -> latitude.map(_.toString),
+				'longitude -> longitude.map(_.toString),
+				'locationTime -> locationTime.map(l => new Date(l.getMillis)),
 				'id -> id).executeUpdate()
 		} > 0
 	}
