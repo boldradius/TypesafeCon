@@ -34,8 +34,8 @@ object Users extends APIController {
 
 	private val locationForm = Form(
 		mapping(
-			"longitude" -> of[BigDecimal](BigDecimalFormatter),
-			"latitude" -> of[BigDecimal](BigDecimalFormatter)) { Location.apply } { _ => None })
+			"latitude" -> of[BigDecimal](BigDecimalFormatter),
+			"longitude" -> of[BigDecimal](BigDecimalFormatter)) { Location.apply } { _ => None })
 
 	def list(location: Option[Boolean]) = SecuredAction {
 		try {
