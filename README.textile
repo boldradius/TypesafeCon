@@ -22,9 +22,9 @@ application.secret=AnyStringOfLength16xNWillDo12345
 # Pusher configuration 
 # Keep Pusher disabled or get a free account and enter your credentials here
 pusher.enabled=false
-#pusher.appId=YourAppId
-#pusher.key=YourKey
-#pusher.secret=YourSecret
+pusher.appId=YourAppId
+pusher.key=YourKey
+pusher.secret=YourSecret
 
 # Internal security configuration
 security.token=AnyValueWillDo
