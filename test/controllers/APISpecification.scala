@@ -5,14 +5,16 @@ import org.specs2.mutable.Specification
 
 import play.api.mvc.Result
 import play.api.test.Helpers._
+import play.api.Play.current
 
 class APISpecification extends Specification {
 
 	val ValidResponse = """\{"status":"(.+?)","message":"(.*?)","result":(.*)\}""".r
 
-	val validToken   = "openSesame"
 	val invalidToken = "wrongToken"
 
+	def validToken = current.configuration.getString("security.token").get
+		
 	def verifyBadResult(result: Result, expectedMessage: String) =
 		verifyResult(result, BAD_REQUEST, "ERROR")(response => response.message must beEqualTo(expectedMessage))
 
