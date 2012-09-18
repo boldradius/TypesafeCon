@@ -18,8 +18,7 @@ case class Speaker(var id: Pk[Long],
 	
 	def this() = this(Id(0), "", "", "", None, None, None)
 	
-	/** Inserts the speaker into the DB
-	  */
+	/** Inserts the speaker into the DB */
 	def create = {
 		Logger.debug("Creating Speaker " + this)
 		
@@ -42,8 +41,7 @@ case class Speaker(var id: Pk[Long],
 		}
 	}
 	
-	/** Deletes the speaker from the DB
-	  */
+	/** Deletes the speaker from the DB */
 	def delete = {
 		DB.withConnection { implicit connection =>
 			SQL("delete from speaker where id = {id}")
@@ -68,20 +66,21 @@ object Speaker {
 		}
 	}
 		
-	/** Fetches all Events
-	  */
+	/** Fetches all Speakers */
 	def findAll = {
 		DB.withConnection { implicit connection =>
 			SQL("select * from speaker").as(speaker *)
 		}
 	}
 	
+	/** Fetches a speaker by id */
 	def findById(id: Long) = {
 		DB.withConnection { implicit connection =>
 			SQL("select * from speaker where id = {id}").on('id -> id).as(speaker.singleOpt)
 		}
 	}
 	
+	/** Fetches all speakers engaged in an event */
 	def findByEventId(id: Long) = {
 		DB.withConnection { implicit connection =>
 			SQL("""
@@ -92,6 +91,7 @@ object Speaker {
 		}
 	}
 	
+	/** Counts all speakers */
 	def countAll = {
 		DB.withConnection { implicit connection =>
 			SQL("select count(*) from speaker").as(scalar[Long].single)

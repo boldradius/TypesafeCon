@@ -6,8 +6,7 @@ import play.api.libs.json.Json.toJson
 import play.api.libs.json.JsValue
 import play.api.libs.json.Writes
 
-/** Writes an event to JSON
-  */
+/** Writes an event to JSON */
 object JsonEventWriter extends Writes[S1Event] {
 	override def writes(event: S1Event): JsValue = {
 		toJson(

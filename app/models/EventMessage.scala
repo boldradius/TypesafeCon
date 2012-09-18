@@ -19,6 +19,7 @@ class EventMessage(
 		sentTime: DateTime = new DateTime,
 		index: Long = 0) extends Message(id, senderId, content, senderName, sentTime, index, Some(eventId)){
 
+	/** SQL to calculate the index of the next event message for this event */
 	def nextIndex = "select coalesce(max(index),0) + 1 from message where eventid = " + eventId
 }
 
@@ -26,8 +27,7 @@ object EventMessage {
 	
 	def apply(senderId: Long, eventId: Long, content: String) = new EventMessage(Id(0), senderId, content, eventId)
 	
-	/** Parses a result into an EventMessage
-	  */
+	/** Parses a result into an EventMessage */
 	private val eventMessage = {
 		get[Pk[Long]]("id") ~
 		get[Long]("senderid") ~
@@ -42,8 +42,7 @@ object EventMessage {
 		}
 	}
 		
-	/** Fetches all Event Messages
-	 */
+	/** Fetches all Event Messages */
 	def findAll(eventId: Long, fromIndex: Option[Long]) = {
 		DB.withConnection { implicit connection =>
 			SQL("""

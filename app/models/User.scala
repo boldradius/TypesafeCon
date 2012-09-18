@@ -21,8 +21,7 @@ case class User(var id: Pk[Long],
 				var longitude: Option[BigDecimal] = None,
 				var locationTime: Option[DateTime] = None) {
 	
-	/** Inserts the user into the DB
-	  */
+	/** Inserts the user into the DB */
 	def create = {
 		Logger.debug("Creating User " + this)
 		
@@ -51,8 +50,7 @@ case class User(var id: Pk[Long],
 		}
 	}
 	
-	/** Updates the user on the DB
-	  */
+	/** Updates the user on the DB */
 	def update = {
 		Logger.debug("Updating User " + this)
 		
@@ -83,8 +81,7 @@ case class User(var id: Pk[Long],
 		} > 0
 	}
 	
-	/** Deletes the speaker from the DB
-	  */
+	/** Deletes the speaker from the DB */
 	def delete = {
 		DB.withConnection { implicit connection =>
 			SQL("delete from s1user where id = {id}")
@@ -93,6 +90,7 @@ case class User(var id: Pk[Long],
 		}
 	}
 	
+	/** Updates the latitude and longitude of this user, and sets the locationTime */
 	def setLocation(latitude: BigDecimal, longitude: BigDecimal) {
 		this.latitude = Some(latitude)
 		this.longitude = Some(longitude)
@@ -116,6 +114,7 @@ object User {
 		User(Id(0), email)
 	}
 	
+	/** Parses a row into a User object */
 	private val user = {
 		get[Pk[Long]]("id") ~
 		get[Option[String]]("firstName") ~
@@ -135,8 +134,7 @@ object User {
 		}
 	}
 		
-	/** Fetches all Users
-	  */
+	/** Fetches all Users */
 	def findAll = {
 		DB.withConnection { implicit connection =>
 			SQL("select * from s1user").as(user *)
@@ -150,18 +148,21 @@ object User {
 		}
 	}
 	
+	/** Fetches a user by id */
 	def findById(id: Long) = {
 		DB.withConnection { implicit connection =>
 			SQL("select * from s1user where id = {id}").on('id -> id).as(user.singleOpt)
 		}
 	}
 	
+	/** Fetches a user by email */
 	def findByEmail(email: String) = {
 		DB.withConnection { implicit connection =>
 			SQL("select * from s1user where email = {email}").on('email -> email).as(user.singleOpt)
 		}
 	}
 	
+	/** Counts all users */
 	def countAll = {
 		DB.withConnection { implicit connection =>
 			SQL("select count(*) from s1user").as(scalar[Long].single)

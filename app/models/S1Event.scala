@@ -17,8 +17,7 @@ case class S1Event(var id: Pk[Long],
 	location: String,
 	var speakerIds: Seq[Long]) {
 
-	/** Inserts the event into the DB
-	  */
+	/** Inserts the event into the DB */
 	def create = {
 		Logger.debug("Creating Event " + this)
 
@@ -50,8 +49,7 @@ case class S1Event(var id: Pk[Long],
 	}
 	
 	
-	/** Deletes the event from the DB
-	  */
+	/** Deletes the event from the DB */
 	def delete = {
 		DB.withConnection { implicit connection =>
 			SQL("delete from event where id = {id}")
@@ -60,6 +58,7 @@ case class S1Event(var id: Pk[Long],
 		}
 	}
 
+	/** Adds a speaker to this event */
 	def addSpeaker(speakerId: Long) = {
 		speakerIds = speakerIds :+ speakerId
 		this
@@ -68,8 +67,7 @@ case class S1Event(var id: Pk[Long],
 
 object S1Event {
 
-	/** Parses a row into an (Event,Speaker) tuple, representing the engagement of a speaker to an event
-	  */
+	/** Parses a row into an (Event,Speaker) tuple, representing the engagement of a speaker to an event */
 	private val eventWithSpeakers = {
 		get[Pk[Long]]("eventid") ~
 		get[String]("code") ~
@@ -91,8 +89,7 @@ object S1Event {
 		}
 	}
 	
-	/** Parses a row into an Event
-	  */
+	/** Parses a row into an Event */
 	private val event = {
 		get[Pk[Long]]("id") ~
 		get[String]("code") ~
@@ -106,8 +103,7 @@ object S1Event {
 		}
 	}
 
-	/** Fetches all Events
-	  */
+	/** Fetches all Events */
 	def findAll = {
 		DB.withConnection { implicit connection =>
 			val eventSpeakers = SQL("""
@@ -120,16 +116,14 @@ object S1Event {
 		}
 	}
 	
-	/** Fetches an Event by id
-	  */
+	/** Fetches an Event by id */
 	def findById(id:Long) = {
 		DB.withConnection { implicit connection =>
 			SQL("select * from event where id = {id}").on('id -> id).as(event.singleOpt)
 		}
 	}
 	
-	/** Fetches all Events led by a speaker
-	  */
+	/** Fetches all Events led by a speaker */
 	def findBySpeakerId(speakerId: Long) = {
 		DB.withConnection { implicit connection =>
 			SQL("""select e.* from event e
@@ -153,6 +147,7 @@ object S1Event {
 		}
 	}
 		
+	/** Counts all events */
 	def countAll = {
 		DB.withConnection { implicit connection =>
 			SQL("select count(*) from event").as(scalar[Long].single)

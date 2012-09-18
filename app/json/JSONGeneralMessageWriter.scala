@@ -5,8 +5,7 @@ import play.api.libs.json.JsValue
 import play.api.libs.json.Writes
 import models.GeneralMessage
 
-/** Writes a general message to JSON
-  */
+/** Writes a general message to JSON */
 object JSONGeneralMessageWriter extends Writes[GeneralMessage] {
 	override def writes(message: GeneralMessage): JsValue = {
 		toJson(

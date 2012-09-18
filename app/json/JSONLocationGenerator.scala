@@ -7,6 +7,7 @@ import play.api.libs.json.Writes
 import models.User
 import controllers.Location
 
+/** Builds a JSON object with the details of the location */
 object JSONLocationGenerator {
 	def buildJson(location: Location, user: User): JsValue = {
 		toJson(

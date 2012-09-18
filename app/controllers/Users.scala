@@ -26,17 +26,14 @@ object Users extends APIController {
 			"twitter" -> optional(text(maxLength = 255)),
 			"facebook" -> optional(text(maxLength = 255)),
 			"phone" -> optional(text(maxLength = 255)),
-			"website" -> optional(text(maxLength = 255))) {
-				User.apply
-			} {
-				_ => None // implement if necessary
-			})
+			"website" -> optional(text(maxLength = 255))) { User.apply } { _ => None })
 
 	private val locationForm = Form(
 		mapping(
 			"latitude" -> of[BigDecimal](BigDecimalFormatter),
 			"longitude" -> of[BigDecimal](BigDecimalFormatter)) { Location.apply } { _ => None })
 
+	/** Return a list of users. If location is set, search for users with/without a location. Otherwise, return all. */
 	def list(location: Option[Boolean]) = SecuredAction {
 		try {
 			val users = location match {
@@ -50,21 +47,23 @@ object Users extends APIController {
 		}
 	}
 
+	/** Return a specific user */
 	def get(id: Long) = SecuredAction {
-			{
-				try {
-					User.findById(id) match {
-						case Some(user) => Success(user)(JsonUserWriter)
-						case _ => Error("User not found")
-					}
-				} catch {
-					case t: Throwable =>
-						Logger.error("Error creating user", t)
-						ServerError(t.getMessage)
+		{
+			try {
+				User.findById(id) match {
+					case Some(user) => Success(user)(JsonUserWriter)
+					case _ => Error("User not found")
 				}
+			} catch {
+				case t: Throwable =>
+					Logger.error("Error creating user", t)
+					ServerError(t.getMessage)
 			}
+		}
 	}
 
+	/** Create a new user. Emails must be unique. */
 	def create = SecuredAction {
 		implicit request =>
 			{
@@ -93,6 +92,7 @@ object Users extends APIController {
 			}
 	}
 
+	/** Update a user. Replaces the user information with the values submitted on the form fields. */
 	def update(id: Long) = SecuredAction {
 		implicit request =>
 			{
@@ -134,7 +134,7 @@ object Users extends APIController {
 			}
 	}
 
-	// Uses ImageMagick to resize and convert images to JPG
+	/** Update the user image with the one provided in the "picture" field of the form data. */
 	def uploadImage(userid: Long) = SecuredAction {
 		implicit request =>
 			{
@@ -145,10 +145,11 @@ object Users extends APIController {
 							case None => MissingParam("picture")
 							case Some(picture) => {
 								try {
+									// Use ImageMagick to resize and convert images to JPG
 									val resizeCommand = "convert -resize 300x300 " + picture.ref.file.getAbsolutePath() + " ./public/img/user/" + user.id.get + ".jpg"
 									val res = resizeCommand.!!
 
-									// Copy generated file to asset folder
+									// Copy generated file to asset folder - play does not refresh automatically when in production mode
 									val cpCommand = "cp ./public/img/user/" + user.id.get + ".jpg target/scala-2.9.1/classes/public/img/user"
 									val res2 = cpCommand.!!
 
@@ -165,7 +166,8 @@ object Users extends APIController {
 				}
 			}
 	}
-	
+
+	/** Updates the user location to the latitude and longitude provided. */
 	def setLocation(userId: Long) = SecuredAction {
 		implicit request =>
 			{

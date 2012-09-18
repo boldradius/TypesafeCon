@@ -8,9 +8,7 @@ import models.S1Event
 
 object Speakers extends APIController {
 
-	/**
-	 * Returns the full list of speakers in JSON format
-	 */
+	/** Returns the full list of speakers in JSON format */
 	def list = Action {
 		try {
 			Success(Speaker.findAll, "speakers")(JsonSpeakerWriter)
@@ -19,6 +17,7 @@ object Speakers extends APIController {
 		}
 	}
 
+	/** Returns the details of a specific speaker */
 	def get(id: Long) = Action {
 		implicit request =>
 			{

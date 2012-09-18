@@ -1,17 +1,16 @@
 package controllers
 
 import play.api.Play.current
+import play.api.data.FormError
 import play.api.libs.json.Json.toJson
-import play.api.libs.json.Writes
-import play.api.mvc.Controller
-import play.api.Logger
-import play.api.data._
-import play.api.mvc.SimpleResult
 import play.api.libs.json.JsValue
-import play.api.mvc.Action
-import play.api.mvc.Result
+import play.api.libs.json.Writes
 import play.api.mvc.Request
+import play.api.mvc.Action
 import play.api.mvc.AnyContent
+import play.api.mvc.Controller
+import play.api.mvc.Result
+import play.api.mvc.SimpleResult
 
 class APIController extends Controller {
 

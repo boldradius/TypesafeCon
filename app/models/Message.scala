@@ -17,6 +17,7 @@ abstract class Message(
 	val eventId: Option[Long] = None,
 	val toUserId: Option[Long] = None) {
 
+	/** Creates a new message */
 	def create = {
 		Logger.debug("Creating Message " + this)
 
@@ -37,9 +38,7 @@ abstract class Message(
 		}
 	}
 
-	/**
-	 * Deletes the message from the DB
-	 */
+	/** Deletes the message from the DB */
 	def delete = {
 		DB.withConnection { implicit connection =>
 			SQL("delete from message where id = {id}")
@@ -48,9 +47,7 @@ abstract class Message(
 		}
 	}
 
-	/**
-	 * Returns the SQL required to calculate the next index on the message context
-	 */
+	/** Returns the SQL required to calculate the next index on the message context */
 	def nextIndex: String
 
 }

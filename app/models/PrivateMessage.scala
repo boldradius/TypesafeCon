@@ -19,6 +19,7 @@ class PrivateMessage(
 		sentTime: DateTime = new DateTime,
 		index: Long = 0) extends Message(id, senderId, content, senderName, sentTime, index, None, Some(toUserId)){
 
+	/** Calculates the next index in the private messages between users A and B */
 	def nextIndex = """select coalesce(max(index),0) + 1 from message 
 						where (touserid  = %d and senderid = %d) 
 						OR (touserid  = %d and senderid = %d)""".format(senderId, toUserId, toUserId, senderId)
@@ -28,8 +29,7 @@ object PrivateMessage {
 	
 	def apply(senderId:Long, toUserId: Long, content: String) = new PrivateMessage(Id(0), senderId, content, toUserId)
 	
-	/** Parses a result into a PrivateMessage
-	  */
+	/** Parses a result into a PrivateMessage */
 	private val privateMessage = {
 		get[Pk[Long]]("id") ~
 		get[Long]("senderid") ~
@@ -44,8 +44,7 @@ object PrivateMessage {
 		}
 	}
 		
-	/** Fetches all Private Messages between users id1 and id1
-	 */
+	/** Fetches all Private Messages between users id1 and id2 */
 	def findAll(id1: Long, id2: Long, fromIndex: Option[Long]) = {
 		DB.withConnection { implicit connection =>
 			SQL("""
@@ -71,8 +70,7 @@ object PrivateMessage {
 		}
 	}
 	
-		/** Counts all GeneralMessages
-	 */
+	/** Counts all Private Messages between two users */
 	def countAll(id1: Long, id2: Long)  = {
 		DB.withConnection { implicit connection =>
 			SQL("""

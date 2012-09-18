@@ -18,6 +18,7 @@ class GeneralMessage(
 		sentTime: DateTime = new DateTime,
 		index: Long = 0) extends Message(id, senderId, content, senderName, sentTime, index){
 
+	/** SQL to calculate the index of the next general message */
 	def nextIndex = "select coalesce(max(index),0) + 1 from message m where eventid is null and touserid is null"
 }
 
@@ -25,8 +26,7 @@ object GeneralMessage {
 	
 	def apply(senderId: Long, content: String) = new GeneralMessage(Id(0), senderId, content)
 	
-	/** Parses a result into a GeneralMessage
-	  */
+	/** Parses a result into a GeneralMessage */
 	private val generalMessage = {
 		get[Pk[Long]]("id") ~
 		get[Long]("senderid") ~
@@ -40,8 +40,7 @@ object GeneralMessage {
 		}
 	}
 		
-	/** Fetches all General Messages
-	 */
+	/** Fetches all General Messages */
 	def findAll(fromIndex: Option[Long]) = {
 		DB.withConnection { implicit connection =>
 			SQL("""
@@ -55,8 +54,7 @@ object GeneralMessage {
 		}
 	}
 	
-	/** Fetches a General Message by id
-	 */
+	/** Fetches a General Message by id */
 	def findById(id: Long) = {
 		DB.withConnection { implicit connection =>
 			SQL("""
@@ -67,8 +65,7 @@ object GeneralMessage {
 		}
 	}
 	
-	/** Counts all GeneralMessages
-	 */
+	/** Counts all General Messages */
 	def countAll = {
 		DB.withConnection { implicit connection =>
 			SQL("select count(*) from message where eventid is null and touserid is null").as(scalar[Long].single)

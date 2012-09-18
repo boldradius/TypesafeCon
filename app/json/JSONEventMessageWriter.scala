@@ -5,8 +5,7 @@ import play.api.libs.json.JsValue
 import play.api.libs.json.Writes
 import models.EventMessage
 
-/** Writes an event message to JSON
-  */
+/** Writes an event message to JSON */
 object JSONEventMessageWriter extends Writes[EventMessage] {
 	override def writes(message: EventMessage): JsValue = {
 		toJson(

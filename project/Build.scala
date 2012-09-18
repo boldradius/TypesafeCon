@@ -14,7 +14,9 @@ object ApplicationBuild extends Build {
 	)
 
 	val main = PlayProject(appName, appVersion, appDependencies, mainLang = SCALA).settings( // Add your own project settings here     
-		resolvers += Resolver.url("Tindr's Play module repository", url("http://tindr.github.com/releases/"))(Resolver.ivyStylePatterns)
+		resolvers += Resolver.url("Tindr's Play module repository",
+				url("http://tindr.github.com/releases/"))
+				(Resolver.ivyStylePatterns)
 	)
 
 }

@@ -5,8 +5,7 @@ import play.api.libs.json.Json.toJson
 import play.api.libs.json.JsValue
 import play.api.libs.json.Writes
 
-/** Writes an user to JSON
-  */
+/** Writes an user to JSON */
 object JsonUserWriter extends Writes[User] {
 	override def writes(user: User): JsValue = {
 		toJson(

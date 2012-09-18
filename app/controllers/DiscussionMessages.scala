@@ -108,7 +108,6 @@ object DiscussionMessages extends APIController {
 		}
 	}
 
-	// TODO secure
 	/** Returns all the private messages between two users */
 	def privateMessages(id1: Long, id2: Long, fromIndex: Option[Long]) = SecuredAction {
 		try {
