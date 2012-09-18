@@ -38,9 +38,15 @@ If you use Eclipse or Idea, you'll have to run the proper @sbt@ target to genera
 
 h2. Playground
 
-TODO
+The playground area is merely a placeholder for you to play with. It consists of a simple view (@playground.scala.html@) and a trivial controller method in the Application controller (@Application.playground@). 
+
+We want you to play with the code, and add any features you'd like. The playground is just the easiest place to throw some quick stuff at. You could, for example, calculate some stats and show them in the playground view, grab event or speaker data and do some fun stuff with it. As long as you respect the users' privacy, anything goes.
+
+And, when you have something to show, contribute to the repo...
 
 h2. Contributing to Scala1
 
-TODO
+Since we're dealing with private data, any contributions will be made through pull requests.
+
+Just send us any commits you have, and we'll take a look. If your changes are safe and fun for everyone, we'll publish them ASAP!
 
