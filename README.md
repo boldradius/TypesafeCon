@@ -12,24 +12,10 @@ To install and run Scala1 you need to do the following:
 3. Create a DB user for scala1
 4. Create a plain text file conf/private.conf with the following data:
 
-
-
     # DB credentials
     db.default.user=YourDBUser
     db.default.password=YourDBUserPassword
 	
-	# The secret key is used to secure cryptographics functions.
-	application.secret=AnyStringOfLength16xNWillDo12345
-	
-	# Pusher configuration 
-	# Keep Pusher disabled or get a free account and enter your credentials here
-	pusher.enabled=false
-	#pusher.appId=YourAppId
-	#pusher.key=YourKey
-	#pusher.secret=YourSecret
-	
-	# Internal security configuration
-	security.token=AnyValueWillDo
 
 5. Make sure ImageMagick is installed on your system by running `convert`. If it is not, use your preferred [installation](http://www.imagemagick.org/script/binary-releases.php) [method](https://help.ubuntu.com/community/ImageMagick).  
 6. To verify the installation, cd to the project root and run sbt test. All tests should run successfully.
