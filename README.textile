@@ -1,6 +1,6 @@
 h1. Scala1
 
-Repository for the mobile application for the **JavaOne** conference on **September 2012**.
+Server side of the mobile application for the **JavaOne** conference on **September 2012**.
 
 h2. Running Scala1
 
