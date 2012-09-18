@@ -44,7 +44,7 @@ class CreateUserTest extends APISpecification {
 					"email" -> "john@example.com",
 					"token" -> validToken))
 
-				verifyBadResult(result, "Email is already registered")
+				verifyBadResult(result2, "Email is already registered")
 			}
 		}
 
@@ -63,8 +63,8 @@ class CreateUserTest extends APISpecification {
 				verifyGoodResult(result) {
 					response =>
 						{
-							val IdJson = """"id":(\d+)""".r
-							response.message match {
+							val IdJson = """\{"id":(\d+)\}""".r
+							response.result match {
 								case IdJson(id) => {
 									User.findById(id.toLong) match {
 										case None => failure("User with id " + id + " was not found")
