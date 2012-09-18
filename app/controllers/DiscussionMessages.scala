@@ -53,19 +53,19 @@ object DiscussionMessages extends APIController {
 	/** Creates a General Message */
 	def createGeneral = create(generalMessageForm){
 		// Send the new message to the general Pusher channel
-		message => Pusher().trigger("general", "newMessage", message.content)
+		message => Pusher().trigger("general", "newMessage", message.senderId + ":" + message.content)
 	}
 	
 	/** Creates an Event Message */
 	def createEvent(eventId: Long) = create(eventMessageForm(eventId)){
 		// Send the new message to the event Pusher channel
-		message => Pusher().trigger("event-" + message.eventId.get, "newMessage", message.content)
+		message => Pusher().trigger("event-" + message.eventId.get, "newMessage", message.senderId + ":" + message.content)
 	}
 	
 	/** Creates a Private Message */
 	def createPrivate(fromId: Long, toId: Long) = create(privateMessageForm(fromId, toId)){
 		// Send the new message to the private Pusher channel
-		message => Pusher().trigger(privateChannel(fromId, toId), "newMessage", message.content)
+		message => Pusher().trigger(privateChannel(fromId, toId), "newMessage", message.senderId + ":" + message.content)
 	}
 	
 	/** Creates a Message based on a concrete form implementation */
