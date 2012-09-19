@@ -101,8 +101,10 @@ h2 {
 .box .rightArrow {
 	float: right;
 	width: 10pt;
+	height: 15pt;
 	font-weight: 600;
 	color: #999;
+	background-image: url("/assets/img/arrow.right.png")
 }
 
 .box .content {
@@ -140,7 +142,10 @@ h2 {
 	margin-top: 20pt;
 }
 
+.block {
+	display: block;
+}
+
 #event .share {
 	margin-top: 5pt;
-	padding: 4px 50pt;
 }

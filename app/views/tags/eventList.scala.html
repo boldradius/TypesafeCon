@@ -4,13 +4,13 @@
 @if(events.size > 0) {
 	<div class="box">
 		@for(event <- events){
-		<div class="boxRow @if(event == events.last){lastRow}"
-			onClick="window.location='scala1://events/@event.id';">
-			<div class="rightArrow">&gt;</div>
-			<div class="content fullwidth">
-				@event.title
+			<div class="boxRow @if(event == events.last){lastRow}"
+				onClick="window.location='scala1://events/@event.id';">
+				<div class="rightArrow"></div>
+				<div class="content fullwidth">
+					@event.title
+				</div>
 			</div>
-		</div>
 		}
 	</div>
 }
