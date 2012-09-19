@@ -18,13 +18,13 @@ object Events extends APIController {
 	}
 	
 	/** Returns an event along with the related speakers */
-	def get(id: Long) = Action {
+	def get(id: Long, hideActions: Option[Boolean]) = Action {
 		implicit request =>
 			{
 				S1Event.findById(id) match {
 					case Some(event) => {
 						val speakers = Speaker.findByEventId(event.id.get)
-						Ok(views.html.event(event, speakers))
+						Ok(views.html.event(event, speakers, hideActions.getOrElse(false)))
 					}
 					case _ => BadRequest("Event not found")
 				}

@@ -1,4 +1,4 @@
-@(event: S1Event, speakers: List[Speaker])(implicit flash:Flash) 
+@(event: S1Event, speakers: List[Speaker], hideActions: Boolean)(implicit flash:Flash) 
 
 @import tags._
 
@@ -21,11 +21,12 @@
 		
 		<div class="description">@event.description</div>
 
-		<div class="actions">
-			<a href="#top" class="btn">@Messages("common.top")</a>
-			<a href="scala1://events/@event.id.get/discussion" class="btn">@Messages("event.discussion")</a>
-			<a href="scala1://events/@event.id.get/share" class="btn share">@Messages("event.share")</a>
-		</div>
+		@if(!hideActions) {
+			<div class="actions">
+				<a href="scala1://events/@event.id.get/discussion" class="btn block">@Messages("event.discussion")</a>
+				<a href="scala1://events/@event.id.get/share" class="btn block share">@Messages("event.share")</a>
+			</div>
+		}
 
 	</div>
 }
