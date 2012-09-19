@@ -67,12 +67,12 @@ h2 {
 }
 
 .pic {
-	border: 2pt solid #E0E0E0;
 	overflow:hidden;
 	-moz-border-radius: 8px;
 	border-radius: 8px;
+	box-shadow: 0 0 0 1px #DBDBDB;
 }
-	
+
 .box {
 	border: 1pt solid #DBDBDB;
 	background-color: white;
@@ -102,16 +102,14 @@ h2 {
 	float: right;
 	width: 10pt;
 	height: 15pt;
-	font-weight: 600;
-	color: #999;
 	background-image: url("/assets/img/arrow.right.png")
 }
 
 .box .content {
 	margin-left: 50pt;
 	font-family: "HelveticaNeue-CondensedBold", "Helvetica Neue";
-	font-size: 12pt;
-	line-height: 14pt;
+	font-size: 9pt;
+	line-height: 1.5em;
 	color: #262626;
 	word-wrap: break-word;
 }
