@@ -66,11 +66,11 @@ h2 {
 	min-height: 60pt;
 }
 
-.img-rounded {
+.pic {
 	border: 2pt solid #E0E0E0;
-	-webkit-border-radius: 8pt;
-	-moz-border-radius: 8pt;
-	border-radius: 8pt;
+	overflow:hidden;
+	-moz-border-radius: 8px;
+	border-radius: 8px;
 }
 	
 .box {
