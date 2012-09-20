@@ -8,11 +8,14 @@ body,html {
 	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial; 
 }
 
+h1, h2 {
+	color: #0DA4D0;
+}
+
 h2 {
 	font-size: 14pt;
 	line-height: 18pt;
 	padding-top: 10pt;
-	color: #0DA4D0;
 	font-family: "HelveticaNeue-CondensedBold", "Helvetica Neue";
 }
 
