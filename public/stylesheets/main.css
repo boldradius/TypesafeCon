@@ -1,6 +1,7 @@
 body {
 	padding-top: 10pt;
 	padding-bottom: 40px;
+	font-size: 13pt;
 }
 
 body,html {
@@ -8,15 +9,16 @@ body,html {
 }
 
 h2 {
-	font-size: 16pt;
+	font-size: 14pt;
 	line-height: 18pt;
 	padding-top: 10pt;
-	color: #262626;
+	color: #0DA4D0;
 	font-family: "HelveticaNeue-CondensedBold", "Helvetica Neue";
 }
 
 #typesafeLogo {
 	width: 120px;
+	margin-top: 2em;
 }
 
 .centered {
@@ -31,8 +33,7 @@ h2 {
 	font-family: "HelveticaNeue-CondensedBold", "Helvetica Neue";
 	font-size: 16pt;
 	color: #FFFFFF;
-	text-shadow: -1px -1px rgba(76,76,76,0.5);
-	padding: 4px 18px;
+	text-shadow: 0 -1px rgba(76, 76, 76, 0.5);
 }
 
 .btn:hover {
@@ -42,9 +43,12 @@ h2 {
 
 /************** Speaker details **************/
 
+#speaker h2 {
+	color: #262626;
+}
+
 #speaker h2, #event h2 {
 	margin: 0pt;
-	font-size: 14pt;
 }
 
 #speaker h4, #event h4 {
@@ -60,17 +64,14 @@ h2 {
 	float:left; 
 	margin-right: 10pt;
 	margin-bottom: 10pt;
+	overflow:hidden;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+	box-shadow: 0 0 0 1px #DBDBDB;
 }
 
 .summary {
 	min-height: 60pt;
-}
-
-.pic {
-	overflow:hidden;
-	-moz-border-radius: 8px;
-	border-radius: 8px;
-	box-shadow: 0 0 0 1px #DBDBDB;
 }
 
 .box {
@@ -96,6 +97,7 @@ h2 {
 	width: 40pt;
 	font-size: 11pt;
 	color: #0DA4D0;
+	text-align: right;
 }
 
 .box .rightArrow {
@@ -125,15 +127,15 @@ h2 {
 
 .description {
 	font-size: 13pt;
-	line-height: 15pt;
+	line-height: 1.5em;
 	color: #262626;
 	border: 1pt solid #DBDBDB;
 	background-color: white;
-	border-radius: 2pt;
+	border-radius: 4px;
 	margin-top: 20pt;
 	clear:both;
 	padding: 10pt;
-	box-shadow: 1pt 1pt 4pt 0pt rgba(0,0,0,0.38);
+	box-shadow: 0 1 4px 0pt rgba(0,0,0,0.1);
 }
 
 .actions {
