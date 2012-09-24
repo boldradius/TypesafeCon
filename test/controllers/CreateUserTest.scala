@@ -11,40 +11,24 @@ class CreateUserTest extends APISpecification {
 
 	"The Create User API call" should {
 
-		"Return error when token is not provided" in new CreateUserTestCase {
+		"Return error when token is not provided" in {
 			running(FakeApplication()) {
 				val Some(result) = routeAndCall(FakeRequest(POST, "/users").withFormUrlEncodedBody("firstName" -> "John"))
 				verifyBadResult(result, "Unauthorized access")
 			}
 		}
 
-		"Return error when token is incorrect" in new CreateUserTestCase {
+		"Return error when token is incorrect" in {
 			running(FakeApplication()) {
 				val Some(result) = routeAndCall(FakeRequest(POST, "/users").withFormUrlEncodedBody("firstName" -> "John", "token" -> invalidToken))
 				verifyBadResult(result, "Unauthorized access")
 			}
 		}
 
-		"Return error when email is not provided" in new CreateUserTestCase {
+		"Return error when email is not provided" in {
 			running(FakeApplication()) {
 				val Some(result) = routeAndCall(FakeRequest(POST, "/users").withFormUrlEncodedBody("firstName" -> "John", "token" -> validToken))
 				verifyBadResult(result, "Missing parameter: email")
-			}
-		}
-
-		"Return error when creating user with an email already registered" in new CreateUserTestCase {
-			running(FakeApplication()) {
-				val Some(result) = routeAndCall(FakeRequest(POST, "/users").withFormUrlEncodedBody(
-					"firstName" -> "John",
-					"email" -> "john@example.com",
-					"token" -> validToken))
-
-				val Some(result2) = routeAndCall(FakeRequest(POST, "/users").withFormUrlEncodedBody(
-					"firstName" -> "Peter",
-					"email" -> "john@example.com",
-					"token" -> validToken))
-
-				verifyBadResult(result2, "Email is already registered")
 			}
 		}
 
@@ -69,6 +53,7 @@ class CreateUserTest extends APISpecification {
 									User.findById(id.toLong) match {
 										case None => failure("User with id " + id + " was not found")
 										case Some(user) => {
+											testUser = user
 											user.firstName must beEqualTo(Some("John"))
 											user.lastName must beEqualTo(Some("Doe"))
 											user.twitter must beEqualTo(Some("john"))
@@ -90,8 +75,10 @@ class CreateUserTest extends APISpecification {
 
 trait CreateUserTestCase extends After {
 
+	var testUser: User = _
+	
 	// Remove the test data
 	def after = running(FakeApplication()) {
-		User.findByEmail("john@example.com").map(_.delete)
+		testUser.delete
 	}
 }

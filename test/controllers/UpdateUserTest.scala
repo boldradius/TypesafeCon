@@ -39,23 +39,6 @@ class UpdateUserTest extends APISpecification {
 			}
 		}
 
-		"Return error when updating a user with a new email already registered" in new UpdateUserTestCase {
-			running(FakeApplication()) {
-				// Create a second user with a new email
-				val Some(result) = routeAndCall(FakeRequest(POST, "/users").withFormUrlEncodedBody(
-					"firstName" -> "Peter",
-					"email" -> "john2@example.com",
-					"token" -> validToken))
-
-				// Update our test user to match Peter's email
-				val Some(updateResult) = routeAndCall(FakeRequest(PUT, "/users/" + testUser.id).withFormUrlEncodedBody(
-					"email" -> "john2@example.com",
-					"token" -> validToken))
-
-				verifyBadResult(updateResult, "Email is already registered")
-			}
-		}
-
 		"Update a user when passed all valid parameters, without changing his email" in new UpdateUserTestCase {
 			running(FakeApplication()) {
 				val Some(result) = routeAndCall(FakeRequest(PUT, "/users/" + testUser.id).withFormUrlEncodedBody(
@@ -128,8 +111,6 @@ trait UpdateUserTestCase extends After {
 
 	// Remove the test data
 	def after = running(FakeApplication()) {
-		User.findByEmail("john@example.com").map(_.delete)
-		User.findByEmail("john2@example.com").map(_.delete)
-		User.findByEmail("johnny@example.com").map(_.delete)
+		testUser.delete
 	}
 }

@@ -155,13 +155,6 @@ object User {
 		}
 	}
 	
-	/** Fetches a user by email */
-	def findByEmail(email: String) = {
-		DB.withConnection { implicit connection =>
-			SQL("select * from s1user where email = {email}").on('email -> email).as(user.singleOpt)
-		}
-	}
-	
 	/** Counts all users */
 	def countAll = {
 		DB.withConnection { implicit connection =>

@@ -75,13 +75,9 @@ object Users extends APIController {
 
 						// Parameters are fine, create user
 						user => {
-							if (User.findByEmail(user.email).isDefined) {
-								Error("Email is already registered")
-							} else {
-								user.create match {
-									case Some(newUser) => Success(Map("id" -> newUser.id.get))
-									case None => Error("User cannot be created")
-								}
+							user.create match {
+								case Some(newUser) => Success(Map("id" -> newUser.id.get))
+								case None => Error("User cannot be created")
 							}
 						})
 				} catch {
@@ -107,23 +103,17 @@ object Users extends APIController {
 
 								// Parameters are fine, update user
 								user => {
-									// Verify if the email is already registered under another user
-									User.findByEmail(user.email) match {
-										case Some(user) if (user.id.get != id) => Error("Email is already registered")
-										case _ => {
-											existingUser.firstName = user.firstName
-											existingUser.lastName = user.lastName
-											existingUser.email = user.email
-											existingUser.twitter = user.twitter
-											existingUser.facebook = user.facebook
-											existingUser.phone = user.phone
-											existingUser.website = user.website
-											if (existingUser.update)
-												Success("Success")
-											else
-												ServerError("The user could not be updated")
-										}
-									}
+									existingUser.firstName = user.firstName
+									existingUser.lastName = user.lastName
+									existingUser.email = user.email
+									existingUser.twitter = user.twitter
+									existingUser.facebook = user.facebook
+									existingUser.phone = user.phone
+									existingUser.website = user.website
+									if (existingUser.update)
+										Success("Success")
+									else
+										ServerError("The user could not be updated")
 								})
 					}
 				} catch {
