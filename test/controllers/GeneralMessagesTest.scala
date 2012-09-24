@@ -4,6 +4,8 @@ import org.specs2.mutable.After
 
 import models.GeneralMessage
 import models.User
+import tools.StringTools._
+
 import play.api.test.Helpers._
 import play.api.test.FakeApplication
 import play.api.test.FakeRequest
@@ -70,6 +72,7 @@ class GeneralMessagesTest extends APISpecification {
 								case Some(message) =>
 									message.content must beEqualTo(content)
 									message.senderId must beEqualTo(testUser.id.get)
+									message.senderName must beEqualTo(Some("John"))
 								case _ => failure("The message was not created")
 							}
 						}
@@ -85,7 +88,7 @@ trait GeneralMessagesTestCase extends After {
 
 	// Create a test user before the test case
 	running(FakeApplication()) {
-		testUser = User("john@example.com").create.get
+		testUser = User("john@example.com", "John", None, None, None, None, None).create.get
 	}
 
 	// Remove the test data

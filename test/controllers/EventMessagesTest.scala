@@ -7,6 +7,8 @@ import anorm.Id
 import models.EventMessage
 import models.S1Event
 import models.User
+import tools.StringTools._
+
 import play.api.test.Helpers._
 import play.api.test.FakeApplication
 import play.api.test.FakeRequest
@@ -63,6 +65,7 @@ class EventMessagesTest extends APISpecification {
 							case Some(message) =>
 								message.content must beEqualTo(content)
 								message.senderId must beEqualTo(testUser.id.get)
+								message.senderName must beEqualTo(Some("John Doe"))
 								message.eventId must beEqualTo(Some(testEvent.id.get))
 							case _ => failure("The message was not created")
 						}
@@ -80,7 +83,7 @@ trait EventMessagesTestCase extends After {
 	
 	// Create a test user before the test case
 	running(FakeApplication()) {
-		testUser = User("john@example.com").create.get
+		testUser = User("john@example.com", "John", "Doe", None, None, None, None).create.get
 		testEvent = S1Event(Id(0), "TEST", "Not a real Event", "", new DateTime, new DateTime, "", Seq(1L)).create.get
 	}
 	

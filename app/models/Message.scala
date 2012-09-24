@@ -53,5 +53,5 @@ abstract class Message(
 }
 
 object Message {
-	def displayName(first: Option[String], last: Option[String]) = Some((first.getOrElse("") + last.getOrElse("")).trim)
+	def displayName(first: Option[String], last: Option[String]) = Some((first.getOrElse("") + " " + last.getOrElse("")).trim)
 }
