@@ -80,7 +80,7 @@ h2 {
 .box {
 	border: 1pt solid #DBDBDB;
 	background-color: white;
-	border-radius: 2pt;
+	border-radius: 4px;
 	margin-top: 20pt;
 	clear:both;
 }
