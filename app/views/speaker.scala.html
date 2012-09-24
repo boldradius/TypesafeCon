@@ -1,6 +1,7 @@
 @(speaker: Speaker, events: List[S1Event])(implicit flash:Flash) 
 
 @import tags._
+@import tools.StringTools._
 
 @main {
 
@@ -20,7 +21,7 @@
 		@box(
 			Messages("speaker.twitter") -> speaker.twitter.getOrElse(""), 
 			Messages("speaker.email") -> speaker.email.getOrElse(""), 
-			Messages("speaker.website") -> speaker.url.getOrElse("") 
+			Messages("speaker.website") -> cleanurl(speaker.url.getOrElse(""))
 		)
 		
 		@eventList(events)
