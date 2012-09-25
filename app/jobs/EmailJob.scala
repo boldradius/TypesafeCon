@@ -12,8 +12,8 @@ object EmailJob {
 	
 	private val from = current.configuration.getString("email.from").getOrElse("")
 	
-	def sendEmail(recipient: String, subject: String, templatePath: String) = //Akka.future {
-	{
+	def sendEmail(recipient: String, subject: String, templatePath: String) = Akka.future {
+	
 		val content = scala.io.Source.fromFile(templatePath).mkString
 		println("Sending email with subject '" + subject + "' to " + recipient + " from " + from + " with content: '" + content + "'")
 		
