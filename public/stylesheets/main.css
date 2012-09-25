@@ -119,6 +119,10 @@ h2 {
 	word-wrap: break-word;
 }
 
+.box a {
+	color: #262626;
+}
+
 .box .fullwidth {
 	margin-left: 0;
 }

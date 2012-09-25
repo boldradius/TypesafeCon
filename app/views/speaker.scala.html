@@ -16,12 +16,12 @@
 			<h4>@speaker.title</h4>
 		</div>
 		
-		@box(Messages("speaker.about") -> speaker.about)
+		@box((Messages("speaker.about"), speaker.about, None))
 		
 		@box(
-			Messages("speaker.twitter") -> speaker.twitter.getOrElse(""), 
-			Messages("speaker.email") -> speaker.email.getOrElse(""), 
-			Messages("speaker.website") -> cleanurl(speaker.url.getOrElse(""))
+			(Messages("speaker.twitter"), speaker.twitter, speaker.twitter.map(t =>"https://twitter.com/" + t)),
+			(Messages("speaker.email"), speaker.email, speaker.email.map(e => "mailto:" + e)),
+			(Messages("speaker.website"), speaker.url.map(cleanurl), speaker.url)	
 		)
 		
 		@eventList(events)

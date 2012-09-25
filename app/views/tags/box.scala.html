@@ -1,7 +1,7 @@
 @* Prints a box containing the non-empty fields from the list of name,value fields provided. *@
-@(fields: (String,String)*)
+@(fields: (String, Option[String], Option[String])*)
 
-@defining(fields.filter(field => !field._2.isEmpty)) { nonEmptyFields =>
+@defining(fields.filter(field => field._2.isDefined)) { nonEmptyFields =>
 	
 	@if(nonEmptyFields.size > 0) {
 		<div class="box">
@@ -11,7 +11,13 @@
 					@field._1
 				</div>
 				<div class="content">
-					@field._2
+					@if(field._3.isDefined) {
+						<a href="@field._3.getOrElse("")" target="_blank">
+							@field._2.get
+						</a>
+					} else {
+						@field._2.get
+					}
 				</div>
 			</div>
 		}
