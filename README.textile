@@ -1,6 +1,8 @@
 h1. Scala1
 
-Server side of the mobile application for the **JavaOne** conference on **September 2012**.
+Server side of the mobile application commissioned by "Typesafe":http://typesafe.com for the Scala portion of the **2012 JavaOne** conference.
+
+Built by "Tindr":http://tindr.co in collaboration with "Magnetic Bear Studios":http://magneticbear.com/
 
 h2. Running Scala1
 
@@ -50,3 +52,9 @@ Since we're dealing with private data, any contributions will be made through pu
 
 Just send us any commits you have, and we'll take a look. If your changes are safe and fun for everyone, we'll publish them ASAP!
 
+h2. Links
+
+The mobile apps are available here:
+
+- "iOS":https://github.com/magneticbear/scalaone_iphone
+- "Android":https://github.com/magneticbear/scala1_android
