@@ -5,7 +5,7 @@ db.default.password=YourDBUserPassword
 # The secret key is used to secure cryptographics functions.
 application.secret=AnyStringOfLength16xNWillDo12345
 
-# Pusher configuration
+# Pusher configuration 
 # Keep Pusher disabled or get a free account and enter your credentials here
 pusher.enabled=false
 pusher.appId=YourAppId
@@ -16,5 +16,5 @@ pusher.secret=YourSecret
 security.token=AnyValueWillDo
 
 # Email configuration
-smtp.user="yourEmailUser@example.com"
-smtp.password=YourEmailPassword
+smtp.user="user@example.com"
+smtp.password=YourPassword
