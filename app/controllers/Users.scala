@@ -11,10 +11,12 @@ import play.api.data.Form
 import play.api.data.FormError
 import play.api.mvc.Action
 import play.api.mvc.AnyContent
+import play.api.i18n.Messages
 import play.api.Logger
 import tools.BigDecimalFormatter
 import play.api.mvc.Request
 import play.api.mvc.Result
+import jobs.EmailJob._
 
 object Users extends APIController {
 
@@ -76,7 +78,10 @@ object Users extends APIController {
 						// Parameters are fine, create user
 						user => {
 							user.create match {
-								case Some(newUser) => Success(Map("id" -> newUser.id.get))
+								case Some(newUser) => {
+									sendEmail(newUser.email, Messages("email.welcome.subject"), "emailTemplates/welcome.en.html")
+									Success(Map("id" -> newUser.id.get))
+								}
 								case None => Error("User cannot be created")
 							}
 						})

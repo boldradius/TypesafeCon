@@ -23,8 +23,10 @@ about.discussion.details=Chat with your fellow Scala Enthusiasts via the general
 about.find=Find a Like Minded Person
 about.find.details=It''s a big conference out there - coordinate on the fly meetups with the "Find an Enthusiast" function.  Find other people using the app on the map and click on them to get their information or even enter a one-on-one chat with them.  Allowing the app access to your location through this function enables you to be found as well.
 
-playground.details=This is the playground area. It''s here for you to hack at. Here''s how:
-playground.details.step1=Fork the application repository 
-playground.details.step1.linkText=here
-playground.details.step2=Hack away at the backend source code.
+playground.details=This is the playground area. It''s here for you to hack at. Here's how:
+playground.details.step1=Fork the application repository.
+playground.details.step2=Hack away at the source code.
 playground.details.step3=Send us a pull request, and we''ll include your changes if they''re safe and fun for everyone :)
+playground.instructions=We sent you an email with instructions when you registered - if you haven''t yet, now is the perfect time!
+
+email.welcome.subject=Welcome to Scala1

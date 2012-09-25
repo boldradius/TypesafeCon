@@ -40,7 +40,7 @@ class CreateUserTest extends APISpecification {
 					"twitter" -> "john",
 					"facebook" -> "johnDoe",
 					"phone" -> "987-6543210",
-					"email" -> "john@example.com",
+					"email" -> "alex@tindr.ca",
 					"website" -> "http://example.com",
 					"token" -> validToken))
 
@@ -59,7 +59,7 @@ class CreateUserTest extends APISpecification {
 											user.twitter must beEqualTo(Some("john"))
 											user.facebook must beEqualTo(Some("johnDoe"))
 											user.phone must beEqualTo(Some("987-6543210"))
-											user.email must beEqualTo("john@example.com")
+											user.email must beEqualTo("alex@tindr.ca")
 											user.website must beEqualTo(Some("http://example.com"))
 										}
 									}
