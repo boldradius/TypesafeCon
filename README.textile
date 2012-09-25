@@ -9,29 +9,9 @@ h2. Running Scala1
 To install and run Scala1 you need to have the "Typesafe Stack":http://typesafe.com/stack installed, and follow these steps:
 
 1. Clone this repository
-2. Install Postgres (If you prefer a different DB make sure to change the application.conf accordingly)
+2. Install Postgres (If you prefer a different DB make sure to change the @application.conf@ accordingly)
 3. Create a @scalaone@ DB user with a new database called @scalaone@
-4. Create a plain text file @conf/private.conf@ with the following data:
-
-<pre>
-# DB credentials
-db.default.user=YourDBUser
-db.default.password=YourDBUserPassword
-
-# The secret key is used to secure cryptographics functions.
-application.secret=AnyStringOfLength16xNWillDo12345
-
-# Pusher configuration 
-# Keep Pusher disabled or get a free account and enter your credentials here
-pusher.enabled=false
-pusher.appId=YourAppId
-pusher.key=YourKey
-pusher.secret=YourSecret
-
-# Internal security configuration
-security.token=AnyValueWillDo
-</pre>
-
+4. Rename @conf/private.conf.sample@ to @conf/private.conf@ and edit it to reflect your DB, Pusher and Email credentials.
 5. Make sure ImageMagick is installed on your system by running @convert@. If it is not, use your preferred "installation":http://www.imagemagick.org/script/binary-releases.php "method":https://help.ubuntu.com/community/ImageMagick.  
 6. To verify the installation, cd to the project root and run @sbt test@. All tests should run successfully.
 7. Hack away!
