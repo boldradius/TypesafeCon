@@ -49,7 +49,7 @@ object InitialData {
 				"Peter Hausel has more than fourteen years of software engineering experience. He is obsessed with web technologies, great user experience and open source. He was an early contributor to the Play framework and now leads Typesafe's Play initiative.",
 				Some("peter_kovac11@hotmail.com"),
 				Some("pk11"),
-				Some("https://github.com/pk11/")).create.get
+				Some("https://github.com/pk11")).create.get
 
 			val martin = Speaker(Id(0),
 				"Martin Odersky",
@@ -57,7 +57,7 @@ object InitialData {
 				"Martin Odersky is the inventor of the Scala language, a professor at EPFL in Lausanne, Switzerland, and a founder of Typesafe, Inc. His work concentrates on the fusion of functional and object-oriented programming. He believes the two paradigms are two sides of the same coin, to be unified as much as possible. To prove this, he has worked on a number of language designs, from Pizza to GJ to Functional Nets. He has also influenced the development of Java as a co-designer of Java generics and as the original author of the current javac reference compiler.",
 				Some("martin.odersky@epfl.ch"),
 				Some("odersky"),
-				Some("http://lampwww.epfl.ch/~odersky/")).create.get
+				Some("http://lampwww.epfl.ch/~odersky")).create.get
 
 			val roland = Speaker(Id(0),
 				"Roland Kuhn",
@@ -73,7 +73,7 @@ object InitialData {
 				"Viktor Klang, also known as √, is a passionate programmer with a taste for concurrency paradigms and performance optimization. Currently working as Tech Lead for the Akka project at Typesafe.",
 				None,
 				Some("viktorklang"),
-				Some("http://klangism.tumblr.com/")).create.get
+				Some("http://klangism.tumblr.com")).create.get
 
 			val venkat = Speaker(Id(0),
 				"Venkat Subramaniam",
@@ -81,7 +81,7 @@ object InitialData {
 				"Dr. Venkat Subramaniam is an award-winning author, founder of Agile Developer, Inc., and an adjunct faculty at the University of Houston. He has trained and mentored thousands of software developers in the US, Canada, Europe, and Asia, and is a regularly-invited speaker at several international conferences. Venkat helps his clients effectively apply and succeed with agile practices on their software projects.\n\nVenkat is the author of \".NET Gotchas,\" the coauthor of 2007 Jolt Productivity Award winning \"Practices of an Agile Developer,\" the author of \"Programming Groovy: Dynamic Productivity for the Java Developer\" and \"Programming Scala: Tackle Multi-Core Complexity on the Java Virtual Machine\" (Pragmatic Bookshelf). His latest book is \"Programming Concurrency on the JVM: Mastering synchronization, STM, and Actors. \"",
 				Some("venkats@agiledeveloper.com"),
 				Some("venkat_s"),
-				Some("http://www.agiledeveloper.com/")).create.get
+				Some("http://www.agiledeveloper.com")).create.get
 
 			val jward = Speaker(Id(0),
 				"James Ward",
@@ -97,7 +97,7 @@ object InitialData {
 				"I am a principal technology consultant working for msg systems ag in Germany. As a software architect, developer and consultant. Also writing for German IT magazines. I work daily with customers and projects dealing with Enterprise Java and other new technologies, on a variety of platforms using different vendors. My main area of expertise are Java EE Middleware Servers.\nI am a member of the Java EE 7 EG and DOAG representative on the German iJUG.",
 				None,
 				Some("myfear"),
-				Some("http://blog.eisele.net/")).create.get
+				Some("http://blog.eisele.net")).create.get
 
 			val luc = Speaker(Id(0),
 				"Luc Duponcheel",
@@ -113,7 +113,7 @@ object InitialData {
 				"Bruno works with Java since 2001 and has worked mostly with Web Development, specially in the Enterprise level. Has also worked with several web frameworks like JSF, Wicket, Tapestry, GWT, Spring MVC, Spring WebFlow, Struts and others. Now works at Oracle to help promote the Java EE platform and Oracle's JEE servers GlassFish and WebLogic in Latin America",
 				Some("bruno.borges@gmail.com"),
 				Some("brunoborges"),
-				Some("http://www.brunoborges.com/")).create.get
+				Some("http://www.brunoborges.com")).create.get
 
 			val ppilgrim = Speaker(Id(0),
 				"Peter Pilgrim",
@@ -121,7 +121,7 @@ object InitialData {
 				"Peter Pilgrim is a professional software developer, designer and architect. Since 1998 he has worked in the financial services industry, investment banking mainly, developing Information Technology solutions for clients. He is a well-known specialist in Java Enterprise Edition (Java EE) technology, focused on the server-side and the implementation of electronic commerce. Peter has built professional Java EE apps for top-tier investment banks for HSBC, State Street, Lloyds Banking Group, UBS, Credit Suisse, Royal Bank of Scotland and Deutsche Bank. Peter is the 91st Oracle Java Champion (Feb 2007). Peter is a Certified SCRUM Master from Martine Devos (May 2010).\nAs well as extensive Java development experience, Peter is an early adopter of technologies and a leading light for progression on the Java platform, especially by influencing the wider community. Peter founded and organised the JAVAWUG from 2004 to 2010.\nHe attended Chris Oliver’s seminal F3 talk at JavaOne 2007, which debuted the first ever public viewing of the, then, JavaFX (Script) technology. Peter has been interested in the JavaFX next generation user interface on the Java platform ever since. He developed a number of experimental custom controls.\nA great deal of Peter’s reputation is derived from his proactive search for new technologies, especially on the JVM. Peter attended Martin Odersky’s first ever Scala Workshop outside of Switzerland, in the UK (June 2010), he said of it at the time: “There is just nothing like learning new tech from the master who created it in the first place. You can’t beat that opportunity. If James Gosling (The proverbial Father of Java) had organised an Introduction to Java course in 1998 in London, I would have done my damnedest to get on it. Same idea: stay fresh, to be best”.",
 				None,
 				Some("peter_pilgrim"),
-				Some("http://www.xenonique.co.uk/blog/")).create.get
+				Some("http://www.xenonique.co.uk/blog")).create.get
 
 			val andrey = Speaker(Id(0),
 				"Andrey Breslav",
@@ -129,7 +129,7 @@ object InitialData {
 				"Andrey is the lead language designer working on Project Kotlin at JetBrains (http://jetbrains.com/kotlin). He also tries to make the Java language better serving as a Java Community Process expert in a group working on JSR-335 (\"Project Lambda\"). In what spare time is left he tries to make sure that his traveling is not all about work and teaches programming to high-school children. Used to teach OOP/Software Design at a university, but currently switched to speaking at software conferences. Audiences of Devoxx, OSCON, StrangeLoop, Jfokus and other events gave warm reception to his talks.",
 				None,
 				Some("abreslav"),
-				Some("https://sites.google.com/site/abreslav2/")).create.get
+				Some("https://sites.google.com/site/abreslav2")).create.get
 
 			val talip = Speaker(Id(0),
 				"Talip Ozturk",
@@ -137,7 +137,7 @@ object InitialData {
 				"Talip Ozturk is the founder of Hazelcast. He has been working with enterprise Java since 1999. He worked as a consultant at MIC (Virginia), developer at a start-up company, Syncline (Boston) and sales architect at Itochu Technologies (New York). In 2003, he got fascinated by Jini and developed an implementation of JavaSpaces. In 2008, his passion for distributed programming led him to develop Hazelcast. Before Hazelcast, Talip was the director of technology at Zaman Media Group (Istanbul). In his free time, he enjoys playing soccer.",
 				None,
 				Some("oztalip"),
-				Some("http://www.hazelcast.com/")).create.get
+				Some("http://www.hazelcast.com")).create.get
 
 			val brian = Speaker(Id(0),
 				"Brian Tarbox",
@@ -145,7 +145,7 @@ object InitialData {
 				"Brian Tarbox is a Distinguished Member of Technical Staff at Motorola in the Systems Engineering group designing next generation video products. His open source music product Log4JFugue won the 2010 Duke's Choice Award for Innovation, and his 2009 talk on that topic earned Rock Star Status.\nHe hold several patents in the fields of User Interface design, CDN Caching and Three Screen TV.\nHe is a frequent contributor to the Pragmatic Programmer magazine and the No Fluff, Just Stuff Journal.\nHe plays numerous instruments including Native American Flute, shakuhachi, didgeridoo, and hulusi.\nHis primary interest in the JVM world is polyglot programming with Scala and Groovy.\nHe writes a blog on the intersection of software design, cognition, music, and creativity at briantarbox.blogspot.com.",
 				None,
 				None,
-				Some("http://briantarbox.org/")).create.get
+				Some("http://briantarbox.org")).create.get
 
 			val guillaume = Speaker(Id(0),
 				"Guillaume Laforge",
@@ -153,15 +153,15 @@ object InitialData {
 				"Guillaume Laforge is the project lead of Groovy, the highly popular and successful dynamic language for the JVM. He co-authored Manning's best seller \"Groovy in Action\" with Dierk König, and is working for SpringSource (a division of VMWare) where he's hacking full time on cool and Groovy stuff. You can meet Guillaume at conferences around the world where he evangelizes the Groovy dynamic language, Domain-Specific Languages in Groovy, the agile Grails web framework or the Gaelyk lightweight toolkit for Google App Engine.",
 				None,
 				Some("glaforge"),
-				Some("http://glaforge.appspot.com/")).create.get
+				Some("http://glaforge.appspot.com")).create.get
 
 			val charles = Speaker(Id(0),
 				"Charles Nutter",
 				"JRuby Team",
-				"",
+				"Charles Nutter is a Senior Principal Software Engineer currently working at the JRuby Team.",
 				None,
 				Some("headius"),
-				Some("http://blog.headius.com/")).create.get
+				Some("http://blog.headius.com")).create.get
 
 			val kai = Speaker(Id(0),
 				"Kai Wähner",
@@ -174,7 +174,7 @@ object InitialData {
 			val graeme = Speaker(Id(0),
 				"Graeme Rocher",
 				"VMware",
-				"",
+				"Graeme Rocher is a software engineer who serves as Head of Grails Development at SpringSource - a division of VMware. Graeme is project lead of the open source Grails web application framework and co-author of “The Definitive Guide to Grails”. Prior to joining SpringSource Graeme co-founded G2One - the Groovy/Grails Company - who were later acquired by SpringSource.",
 				Some("graeme.rocher@gmail.com"),
 				Some("graemerocher"),
 				Some("http://grails.io")).create.get
@@ -185,15 +185,15 @@ object InitialData {
 				"Ed Burns is a senior Java engineer at Oracle. Ed has worked on a wide variety of client and server side Web technologies since 1994, including NCSA Mosaic, Mozilla, the Sun Java Plugin, Jakarta Tomcat and, most recently JavaServer Faces. Ed is currently the co-spec lead for JSR 127, JavaServer Faces, a topic on which Ed recently co-authored a book for McGraw-Hill. Ed is an experienced international conference speaker, with consistently high attendance numbers and ratings at the JavaOne conference, JAOO, W-JAX, No Fluff Just Stuff, JA-SIG, The Ajax Experience, and JUGs and Linux User Groups.",
 				None,
 				Some("edburns"),
-				Some("http://ridingthecrest.com/edburns/")).create.get
+				Some("http://ridingthecrest.com/edburns")).create.get
 
 			val santiago = Speaker(Id(0),
 				"Santiago Pericasgeertsen",
 				"Software Engineer, Oracle",
-				"",
+				"Santiago holds a PhD in computer science from Boston University, where he specialized in programming languages and compilers. He has been a staff engineer at Sun/Oracle for 9 years. In his first project, he co-developed XSLTC: an XSLT to bytecode compiler now in the JDK. In the next few years his focus was on XML performance and binary XML and developed the Japex micro-benchmark framework. He participated, and was appointed editor, in a number of initiatives in this area including the W3C XML Binary Characterization WG and the W3C Efficient XML Interchange WG. Before joining the Glassfish Web Tier team at Oracle, he was tech lead for JAXP and also worked on the Glassfish Mobility Platform. Currently, he is the co-spec lead for JAX-RS 2.0 (JSR 339).",
 				Some("santiago@cs.bu.edu"),
 				None,
-				Some("http://cs-people.bu.edu/santiago/")).create.get
+				Some("http://cs-people.bu.edu/santiago")).create.get
 
 			val stephen = Speaker(Id(0),
 				"Stephen Chin",
@@ -209,7 +209,7 @@ object InitialData {
 				"Dr Nic is a developer's developer. He writes blog posts for developers; creates tools, libraries and text editor extensions for developers; and speaks to developers at conferences. He's the VP of Developer Evangelism at Engine Yard, the premier platform as a service. He's Australian and living in the Bay Area. And he's funny; if you can understand his accent.",
 				Some("drnicwilliams@gmail.com"),
 				Some("drnic"),
-				Some("http://drnicwilliams.com/")).create.get
+				Some("http://drnicwilliams.com")).create.get
 
 			val raghavan = Speaker(Id(0),
 				"Raghavan \"Rags\" Srinivas",
@@ -217,7 +217,7 @@ object InitialData {
 				"Raghavan \"Rags\" Srinivas is a Developer Advocate at Couchbase getting his hands dirty with emerging technology directions and trends. His general focus area is in distributed systems, with a specialization in cloud computing. He worked on Hadoop and HBase during its early stages. He has spoken on a variety of technical topics at conferences around the world, conducted and organized Hands-on Labs and taught graduate classes in the evening. He is also a repeat JavaOne rock star speaker award winner.\nRags brings with him over 20 years of hands-on software development and over 10 years of architecture and technology evangelism experience. He worked for Digital Equipment Corporation, Sun Microsystems, Intuit and Accenture. He has worked on several technology areas, including internals of VMS, Unix and NT to Hadoop and HBase. He has evangelized and influenced the architecture of a number of technology areas including the early releases of JavaFX, Java, Java EE, Java and XML, Java ME, AJAX and Web 2.0, Java Security and so on.\nRags holds a Masters degree in Computer Science from the Center of Advanced Computer Studies at the University of Louisiana at Lafayette.",
 				None,
 				Some("ragss"),
-				Some("http://ragss.wordpress.com/")).create.get
+				Some("http://ragss.wordpress.com")).create.get
 
 			val aaron = Speaker(Id(0),
 				"Aaron Bedra",
@@ -225,7 +225,7 @@ object InitialData {
 				"Aaron Bedra is a senior software engineer at Groupon. He is a frequent contributor to the Clojure language and its supporting libraries as well as an active member of the Clojure community.\nAaron has led the development of several commercial Clojure projects and is the co-author of Programming Clojure, 2nd Edition and the upcoming Practical Software Security Book.",
 				None,
 				Some("abedra"),
-				Some("http://www.aaronbedra.com/")).create.get
+				Some("http://www.aaronbedra.com")).create.get
 
 			val thomas = Speaker(Id(0),
 				"Thomas Enebo",
@@ -233,7 +233,7 @@ object InitialData {
 				"Thomas Enebo is the co-lead of the JRuby project and an employee of Red Hat. He has been a practitioner of Java since the heady days of the HotJava browser, and he has been happily using Ruby since 2001. Thomas has spoken at numerous Java and Ruby conferences, co-authored \"Using JRuby\", and was awarded the \"Rock Star\" award at JavaOne. When Thomas is not working he enjoys biking, anime, and drinking a decent IPA.",
 				None,
 				Some("tom_enebo"),
-				Some("http://blog.enebo.com/")).create.get
+				Some("http://blog.enebo.com")).create.get
 
 			/********************************************************************************************************************/
 			/*************************************** EVENTS *********************************************************************/
