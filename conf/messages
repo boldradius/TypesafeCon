@@ -27,6 +27,6 @@ playground.details=This is the playground area. It''s here for you to hack at. H
 playground.details.step1=Fork the application repository.
 playground.details.step2=Hack away at the source code.
 playground.details.step3=Send us a pull request, and we''ll include your changes if they''re safe and fun for everyone :)
-playground.instructions=We sent you an email with instructions when you registered - if you haven''t yet, now is the perfect time!
+playground.instructions=We sent you an email with instructions when you created your profile - if you haven''t yet, now is the perfect time!
 
 email.welcome.subject=Welcome to Scala1
