@@ -107,7 +107,7 @@ h2 {
 	float: right;
 	width: 10pt;
 	height: 15pt;
-	background-image: url("/assets/img/arrow.right.png")
+	background-image: url("/assets/img/arrow.right.png");
 }
 
 .box .content {
@@ -155,4 +155,17 @@ h2 {
 
 #event .share {
 	margin-top: 5pt;
+}
+
+/************** Landing page **************/
+#screenshots {
+	width: 70%;
+	margin-left: auto;
+	margin-right: auto;
+	border: 1pt solid #DBDBDB;
+	box-shadow: 0 8px 12px -8px black;
+}
+
+#downloads .btn {
+	width: 90%;
 }

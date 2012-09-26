@@ -1,0 +1,35 @@
+@()(implicit flash:Flash)
+
+@mobile {
+
+	<h1>@Messages("title.landing")</h1>
+	<p>@Messages("landing.details")</p>
+
+	<div id="screenshots" class="carousel slide">
+		<div class="carousel-inner">
+			<div class="active item"><img src="@routes.Assets.at("img/screenshots/ios.1.png")"></div>
+			<div class="item"><img src="@routes.Assets.at("img/screenshots/ios.2.png")"></div>
+			<div class="item"><img src="@routes.Assets.at("img/screenshots/ios.3.png")"></div>
+			<div class="item"><img src="@routes.Assets.at("img/screenshots/ios.4.png")"></div>
+			<div class="item"><img src="@routes.Assets.at("img/screenshots/ios.5.png")"></div>
+		</div>
+
+		<!-- Hide nav
+		<a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+		<a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
+		-->
+	</div>
+
+	<div class="row" id="downloads">
+		<div class="span2 left"><a href="" class="btn">@Messages("landing.download.ios")</a></div>
+		<div class="span2 right"><a href="" class="btn">@Messages("landing.download.android")</a></div>
+	</div>
+
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('.carousel').carousel({
+				interval: 3000
+				});
+		})
+	</script>
+}

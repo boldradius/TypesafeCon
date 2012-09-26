@@ -10,6 +10,10 @@ object Application extends Controller {
 		implicit request => Ok(views.html.index())
 	}
 
+	def landing = Action {
+		implicit request => Ok(views.html.landing())
+	}
+
 	def playground = Action {
 		implicit request => Ok(views.html.playground())
 	}

@@ -4,6 +4,7 @@
 
 # Home page
 GET     /                             controllers.Application.index
+GET     /landing                      controllers.Application.landing
 
 # Playground
 GET     /playground                   controllers.Application.playground
