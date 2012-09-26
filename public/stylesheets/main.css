@@ -151,11 +151,9 @@ h2 {
 
 .block {
 	display: block;
-}
-
-#event .share {
 	margin-top: 5pt;
 }
+
 
 /************** Landing page **************/
 #screenshots {
@@ -164,8 +162,4 @@ h2 {
 	margin-right: auto;
 	border: 1pt solid #DBDBDB;
 	box-shadow: 0 8px 12px -8px black;
-}
-
-#downloads .btn {
-	width: 90%;
 }
