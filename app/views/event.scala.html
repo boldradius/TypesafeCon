@@ -20,7 +20,12 @@
 		
 		<div class="description">@event.description</div>
 
-		@if(!hideActions) {
+		@if(hideActions) {
+			<div class="actions">
+				<a href="https://twitter.com/intent/tweet?hashtags=scala1&text=@event.title&url=http%3A%2F%2Fscala1.tindr.co%2Flanding" 
+					class="btn block">@Messages("event.share")</a>
+			</div>
+		} else {
 			<div class="actions">
 				<a href="scala1://events/@event.id.get/discussion" class="btn block">@Messages("event.discussion")</a>
 				<a href="scala1://events/@event.id.get/share" class="btn block">@Messages("event.share")</a>
