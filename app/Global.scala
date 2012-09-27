@@ -234,6 +234,14 @@ object InitialData {
 				None,
 				Some("tom_enebo"),
 				Some("http://blog.enebo.com")).create.get
+				
+			val manish = Speaker(Id(0),
+				"Manish Pandit",
+				"Director of Engineering , IGN Entertainment",
+				"A programmer at heart, I work with an awesome team of engineers to build awesome products. I work at IGN Entertainment as a Director of Engineering. Prior to IGN, I was Principal Architect at E*Trade Financial where I wrote the streaming quotes framework, and an OAuth Server among other things. I joined E*Trade after working at Accenture in the Financial Services and Communications/High Tech workforce.  I've been working most recently with Scala and MongoDB, after having worked with Java, MySQL and Ruby for the most of my career.",
+				None,
+				Some("lobster1234"),
+				Some("http://mpandit.tumblr.com")).create.get
 
 			/********************************************************************************************************************/
 			/*************************************** EVENTS *********************************************************************/
@@ -400,6 +408,15 @@ object InitialData {
 				new DateTime(2012, 10, 1, 11, 0),
 				"Hilton San Francisco - Golden Gate 6/7/8",
 				Seq(kai.id.get)).create
+				
+			val CON13285 = S1Event(Id(0),
+				"CON13285",
+				"Evolving IGN’s New APIs with Scala",
+				"In this session, learn how IGN found Scala offering an excellent ecosystem for building its new API infrastructure. Learn the advantages of the JVM-based language, along with the components that make up the big picture: Scala-based frameworks (Scalatra, PlayFramework 2.0, Lift), caching (Varnish, Memcached), and persistence (MongoDB, MySQL). You will also get to know the secrets to scaling, caching, monitoring, and tuning a highly performant API architecture that serves the desktop, consoles, mobile devices, and partner channels at IGN.",
+				new DateTime(2012, 10, 4, 15, 30),
+				new DateTime(2012, 10, 4, 16, 30),
+				"Hilton San Francisco - Continental Ballroom 7/8/9",
+				Seq(manish.id.get)).create
 
 		}
 	}
