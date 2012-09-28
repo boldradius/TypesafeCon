@@ -8,6 +8,7 @@ GET     /landing                      controllers.Application.landing
 
 # Playground
 GET     /playground                   controllers.Application.playground
+POST    /sendInstructions             controllers.Application.sendInstructions
 
 # Events
 GET     /events                       controllers.Events.list

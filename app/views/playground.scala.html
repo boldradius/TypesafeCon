@@ -1,13 +1,38 @@
-@()(implicit flash:Flash)
+@(userAgent: String, instructionsForm: Form[String])(implicit flash:Flash)
+
+@import helper._
+@import views.html.tags.bootstrap2._
 
 @mobile {
 	
 	<h1>@Messages("title.playground")</h1>
 	<p>@Messages("playground.details")</p>
 	<ol class="steps">
-		<li>@Messages("playground.details.step1")</a></li>
+		<li>@Messages("playground.details.step1")</li>
 		<li>@Messages("playground.details.step2")</li>
 		<li>@Messages("playground.details.step3")</li>
 	</ol>
-	<p>@Messages("playground.instructions")
+	
+	@if(userAgent.toLowerCase.contains("android")) {
+		@* Android users did not register, so allow them to enter an email address for instructions *@
+		<p>@Messages("playground.sendInstructions")</p>
+		
+		@helper.form(routes.Application.sendInstructions, args = 'class -> "form-inline") {
+		
+			@if(!instructionsForm.errors.isEmpty) {
+				<div class="alert alert-error">
+					@instructionsForm.errors.map { error =>
+						@Messages(error.message)<br/>
+					}
+				</div>
+			}
+
+			<input type="text" class="input-medium" placeholder="Email" name="email" id="email">
+			<button type="submit" class="btn">@Messages("playground.send")</button>	
+		}
+		
+	} else {
+		@* iOS users have a profile, they should have gotten the email already *@
+		<p>@Messages("playground.instructions")</p>
+	}
 }

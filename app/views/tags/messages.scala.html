@@ -1,0 +1,20 @@
+@()(implicit flash:Flash)
+
+@if(flash.get("success").isDefined) {
+	<div class="alert alert-success">
+		@flash.get("success")
+	</div>
+}
+
+@if(flash.get("warning").isDefined) {
+	<div class="alert">
+		@flash.get("warning")
+	</div>
+}
+
+@flash.get("error").map { error =>
+	<div class="alert alert-error">
+		@error
+	</div>
+}
+

@@ -1,5 +1,6 @@
 @(content: Html)(implicit flash:Flash)
 
+@import tags._
 
 <!DOCTYPE html>
 	
@@ -20,6 +21,7 @@
 		<a name="top"></a>
 
 		<div class="container">
+			@messages()
 			@content
 		</div>
 	</body>
