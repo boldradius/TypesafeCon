@@ -29,7 +29,7 @@ playground.details.step1=Fork the application repository.
 playground.details.step2=Hack away at the source code.
 playground.details.step3=Send us a pull request, and we''ll include your changes if they''re safe and fun for everyone :)
 playground.instructions=We sent you an email with instructions when you created your profile - if you haven''t yet, now is the perfect time!
-playground.sendInstructions=Enter your email below and we''l send you the full instructions:
+playground.sendInstructions=Enter your email below and we''ll send you full instructions:
 playground.send=Send
 
 landing.details=Scala1 is an application for JavaOne attendees to visualize content related to the Typesafe Stack (Scala, Akka and the Play! Framework) and interact with other Scala enthusiasts near them.
