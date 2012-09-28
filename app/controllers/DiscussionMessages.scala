@@ -120,5 +120,5 @@ object DiscussionMessages extends APIController {
 		}
 	}
 	
-	private def privateChannel(id1: Long, id2: Long) = "private-" + (if(id1<id2) id1 + "-" + id2 else id2 + "-" + id1)
+	private def privateChannel(id1: Long, id2: Long) = "private_" + (if(id1<id2) id1 + "_" + id2 else id2 + "_" + id1)
 }
