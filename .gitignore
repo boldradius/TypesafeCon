@@ -13,3 +13,5 @@ project/target
 target
 tmp
 cert
+Scraper.scala
+scraping
