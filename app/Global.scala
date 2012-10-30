@@ -110,11 +110,11 @@ object InitialData {
 				
 			val tim = Speaker(Id(0),
 				"Tim Romberg",
-				"POSITION",
+				"",
 				"Tim has been active for 15 years as developer, researcher, and consultant with a focus on Enterprise Collaboration and Healthcare, in Germany and Belgium. His experience with MVC dates back to an ERP-related assignment on an early version of Borland Delphi.",
 				None,
 				Some("rombergt"),
-				Some("URL")).create.get
+				None).create.get
 				
 			val louis = Speaker(Id(0),
 				"Louis Jacomet",
@@ -132,14 +132,6 @@ object InitialData {
 				Some("LucDup"),
 				Some("http://www.linkedin.com/pub/luc-duponcheel/1/366/6b7")).create.get
 				
-			val nick = Speaker(Id(0),
-				"NAME",
-				"POSITION",
-				"BIO",
-				None,
-				Some("TWITTER"),
-				Some("URL")).create.get
-
 			/********************************************************************************************************************/
 			/*************************************** EVENTS *********************************************************************/
 			/********************************************************************************************************************/
