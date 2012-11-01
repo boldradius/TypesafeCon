@@ -5,7 +5,7 @@
 	<div class="box">
 		@for(event <- events){
 			<div class="boxRow @if(event == events.last){lastRow}"
-				onClick="window.location='typesafecon://events/@event.id';">
+				onClick="window.location='scala1://events/@event.id';">
 				<div class="rightArrow"></div>
 				<div class="content fullwidth">
 					@event.title
