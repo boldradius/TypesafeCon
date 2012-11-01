@@ -1,16 +1,18 @@
-h1. Scala1
+h1. TypesafeCon
 
-Server side of the mobile application commissioned by "Typesafe":http://typesafe.com for the Scala portion of the **2012 JavaOne** conference.
+Server side of the mobile application commissioned by "Typesafe":http://typesafe.com
+
+TypesafeCon is an application for conference attendees to visualize content and sessions related to the Typesafe Stack (Scala, Akka and the Play! Framework), while interacting with other enthusiasts around them.
 
 Built by "Tindr":http://tindr.co in collaboration with "Magnetic Bear Studios":http://magneticbear.com/
 
-h2. Running Scala1
+h2. Running TypesafeCon
 
-To install and run Scala1 you need to have the "Typesafe Stack":http://typesafe.com/stack installed, and follow these steps:
+To install and run TypesafeCon you need to have the "Typesafe Stack":http://typesafe.com/stack installed, and follow these steps:
 
 1. Clone this repository
 2. Install Postgres (If you prefer a different DB make sure to change the @application.conf@ accordingly)
-3. Create a @scalaone@ DB user with a new database called @scalaone@
+3. Create a @typesafecon@ DB user with a new database called @typesafecon@
 4. Rename @conf/private.conf.sample@ to @conf/private.conf@ and edit it to reflect your DB, Pusher and Email credentials.
 5. Make sure ImageMagick is installed on your system by running @convert@. If it is not, use your preferred "installation":http://www.imagemagick.org/script/binary-releases.php "method":https://help.ubuntu.com/community/ImageMagick.  
 6. To verify the installation, cd to the project root and run @sbt test@. All tests should run successfully.
@@ -26,7 +28,7 @@ We want you to play with the code, and add any features you'd like. The playgrou
 
 And, when you have something to show, contribute to the repo...
 
-h2. Contributing to Scala1
+h2. Contributing to TypesafeCon
 
 Since we're dealing with private data, any contributions will be made through pull requests.
 
@@ -34,7 +36,4 @@ Just send us any commits you have, and we'll take a look. If your changes are sa
 
 h2. Links
 
-The mobile apps are available here:
-
-- "iOS":https://github.com/magneticbear/scalaone_iphone
-- "Android":https://github.com/magneticbear/scala1_android
+The mobile app repositories are available here (TODO)

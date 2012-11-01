@@ -1,6 +1,6 @@
-title.about=About Scala1
+title.about=About TypesafeCon
 title.playground=Playground
-title.landing=Scala1
+title.landing=TypesafeCon
 
 common.top=Top
 
@@ -13,14 +13,14 @@ event.by=By
 event.discussion=Join the discussion
 event.share=Share this event
 
-about.details=Scala1 is an application for conference attendees to visualize content related to the Typesafe Stack (Scala, Akka and the Play! Framework) and interact with other Scala enthusiasts near them.
+about.details=TypesafeCon is an application for conference attendees to visualize content and sessions related to the Typesafe Stack (Scala, Akka and the Play! Framework), while interacting with other enthusiasts around them.
 about.download=Download the app:
 about.typesafe=About Typesafe
 about.typesafe.more=To learn more about the Typesafe stack, click here:
 about.events=Pick Your Events
 about.events.details=Use the app to find the events you''re interested in and flag your favorites to build your own schedule.  You can also flag your favorite speakers for quick reference.
 about.discussion=Join the Discussion
-about.discussion.details=Chat with your fellow Scala Enthusiasts via the general discussion or talk about a specific session through the session-specific chats available within the event pages.  Have a comment you want to share to the wider world?  Hit the Twitter checkbox to tweet your comment with the hashtag #Scala1.
+about.discussion.details=Chat with your fellow Scala Enthusiasts via the general discussion or talk about a specific session through the session-specific chats available within the event pages.  Have a comment you want to share to the wider world?  Hit the Twitter checkbox to tweet your comment with the hashtag #TypesafeCon.
 about.find=Find a Like-Minded Person
 about.find.details=It''s a big conference out there - coordinate on-the-fly meetups with the "Find an Enthusiast" function.  Find other people using the app on the map and click on them to get their information or even enter a one-on-one chat with them.  Allowing the app access to your location through this function enables you to be found as well.
 
@@ -32,10 +32,10 @@ playground.instructions=We sent you an email with instructions when you created 
 playground.sendInstructions=Enter your email below and we''ll send you full instructions:
 playground.send=Send
 
-landing.details=Scala1 is an application for JavaOne attendees to visualize content related to the Typesafe Stack (Scala, Akka and the Play! Framework) and interact with other Scala enthusiasts near them.
+landing.details=TypesafeCon is an application for conference attendees to visualize content and sessions related to the Typesafe Stack (Scala, Akka and the Play! Framework), while interacting with other enthusiasts around them.
 landing.download.ios=Get iOS App
 landing.download.android=Get Android App
 
-email.welcome.subject=Welcome to Scala1
+email.welcome.subject=Welcome to TypesafeCon
 
-success.instructions=Check your inbox for instructions on how to play with Scala1. Have fun!
+success.instructions=Check your inbox for instructions on how to play with TypesafeCon. Have fun!

@@ -16,7 +16,7 @@ upstream backend_web_servers {
 ##############
 server {
 	listen 443;
-	server_name scala1.tindr.co;
+	server_name typesafecon.tindr.co;
 
 	root html;
 	index index.html index.htm;
