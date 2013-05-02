@@ -17,6 +17,7 @@ import tools.BigDecimalFormatter
 import play.api.mvc.Request
 import play.api.mvc.Result
 import jobs.EmailJob._
+import json.JsonLinkedUserWriter
 
 object Users extends APIController {
 
@@ -54,13 +55,21 @@ object Users extends APIController {
 	}
 
 	/** Return a specific user */
-	def get(id: Long) = SecuredAction {
+	def get(id: Long, sourceid: Option[Long]) = SecuredAction {
 		{
 			try {
+				
 				User.findById(id) match {
-					case Some(user) => Success(user)(JsonUserWriter)
-					case _ => Error("User not found")
+					case None => Error("User not found")
+					case Some(user) =>
+						val link = sourceid.flatMap(sid => Links.find(sid, id))
+						
+						if(link.isEmpty)
+							Success(user)(JsonUserWriter)
+						else
+							Success(LinkedUser(user,link.get))(JsonLinkedUserWriter)
 				}
+				
 			} catch {
 				case t: Throwable =>
 					Logger.error("Error creating user", t)

@@ -9,6 +9,8 @@ import play.api.db.DB
 import play.api.Logger
 import java.util.Date
 
+case class LinkedUser(user: User, link: Link)
+
 case class User(var id: Pk[Long],
 				var email: String,
 				var firstName: Option[String] = None,

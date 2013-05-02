@@ -20,7 +20,7 @@ GET     /speakers/:id                 controllers.Speakers.get(id: Long)
 
 # Users
 GET     /users                        controllers.Users.list(location: Option[Boolean])
-GET     /users/:id                    controllers.Users.get(id: Long)
+GET     /users/:id                    controllers.Users.get(id: Long, sourceid:Option[Long])
 POST    /users                        controllers.Users.create
 PUT     /users/:id                    controllers.Users.update(id: Long)
 POST    /users/:id/image              controllers.Users.uploadImage(id: Long)
