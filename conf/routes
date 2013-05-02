@@ -25,6 +25,7 @@ POST    /users                        controllers.Users.create
 PUT     /users/:id                    controllers.Users.update(id: Long)
 POST    /users/:id/image              controllers.Users.uploadImage(id: Long)
 PUT     /users/:id/location           controllers.Users.setLocation(id: Long)
+POST    /users/:id/link/:toId         controllers.Users.link(id: Long, toId: Long)
 
 # Messages
 GET     /messages/general             controllers.DiscussionMessages.general(fromIndex: Option[Long])
