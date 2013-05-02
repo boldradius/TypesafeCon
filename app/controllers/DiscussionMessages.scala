@@ -19,7 +19,7 @@ object DiscussionMessages extends APIController {
 		mapping(
 			"senderId" -> userMapping,
 			"content" -> contentMapping) 
-			{ GeneralMessage.apply } { None })
+			{ GeneralMessage.apply } { message => None })
 
 	/** Form for processing event messages */
 	private def eventMessageForm(eventId: Long): Form[EventMessage] = Form(
