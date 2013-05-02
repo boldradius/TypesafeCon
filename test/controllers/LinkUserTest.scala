@@ -34,20 +34,21 @@ class LinkUserTest extends APISpecification {
 		"Return error when sourceId is not provided" in new LinkUserTestCase {
 			running(FakeApplication()) {
 				val url = "/users//link/" + peter.id.get
-				val Some(result) = routeAndCall(FakeRequest(POST, url).withFormUrlEncodedBody(
+				val result = routeAndCall(FakeRequest(POST, url).withFormUrlEncodedBody(
 						"note" -> "This is a note",
 						"token" -> validToken))
-				status(result) must beEqualTo(NOT_FOUND)
+						
+				result must beNone
 			}
 		}
 		
 		"Return error when targetId is not provided" in new LinkUserTestCase {
 			running(FakeApplication()) {
 				val url = "/users/" + john.id.get + "/link/"
-				val Some(result) = routeAndCall(FakeRequest(POST, url).withFormUrlEncodedBody(
+				val result = routeAndCall(FakeRequest(POST, url).withFormUrlEncodedBody(
 						"note" -> "This is a note",
 						"token" -> validToken))
-				status(result) must beEqualTo(NOT_FOUND)
+				result must beNone
 			}
 		}
 		
@@ -102,29 +103,14 @@ class LinkUserTest extends APISpecification {
 				verifyGoodResult(result) {
 					response => 
 					println(response.result)
-					response.result === "{}"
+					response.result === "\"Link created\""
+						
+					val link = Links.find(john.id.get, peter.id.get)
 					
-//						{
-//							val IdJson = """\{"id":(\d+)\}""".r
-//							response.result match {
-//								case IdJson(id) => {
-//									User.findById(id.toLong) match {
-//										case None => failure("User with id " + id + " was not found")
-//										case Some(user) => {
-//											testUser = user
-//											user.firstName must beEqualTo(Some("John"))
-//											user.lastName must beEqualTo(Some("Doe"))
-//											user.twitter must beEqualTo(Some("john"))
-//											user.facebook must beEqualTo(Some("johnDoe"))
-//											user.phone must beEqualTo(Some("987-6543210"))
-//											user.email must beEqualTo("alex@tindr.ca")
-//											user.website must beEqualTo(Some("http://example.com"))
-//										}
-//									}
-//								}
-//								case json => failure("Response does not contain valid id: " + contentAsString(result))
-//							}
-//						}
+					link must beSome
+					link.get.note must beSome
+					link.get.note.get === "This is a note"
+					
 				}
 			}
 		}
@@ -148,10 +134,10 @@ trait LinkUserTestCase extends After {
 	}
 		
 	// Remove the test data
-	def after = running(FakeApplication()) { 
+	def after = running(FakeApplication()) {
+		// Remove users, links are deleted by cascade
 		User.findById(john.id.get).map(_.delete)
 		User.findById(jane.id.get).map(_.delete)
 		User.findById(peter.id.get).map(_.delete)
-		Links.find(john.id.get, jane.id.get).map(_.delete)
 	}
 }

@@ -4,7 +4,7 @@ import scala.sys.process._
 import com.tindr.pusher.Pusher
 import json.JSONLocationGenerator._
 import json.JsonUserWriter
-import models.User
+import models._
 import play.api.data.Forms._
 import play.api.data.format.Formatter
 import play.api.data.Form
@@ -34,6 +34,10 @@ object Users extends APIController {
 		mapping(
 			"latitude" -> of[BigDecimal](BigDecimalFormatter),
 			"longitude" -> of[BigDecimal](BigDecimalFormatter)) { Location.apply } { _ => None })
+
+	private val linkForm = Form[LinkFormData](
+		mapping(
+			"note" -> optional(text(maxLength = 500))) { LinkFormData.apply } { LinkFormData.unapply })
 
 	/** Return a list of users. If location is set, search for users with/without a location. Otherwise, return all. */
 	def list(location: Option[Boolean]) = SecuredAction {
@@ -190,6 +194,44 @@ object Users extends APIController {
 				}
 			}
 	}
+
+	def link(sourceid: Long, targetid: Long) = SecuredAction {
+		implicit request =>
+			{
+				try {
+					linkForm.bindFromRequest.fold(
+
+						// Error on the link parameters, send proper json error
+						formWithErrors => ParamError(formWithErrors.errors(0)),
+
+						// Form is fine
+						linkData => {
+
+							// Validate that the users exist and that they are not already linked
+							if(sourceid == targetid)
+								Error("Source and target users are the same")
+							else if (User.findById(sourceid).isEmpty)
+								Error("Source user not found")
+							else if (User.findById(targetid).isEmpty)
+								Error("Target user not found")
+							else if (Links.find(sourceid, targetid).isDefined)
+								Error("Source and target users are already linked")
+							else {
+								Link(sourceid, targetid, linkData.note).create match {
+									case Some(newLink) => Success("Link created")
+									case None          => Error("Link could not be created")
+								}
+							}
+
+						})
+				} catch {
+					case t: Throwable =>
+						Logger.error("Error creating link", t)
+						ServerError(t.getMessage)
+				}
+			}
+	}
 }
 
 case class Location(latitude: BigDecimal, longitude: BigDecimal)
+case class LinkFormData(note: Option[String])
