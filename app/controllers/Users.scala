@@ -62,7 +62,7 @@ object Users extends APIController {
 				User.findById(id) match {
 					case None => Error("User not found")
 					case Some(user) =>
-						val link = sourceid.flatMap(sid => Links.find(sid, id))
+						val link = sourceid.flatMap(sid => models.Links.find(sid, id))
 						
 						if(link.isEmpty)
 							Success(user)(JsonUserWriter)
@@ -217,21 +217,23 @@ object Users extends APIController {
 						linkData => {
 
 							// Validate that the users exist and that they are not already linked
+							val source = User.findById(sourceid)
+							val target = User.findById(targetid)
+							
 							if(sourceid == targetid)
 								Error("Source and target users are the same")
-							else if (User.findById(sourceid).isEmpty)
+							else if (source.isEmpty)
 								Error("Source user not found")
-							else if (User.findById(targetid).isEmpty)
+							else if (target.isEmpty)
 								Error("Target user not found")
-							else if (Links.find(sourceid, targetid).isDefined)
+							else if (models.Links.find(sourceid, targetid).isDefined)
 								Error("Source and target users are already linked")
 							else {
-								Link(sourceid, targetid, linkData.note).create match {
+								Link(source.get, target.get, linkData.note).create match {
 									case Some(newLink) => Success("Link created")
 									case None          => Error("Link could not be created")
 								}
 							}
-
 						})
 				} catch {
 					case t: Throwable =>

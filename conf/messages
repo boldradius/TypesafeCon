@@ -37,5 +37,6 @@ landing.download.ios=Get iOS App
 landing.download.android=Get Android App
 
 email.welcome.subject=Welcome to TypesafeCon
+email.connections.subject=Your conference connections
 
 success.instructions=Check your inbox for instructions on how to play with TypesafeCon. Have fun!
