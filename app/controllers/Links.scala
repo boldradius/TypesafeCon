@@ -12,6 +12,9 @@ object Links extends APIController {
 		val body = views.html.contacts(user, contacts)
 		
 		EmailJob.send(user.email, subject, body.toString)
+		
+		user.contactEmailSent = true
+		user.update
 	}
 		
 	def email = SecuredAction {
@@ -20,7 +23,7 @@ object Links extends APIController {
 			val promises =
 			for {
 				// Fetch all users
-				user <- User.findAll
+				user <- User.findAllNoContactEmailSent
 				
 				// Fetch all linked users
 				contacts = models.Links.find(user.id.get)
@@ -28,11 +31,8 @@ object Links extends APIController {
 				// Send email 
 				email = sendEmail(user, contacts)
 				
-				// TODO Mark links as email sent
-				
 			} yield email
 			 
-			// TODO return stats
 			Ok("Emails sent: " + promises.size)
 		}
 	}

@@ -21,7 +21,8 @@ case class User(var id: Pk[Long],
 				var website: Option[String] = None,
 				var latitude: Option[BigDecimal] = None,
 				var longitude: Option[BigDecimal] = None,
-				var locationTime: Option[DateTime] = None) {
+				var locationTime: Option[DateTime] = None,
+				var contactEmailSent: Boolean = false) {
 	
 	// Display first name if present, otherwise email address before the @ sign
 	def displayName = firstName.getOrElse(email.substring(0,email.indexOf("@")))
@@ -75,7 +76,8 @@ case class User(var id: Pk[Long],
 						website = {website},
 						latitude = {latitude},
 						longitude = {longitude},
-						locationtime = {locationTime}
+						locationtime = {locationTime},
+						contactEmailSent = {contactEmailSent}
 					where id = {id}""").on(
 				'firstName -> firstName,
 				'lastName -> lastName,
@@ -87,6 +89,7 @@ case class User(var id: Pk[Long],
 				'latitude -> latitude.map(_.toString),
 				'longitude -> longitude.map(_.toString),
 				'locationTime -> locationTime.map(l => new Date(l.getMillis)),
+				'contactEmailSent -> contactEmailSent,
 				'id -> id).executeUpdate()
 		} > 0
 	}
@@ -136,11 +139,12 @@ object User {
 		get[Option[String]]("website") ~ 
 		get[Option[String]]("latitude") ~ 
 		get[Option[String]]("longitude") ~ 
+		get[Boolean]("contactEmailSent") ~ 
 		get[Option[Date]]("locationtime") map {
-			case id ~ firstName ~ lastName ~ email ~ twitter ~ facebook ~ phone ~ website ~ latitude ~ longitude ~ locationTime => 
-				User(id, email, firstName, lastName, twitter, facebook, phone, website, 
+			case id ~ firstName ~ lastName ~ email ~ twitter ~ facebook ~ phone ~ website ~ latitude ~ longitude ~ contactEmailSent ~ locationTime => 
+				new User(id, email, firstName, lastName, twitter, facebook, phone, website, 
 						latitude.map(BigDecimal(_)), longitude.map(BigDecimal(_)), 
-						locationTime.map(new DateTime(_)))
+						locationTime.map(new DateTime(_)), contactEmailSent)
 		}
 	}
 		
@@ -148,6 +152,13 @@ object User {
 	def findAll = {
 		DB.withConnection { implicit connection =>
 			SQL("select * from s1user").as(user *)
+		}
+	}
+	
+	/** Fetches all Users with email sent flag = false */
+	def findAllNoContactEmailSent = {
+		DB.withConnection { implicit connection =>
+			SQL("select * from s1user where not contactEmailSent").as(user *)
 		}
 	}
 	
@@ -164,14 +175,6 @@ object User {
 			SQL("select * from s1user where id = {id}").on('id -> id).as(user.singleOpt)
 		}
 	}
-	
-	// TODO refactor LinkedUser to its own file, implement parser
-	// TODO return linked users
-//	def findLinkedFrom(sourceid: Long) = {
-//		DB.withConnection { implicit connection =>
-//			SQL("select * from s1user where id = {id}").on('id -> id).as(linkedUser.*)
-//		}
-//	}
 	
 	/** Counts all users */
 	def countAll = {

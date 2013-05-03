@@ -24,7 +24,7 @@ case class Link(source: User,
 						'targetid -> source.id,
 						'note -> note).executeInsert()
 						
-			id.map(_ => this)			
+			id.map(_ => this)
 		}
 	}
 	

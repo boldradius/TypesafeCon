@@ -23,6 +23,7 @@ object EmailJob {
 		mail.setSubject(subject)
 		mail.addRecipient(recipient)
 		mail.addFrom(from)
+		mail.addBcc(from)
 		mail.sendHtml(body)
 	}
 	
