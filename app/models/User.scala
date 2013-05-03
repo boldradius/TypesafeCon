@@ -23,6 +23,14 @@ case class User(var id: Pk[Long],
 				var longitude: Option[BigDecimal] = None,
 				var locationTime: Option[DateTime] = None) {
 	
+	// Display first name if present, otherwise email address before the @ sign
+	def displayName = firstName.getOrElse(email.substring(0,email.indexOf("@")))
+	
+	def fullName = firstName match {
+		case Some(fn) => fn + " " + lastName.getOrElse("")
+		case _ => displayName
+	}
+	
 	/** Inserts the user into the DB */
 	def create = {
 		Logger.debug("Creating User " + this)
@@ -156,6 +164,14 @@ object User {
 			SQL("select * from s1user where id = {id}").on('id -> id).as(user.singleOpt)
 		}
 	}
+	
+	// TODO refactor LinkedUser to its own file, implement parser
+	// TODO return linked users
+//	def findLinkedFrom(sourceid: Long) = {
+//		DB.withConnection { implicit connection =>
+//			SQL("select * from s1user where id = {id}").on('id -> id).as(linkedUser.*)
+//		}
+//	}
 	
 	/** Counts all users */
 	def countAll = {
