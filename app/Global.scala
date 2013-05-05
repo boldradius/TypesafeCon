@@ -28,45 +28,15 @@ object InitialData {
 			/*************************************** SPEAKERS *******************************************************************/
 			/********************************************************************************************************************/
 
-			val peter = Speaker(Id(0),
-				"Peter Hausel",
-				"Senior Software Engineer, Typesafe Inc",
-				"Peter Hausel has more than fourteen years of software engineering experience. He is obsessed with web technologies, great user experience and open source. He was an early contributor to the Play framework and now he is a member of the Play core team. He works at Typesafe.",
-				Some("peter_kovac11@hotmail.com"),
-				Some("pk11"),
-				Some("https://github.com/pk11")).create.get
-			
-			val dick = Speaker(Id(0),
-				"Dick Wall",
-				"Member of the JavaPosse, Partner with Escalate Software",
-				"Software Developer and Java Posse podcaster",
-				None,
-				Some("dickwall"),
-				Some("http://javaposse.com")).create.get
-				
-			val bill = Speaker(Id(0),
-				"Bill Venners",
-				"President of Artima Inc.",
-				"Bill Venners is president of Artima, Inc., publisher of Artima Developer. He is author of the book, Inside the Java Virtual Machine, a programmer-oriented survey of the Java platform's architecture and internals. His popular columns in JavaWorld magazine covered Java internals, object-oriented design, and Jini. Active in the Jini Community since its inception, Bill led the Jini Community's ServiceUI project, whose ServiceUI API became the de facto standard way to associate user interfaces to Jini services. Bill is also the lead developer and designer of ScalaTest, an open source testing tool for Scala and Java developers, and coauthor with Martin Odersky and Lex Spoon of the book, Programming in Scala.",
-				None,
-				Some("bvenners"),
-				Some("http://www.artima.com")).create.get
-				
-			val gbort = Speaker(Id(0),
-				"Guillaume Bort",
-				"Cofounder of Zenexity",
-				"Guillaume Bort is cofounder of Zenexity, the french ‚ÄòWeb Oriented Architecture‚Äô company. Former J2EE expert, he worked several years on constructing Web frameworks for large scale companies including banks, until he decided to sum up his experience by creating Play framework focusing back on simplicity. He still leads development of the Play framework.",
-				None,
-				Some("guillaumebort"),
-				Some("http://guillaume.bort.fr")).create.get
-				
-			val sadek = Speaker(Id(0),
-				"Sadek Drobi",
-				"A monad and CTO at Zenexity, Play2 co-creator",
-				"Sadek Drobi est directeur technique de Zenexity, cabinet sp√©cialis√© dans les architectures orient√©es Web. Il est un architecte exp√©riment√©, sp√©cialis√© dans la cr√©ation d'application d'entreprise fortement distribu√©es, avec un int√©r√™t particulier dans les langages de programmation et la cr√©ation d'API et de framework pour r√©soudre les probl√®mes complexes au bon niveau d'abstraction. Il est `Core Developer` sur le project Play.",
-				None,
-				Some("sadache"),
-				Some("http://sadache.tumblr.com")).create.get
+		  //MK - setting up for Scala Days 2013
+		  
+		  	val martin = Speaker(Id(0),
+				"Martin Odersky",
+				"Chief Architect, Typesafe Inc",
+				"Martin Odersky is the inventor of the Scala language, a professor at EPFL in Lausanne, Switzerland, and a founder of Typesafe, Inc. His work concentrates on the fusion of functional and object-oriented programming. He believes the two paradigms are two sides of the same coin, to be unified as much as possible. To prove this, he has worked on a number of language designs, from Pizza to GJ to Functional Nets. He has also influenced the development of Java as a co-designer of Java generics and as the original author of the current javac reference compiler.",
+				Some("martin.odersky@epfl.ch"),
+				Some("odersky"),
+				Some("http://lampwww.epfl.ch/~odersky")).create.get
 				
 			val jonas = Speaker(Id(0),
 				"Jonas Bon√©r",
@@ -74,15 +44,7 @@ object InitialData {
 				"Jonas Bon√©r is a geek, programmer, speaker, musician, writer and Java Champion. He is the CTO and co-founder of Typesafe and is an active contributor to the Open Source community; most notably founded the Akka Project and the AspectWerkz AOP compiler (now AspectJ)",
 				None,
 				Some("jboner"),
-				Some("http://jonasboner.com")).create.get
-				
-			val daniel = Speaker(Id(0),
-				"Daniel Spiewak",
-				"Scala fanatic. Functional devotee. Overly-fascinated by programming esoterica.",
-				"Daniel Spiewak is a software developer based out of Boulder, CO. Over the years, he has worked with Java, Scala, Ruby, C/C++, ML, Clojure and several experimental languages. He currently spends most of his free time researching parser theory and methodologies, particularly areas where the field intersects with functional language design, domain-specific languages and type theory. Daniel has written a number of articles on his weblog, Code Commit, including his popular introductory series, Scala for Java Refugees.",
-				None,
-				Some("djspiewak"),
-				Some("http://www.codecommit.com/blog")).create.get
+				Some("http://jonasboner.com")).create.get	
 				
 			val joshua = Speaker(Id(0),
 				"Joshua Suereth",
@@ -92,45 +54,393 @@ object InitialData {
 				Some("jsuereth"),
 				Some("http://jsuereth.com/")).create.get
 				
-			val andrew = Speaker(Id(0),
+			val etoreeborre = Speaker(Id(0),
+				"Eric Torreborre",
+				"",
+				"I  grew up using C++/Java/OO/UML as a consultant for various industries (telecommunications, finance,...) then in a startup to create a product doing Model-Driven-Testing. Right after falling in love with Scala, I created the specs project, then superseded by specs2, to create executable software specifications in Scala. I work now for NICTA, helping research to be transformed into successful companies and contribute to the Scoobi project to bridge the gap between Hadoop and Scala.",
+				None,
+				Some("etorreborre"),
+				Some("http://etorreborre.blogspot.com")).create.get
+		  
+			val victor = Speaker(Id(0),
+				"Victor Klang",
+				"Director of Engineering at Typesafe",
+				"Viktor, \"the legend of\", Klang been hooked on Scala since 2007 and is an honorary Akka Core Team member, an occasional speaker and Director of Engineering at Typesafe. Personal heroes are, including but not limited to–Doug Lea, Walter Sobchak and Daniel Spiewak.",
+				None,
+				Some("viktorklang"),
+				Some("http://klangism.tumblr.com")).create.get
+				
+			val roland = Speaker(Id(0),
+				"Roland Kuhn",
+				"Akka Tech Lead at Typesafe",
+				"After earning a PhD in high-energy particle physics and working four years as a systems engineer in the space business, Roland came in contact with the Akka project. He started contributing in 2010 and has been employed by Typesafe since 2011 where he has been leading the Akka project since November 2012.",
+				None,
+				Some("rolandkuhn"),
+				Some("http://letitcrash.com")).create.get
+				
+			val heiko = Speaker(Id(0),
+				"Heiko Seeberger",
+				"Director of Professional Services at Typesafe",
+				"Heiko Seeberger is the Director Professional Services at Typesafe. He has been a Scala enthusiast ever since he came to know this beautiful language in 2008. He has more than fifteen years of professional expertise in consulting and software development on the Java platform, actively contributes to Scala community projects and regularly shares his expertise in articles and talks. Heiko is the main author of the German Scala book \"Durchstarten mit Scala\".",
+				None,
+				Some("hseeberger"),
+				Some("http://heikoseeberger.name/")).create.get
+				
+			val torsten = Speaker(Id(0),
+				"Torsten Uhlmann",
+				"Founder of AGYNAMIX",
+				"Torsten Uhlmann is a Germany-based software developer with a passion to create usable and useful software. For a few years now Scala is his language of choice. Using the secure and productive Lift web framework he designs and implements web based applications for his clients. He is the founder of AGYNAMIX, a small consulting firm, he's a Lift committer and author of the \"Lift Web Applications How-to\".",
+				None,
+				Some("agynamix"),
+				Some("http://www.agynamix.de")).create.get	
+				
+			val dick = Speaker(Id(0),
+				"Dick Wall",
+				"Member of the JavaPosse, Partner with Escalate Software",
+				"Software Developer and Java Posse podcaster",
+				None,
+				Some("dickwall"),
+				Some("http://javaposse.com")).create.get	
+				
+			val kevin = Speaker(Id(0),
+				"Kevin Hoffman",
+				"Chief Software Architect for Exclaim Computing",
+				"My name is Kevin Hoffman and I’ve been writing code since before I knew how to write cursive. Many of you many know me as “the .NET Addict” or from any of the 14+ publications to which I’ve contributed, including books on C#, ASP.NET, ADO.NET, e-Commerce, and many other aspects of enterprise development. I have since branched out from specializing in just .NET code.",
+				None,
+				Some("KevinHoffman"),
+				Some("http://www.kotancode.com/")).create.get
+				
+			val christopher = Speaker(Id(0),
+				"Christopher Severs",
+				"Search Science Applied Research Group at eBay",
+				"Chris Severs works in the Search Science applied research group at eBay. Chris fell in love with Scala at first sight and has been one of the main drivers of Scala adoption at eBay.",
+				None,
+				Some("ccsevers"),
+				None).create.get
+				
+			val vitaly = Speaker(Id(0),
+				"Vitaly Gordon",
+				"LinkedIn Product Data Science Team",
+				"Vitaly Gordon is a senior data scientist on the LinkedIn Product Data Science team where he develops data products that most of you use every day.",
+				None,
+				Some("BigDataSc"),
+				None).create.get
+				
+			val ryan = Speaker(Id(0),
+				"Ryan LeCompte",
+				"Backend Scala Developer at Quantified",
+				"Long-time Ruby developer who recently made the switch to Scala. Currently a backend Scala developer at Quantifind in the Bay Area. Creator of the popular \"redis_failover\" project that provides automatic failover for Redis on top of ZooKeeper.",
+				None,
+				Some("ryanlecompte"),
+				Some("http://github.com/ryanlecompte")).create.get		
+				
+			val jamie = Speaker(Id(0),
+				"Jamie Allen",
+				"Director of Consulting for Typesafe",
+				"Jamie Allen is the Director of Consulting for Typesafe, having worked since 1994 with top firms including Price Waterhouse and Chariot Solutions.  He has a long track record of working closely with clients to build high-quality, mission-critical systems that scale to meet the needs of their businesses, and has worked in myriad industries including automotive, retail, pharmaceuticals, telecommunications and more.  Jamie has been coding in Scala and actor-based systems since 2009, and is the author of the upcoming \"Effective Akka\" book from O'Reilly.",
+				None,
+				Some("jamie_allen"),
+				None).create.get	
+				
+			val bjorn = Speaker(Id(0),
+				"Björn Antonsson",
+				"Senior Software Engineer for Typesafe",
+				"In depth knowledge and experience of operating systems, compilers, managed runtimes. Interested in building high throughput infrastructure that solves real world problems.",
+				None,
+				Some("bantonsson"),
+				None).create.get	
+				
+			val patrik = Speaker(Id(0),
+				"Patrik Nordwall",
+				"Senior Software Engineer for Typesafe",
+				"Patrik Nordwall has been professional developer since 1996. He was early adopter of Java. He is a skilled software architect with experience from many different projects and roles. His areas of expertise include Scala, Akka, Java EE, Spring, event-driven architecture, and various products for highly scalable systems.  Patrik is currently working at Typesafe with product development of Akka and helping customers develop highly scalable systems.",
+				None,
+				Some("patriknw"),
+				None).create.get	
+				
+			val kevinb = Speaker(Id(0),
+				"Kevin Brown",
+				"PhD Candidate at Stanford University",
+				"Kevin Brown is a PhD candidate in the Pervasive Parallelism Lab at Stanford University. His research focuses on simplifying parallel and distributed programming using compiler and runtime systems to target heterogeneous hardware from domain-specific languages.",
+				None,
+				Some("kevin_j_brown"),
+				None).create.get
+				
+			val ryank = Speaker(Id(0),
+				"Ryan Knight",
+				"Consultant at Typesafe",
+				"Ryan Knight is a consultant and trainer for Typesafe. He has over 15 years of experience with enterprise software development. During this time he has worked with wide range of business, such as genealogy, telecommunications, finance and video games. Ryan was quickly converted to Scala when he was first introduced to the language, realizing the potential for writing much higher quality software that scales ad infinitum.",
+				None,
+				Some("knight_cloud"),
+				None).create.get
+				
+			val alexy = Speaker(Id(0),
+				"Alexy Khrabrov",
+				"Co-Founder of Versal.com",
+				"I am a computer scientist by training and a working software engineer and startup entrepreneur by occupation. My Ph.D. thesis form the University of Pennsylvania, titled “Mind Economy,” was the first large scale algorithmic behavior modeling of communication and influence in social networks. Performed while a full-time research scientist at Thayer School of Engineering at Dartmouth, it was based on one of the first streaming API access pipelines to Twitter garden hose. Metrics and findings developed there are still not approached by any of the existing scorers.",
+				None,
+				Some("khrabrov"),
+				Some("http://mindeconomy.com/")).create.get
+				
+			val matei = Speaker(Id(0),
+				"Matei Zaharia",
+				"PhD Student at UC Berkley",
+				"Matei Zaharia is a PhD student at UC Berkeley, working on topics in systems, cloud computing and big data. He is the originator of the Spark project, as well as a committer on Apache Mesos and Apache Hadoop. His work is supported by a Google PhD fellowship.",
+				None,
+				Some("matei_zaharia"),
+				Some("http://www.cs.berkeley.edu/~matei")).create.get
+				
+			val reynold = Speaker(Id(0),
+				"Reynold Xin",
+				"PhD Student at UC Berkley",
+				"Reynold Xin is a PhD student in the AMP Lab and the Database Group at UC Berkeley. He is the lead developer of the Shark project and the GraphX project. Before graduate school, he had 3 short engineering stints at Google, IBM, and Altera. His interests include data management systems, distributed systems, and algorithms for large-scale data processing.",
+				None,
+				Some("rxin"),
+				Some("http://www.cs.berkeley.edu/~rxin/")).create.get
+
+			val tiark = Speaker(Id(0),
+				"Tiark Rompf",
+				"Post Doctoral Researcher at Oracle Labs and EPFL",
+				"Tiark Rompf is a post-doctoral researcher at Oracle Labs and EPFL.",
+				None,
+				Some("tiarkrompf"),
+				Some("http://tiarkrompf.github.io/")).create.get				
+				
+			val rose = Speaker(Id(0),
+				"Rose Katherine Toomey",
+				"Software Engineer at Novus Partners",
+				"",
+				None,
+				Some("prasinous"),
+				Some("https://github.com/rktoomey")).create.get					
+				
+			val joshw = Speaker(Id(0),
+				"Josh Wills",
+				"Data Scientist at Cloudera",
+				"",
+				None,
+				Some("josh_wills"),
+				Some("http://crunch.apache.org")).create.get	
+				
+			val sadek = Speaker(Id(0),
+				"Sadek Drobi",
+				"A monad and CTO at Zenexity, Play2 co-creator",
+				"CTO of Zenexity, Sadek is a software engineer specialized in bridging the gap between the problem domain and the solution domain.As a core Play developer and Play2 co-creator, he works on the design and implementation of the framework. ",
+				None,
+				Some("sadache"),
+				Some("http://sadache.tumblr.com")).create.get
+				
+			val seth = Speaker(Id(0),
+				"Seth Tisue",
+				"Lead Developer at NetLogo",
+				"Seth Tisue loves programming languages. He works at Northwestern University as the lead developer of NetLogo, a do-it-yourself programming language for kids, teachers, and scientists. He's been living and breathing Scala full time since 2008.",
+				None,
+				Some("SethTisue"),
+				Some("http://tisue.net")).create.get	
+			
+				
+			val jan = Speaker(Id(0),
+				"Jan Machacek",
+				"Technical Director at Cake Solutions",
+				"Jan Machacek is the technical director at Cake Solutions, author of Pro Spring 2.5, Pro Spring and other books and articles. He regularly works on open source projects; he is the author of Specs2 Spring, Scalad, Spock Spring Integration and Spring Workflow Extension. Jan's technical interests and expertise include lightweight JVM-based applications in Scala and Java with asynchronous, resilient and scalable messaging.",
+				None,
+				Some("honzam399"),
+				Some("http://www.eigengo.com/")).create.get	
+				
+			val rod = Speaker(Id(0),
+				"Rod Johnson",
+				"CEO of SpringSource",
+				"Founder and CEO of SpringSource, the international software company behind the Spring Framework, which provides enterprise-grade production and development support for Spring, and comprehensive training and professional services. Specialist in J2EE architecture. Author of best-selling \"Expert One-on-One J2EE Design and Development\" and \"J2EE without EJB.\" Founder of the Spring Framework open source project.", 
+				None,
+				Some("springrod"),
+				Some("http://blog.springsource.org/author/rodj/")).create.get	
+				
+			val eugene = Speaker(Id(0),
+				"Eugene Burmako",
+				"PhD Student at EPFL",
+				"Programming languages enthusiast, PhD student at EPFL, member of Scala team, Scala macros guy",
+				None,
+				Some("xeno_by"),
+				Some("http://xeno.by")).create.get	
+				
+			val micro = Speaker(Id(0),
+				"Mirco Dotta",
+				"Software Engineer at Typesafe",
+				"Software Engineer at Typesafe and Scala-IDE (http://scala-ide.org/) committer",
+				None,
+				Some("mircodotta"),
+				Some("http://scala-ide.org/")).create.get		
+			
+			val michael = Speaker(Id(0),
+				"Michael Bevilacqua-Linn",
+				"Senior Software Architect at Comcast",
+				"Michael Bevilacqua-Linn has been programming computers ever since he dragged an Apple IIGS that his parents got for opening a bank account into his fifth grade class to explain loops and variables to a bunch of pre-teenagers. He currently works for Comcast, where he builds distributed systems that power infrastructure for their next generation services, and is writing ‘Functional Programming Patterns In Scala and Clojure’ for the Pragmatic Press. In his spare time he likes rock climbing and good beer, though not at the same time.",
+				None,
+				Some("NovusTiro"),
+				Some("http://mblinn.com/")).create.get					
+				
+			val john = Speaker(Id(0),
+				"John Sullivan",
+				"Principal Software Engineer at the Broad Institute",
+				"A Java programmer since 1996, I’ve fallen in love with Scala over the last two to three years. I’m extremely fortunate to work more or less full time in Scala at my current position at The Broad Institute. Interests include software engineering, agile software development, OO and functional programming, and Scala language and libraries.",
+				None,
+				Some("_john_sullivan_"),
+				Some("http://scabl.blogspot.ca/")).create.get
+				
+			val shadaj = Speaker(Id(0),
+				"Shadaj Laddad",
+				"Software and Games Developer",
+				"Shadaj is a 13 year old, who loves to program. He has programmed in Logo, NXT Mindstorm, Ruby, Python, and C. However, he loves programming in Scala. Besides programming, he likes Math and Science. When he grows up, he wants to be a robotic scientist. Shadaj hosts his projects on GitHub, and has a channel on Youtube. He has presented at Scala Days 2012 and the Bay Area Scala Enthusiast group showing his Scala projects. When not doing his school work or programming, he plays guitar, sitar, and games, some of which he created.",
+				None,
+				Some("ShadajL"),
+				Some("http://www.youtube.com/user/shadajProgramming")).create.get
+				
+			val andrey = Speaker(Id(0),
+				"Andrey Cheptsov",
+				"Product Manager at JetBrains for IntelliJ IDEA",
+				"A lot of my free time I devote to my own studies in software development. Interested in creation of web-services. Generally focused on usability, functionality of services in the Internet.",
+				None,
+				Some("andrey_cheptsov"),
+				None).create.get
+				
+			val philipp = Speaker(Id(0),
+				"Philipp Haller",
+				"Consultant at Typesafe",
+				"",
+				None,
+				Some("philippkhaller"),
+				None).create.get
+				
+			val jason = Speaker(Id(0),
+				"Jason Zaugg",
+				"Compiler Engineer at Typesafe",
+				"",
+				None,
+				Some("retronym"),
+				None).create.get
+				
+			val heather = Speaker(Id(0),
+				"Heather Miller",
+				"PhD student at EPFL",
+				"I am a US NSF Graduate Research Fellow and second year PhD student working on the Scala programming language at the Programming Methods Laboratory (LAMP for short) under the supervision of Professor Martin Odersky. Before moving to Switzerland, I was born in and lived in different places in the US. I am also the Scala \"Documentation Czar,\" and as such am (newly) responsible for state of official Scala documentation.",
+				None,
+				Some("heathercmiller"),
+				Some("http://heather.miller.am/")).create.get
+				
+			val arjen = Speaker(Id(0),
+				"Arjen Poutsma",
+				"Staff Engineer at SpringSource",
+				"Arjen Poutsma has been a Staff Engineer at SpringSource (a division of VMware) for over eight years. He founded the Spring Web Services, worked on the REST support in Spring 3.0 and 3.1, and recently started the Spring Scala project, aimed to make using Spring in Scala easier.",
+				None,
+				Some("poutsma"),
+				None).create.get
+				
+			val endre = Speaker(Id(0),
+				"Endre Sándor Varga",
+				"Software Engineer at Typesafe",
+				"Computer Scientist with a strong interest in algorithmic problems, distributed systems. Disciplined user of Object Oriented and/or Functional design. Keen autodidact with a strong focus on bleeding-edge technologies.  Proud Open Source developer.",
+				None,
+				Some("drewhk"),
+				None).create.get				
+				
+			val tathagata = Speaker(Id(0),
+				"Tathagata Das",
+				"Grad student at CS Berkeley",
+				"I am currently a graduate student in University of California, Berkeley and I am interested in problems related to Cloud Computing and Big Data.",
+				None,
+				Some("tathadas"),
+				None).create.get	
+			
+			val miles = Speaker(Id(0),
+				"Miles Sabin",
+				"Principal Engineer at Precog",
+				"Technologist and entrepreneur combining broad commercial good sense with deep technical knowledge.",
+				None,
+				Some("milessabin"),
+				Some("http://www.chuusai.com/blog")).create.get				
+				
+			val miles = Speaker(Id(0),
+				"Miles Sabin",
+				"Principal Engineer at Precog",
+				"Technologist and entrepreneur combining broad commercial good sense with deep technical knowledge.",
+				None,
+				Some("milessabin"),
+				Some("http://www.chuusai.com/blog")).create.get	
+				
+			val christopher = Speaker(Id(0),
+				"Christopher Vogt",
+				"Software Engineer at EPFL",
+				"",
+				None,
+				Some("cvogt"),
+				None).create.get				
+				
+				
+			val stefan = Speaker(Id(0),
+				"Stefan Zeiger",
+				"Tech Lead for Slick at Typesafe",
+				"I am a senior software engineer, currently employed by a large European bank, where I am working mostly with Java, JavaScript, XML and database technology. My main software-related interests are programming language / interpreter / compiler design, web technology and usability.",
+				None,
+				Some("StefanZeiger"),
+				Some("http://szeiger.de/")).create.get					
+				
+			val rex = Speaker(Id(0),
+				"Rex Kerr",
+				"Neurobiologist at the HHMI Janelia Farm Research Campus",
+				"Rex Kerr is a neurobiologist at the HHMI Janelia Farm Research Campus who uses Scala for high-performance image analysis, behavioral quantification, and statistics. In his 24 years of software development experience he has used everything from x86 assembly through Scala, with significant detours to C, Java, LabView, and Matlab, in pursuit of software that compactly expresses complex manipulations of data without requiring him to wait too long. Writing performant code is a hobby as well as key aspect of research: he has also contributed to many of the Scala benchmarks in the Computer Languages Benchmark Game.",
+				None,
+				None,
+				None).create.get				
+				
+			val ignacio = Speaker(Id(0),
+				"Ignacio Cases",
+				"PhD Student",
+				"PhD student Linguistics. Semiotics, Computational Linguistics, Astrophysics. Scala programmer.",
+				None,
+				Some("ignaciocases"),
+				None).create.get					
+				
+			val ismael = Speaker(Id(0),
+				"Ismael Juma",
+				"Director of Architecture and Personalisation at TimeOut",
+				"Scala, JVM, programming languages, start-ups, personalisation, recommenders, innovation, scalability, performance (in no particular order) and more.",
+				None,
+				Some("ijuma"),
+				Some("http://blog.juma.me.uk")).create.get	
+				
+			val alois = Speaker(Id(0),
+				"Alois Cochard",
+				"Software Engineer at TimeOut",
+				"Passionate Hacker",
+				None,
+				Some("aloiscochard"),
+				Some("http://aloiscochard.blogspot.ca/")).create.get	
+				
+			val sebastien = Speaker(Id(0),
+				"Sébastien Doeraene",
+				"Software Engineer at EPFL",
+				"Sébastien Doeraene is a compiler/runtime systems hacker and a Scala enthusiast. He currently works at EPFL in the programming methods laboratory (LAMP) led by Martin Odersky, also known as the Scala team, where he designs and develops Scala.js. He holds bachelor and master degrees in computer science engineering from Université Catholique de Louvain in Belgium. When he is not busy coding, he sings in choirs and a cappella groups, or he plays unicycle basketball.",
+				None,
+				Some("sjrdoeraene"),
+				Some("http://lampwww.epfl.ch/~doeraene/")).create.get					
+				
+			val andrewp = Speaker(Id(0),
 				"Andrew Phillips",
-				"Software Developer at XebiaLabs",
-				"Specializing in concurrency and high performance, Andrew has substantial experience of enterprise application environments and currently is responsible for product management of XebiaLabs deployment automation platform Deployit. He worked on Multiverse, the STM behind Akka and enjoys the diversity of the JVM ecosystem, especially Clojure and Scala. Andrew also contributes to jclouds, the leading Java cloud library.",
-				None,
-				None,
-				None).create.get
-				
-			val renato = Speaker(Id(0),
-				"Renato Cavalcanti",
-				"Founder of BeScala",
-				"Renato Guerra Cavalcanti is an independent senior analyst/developer particularly experienced in design and development of complex and multitiered applications. Having studied psychology (in Rio) and philosophy (in Paris), he started programming in 1999 to finance his studies. In 2002 he decided to dedicate himself full-time to programming. In his free time, he is experimenting with new technologies, java frameworks and programming languages, specially Scala. In 2011, Renato, together with Tim Romberg and Louis Jacomet, founded BeScala, the Belgium Scala Enthusiasts group with the objective to promote Scala adoption in Belgium. He's is also steering committee member of BeJUG, the Belgium Java User Group.",
-				None,
-				Some("renatocaval"),
-				Some("http://www.xavena.eu/")).create.get
-				
-			val tim = Speaker(Id(0),
-				"Tim Romberg",
 				"",
-				"Tim has been active for 15 years as developer, researcher, and consultant with a focus on Enterprise Collaboration and Healthcare, in Germany and Belgium. His experience with MVC dates back to an ERP-related assignment on an early version of Borland Delphi.",
-				None,
-				Some("rombergt"),
-				None).create.get
-				
-			val louis = Speaker(Id(0),
-				"Louis Jacomet",
 				"",
-				"Louis Jacomet has been perfecting his knowledge of enterprise Java for nearly 10 years. Initially as a developer, his role evolved over the last years as technical team leader or coach. As an avid learner, Louis is now getting to know Scala and its ecosystem as a new challenge. In addition to the bits and bytes, Louis is interested in people management skills mandatory to create a productive project team. Discovering Agile 5 years ago was a revelation and has underpinned all his work since, whether on an Agile project or not. Louis works in Belgium as a freelance contractor.",
+				Some("andrew@scalapuzzlers.com"),
 				None,
-				Some("ljacomet"),
-				None).create.get
+				Some("http://scalapuzzlers.com/")).create.get
 				
-			val luc = Speaker(Id(0),
-				"Luc Duponcheel",
-				"Founder of ImagineJ",
-				"Java and Scala Developer/Instructor.",
+			val nermin = Speaker(Id(0),
+				"Nermin Serifovic",
+				"Founder and Principal Trainer/Consultant at Composable Solutions",
+				"Nermin Serifovic has 10 years of experience building enterprise software applications using Java technologies. For the past 5 years he has focused on architecting, designing and developing backend platforms. Nermin has been a Scala enthusiast since 2009 and practitioning it professionally since mid 2011. He has given various talks at JavaOne, Scala Days and Northeast Scala Symposium, as well as at local Scala and Java user groups. Nermin is a founder and co-organizer of Boston Area Scala Enthusiasts user group and co-founder and co-organizer of Northeast Scala Symposium. Furthermore, he is a co-creator and co-maintainer of the Scala Puzzlers website. Nermin holds a MEng in Computer Science from Cornell University and his areas of interest include distributed systems along with concurrent, parallel and functional programming.",
 				None,
-				Some("LucDup"),
-				Some("http://www.linkedin.com/pub/luc-duponcheel/1/366/6b7")).create.get
+				Some("higherkinded"),
+				Some("http://composables.com")).create.get
+				
+				
 				
 			/********************************************************************************************************************/
 			/*************************************** EVENTS *********************************************************************/
