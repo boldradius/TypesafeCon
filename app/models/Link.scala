@@ -21,7 +21,7 @@ case class Link(source: User,
 			val id = SQL("""insert into link (sourceid, targetid, note) 
 							values ({sourceid}, {targetid}, {note})""").on(
 						'sourceid -> source.id,
-						'targetid -> source.id,
+						'targetid -> target.id,
 						'note -> note).executeInsert()
 						
 			id.map(_ => this)
