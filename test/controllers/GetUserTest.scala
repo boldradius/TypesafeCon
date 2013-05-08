@@ -106,7 +106,7 @@ trait GetUserTestCase extends After {
 		jane = User("jane@example.com","Jane", "Doe", "jane", "JaneDoe", "987-1234567", "example.com").create.get
 		peter = User("peter@example.com","Peter", "Donald", "peter", "PeterDonald", "123-4567890", "peter.com").create.get
 		
-		johnToJane = Link(john.id.get, jane.id.get, "Call Jane to discuss design").create.get
+		johnToJane = Link(john, jane, "Call Jane to discuss design").create.get
 	}
 		
 	// Remove the test data

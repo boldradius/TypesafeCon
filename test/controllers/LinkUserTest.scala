@@ -105,7 +105,7 @@ class LinkUserTest extends APISpecification {
 					println(response.result)
 					response.result === "\"Link created\""
 						
-					val link = Links.find(john.id.get, peter.id.get)
+					val link = models.Links.find(john.id.get, peter.id.get)
 					
 					link must beSome
 					link.get.note must beSome
@@ -130,7 +130,7 @@ trait LinkUserTestCase extends After {
 		jane = User("jane@example.com","Jane", "Doe", "jane", "JaneDoe", "987-1234567", "example.com").create.get
 		peter = User("peter@example.com","Peter", "Donald", "peter", "PeterDonald", "123-4567890", "peter.com").create.get
 		
-		johnToJane = Link(john.id.get, jane.id.get, "Call Jane to discuss design").create.get
+		johnToJane = Link(john, jane, "Call Jane to discuss design").create.get
 	}
 		
 	// Remove the test data
