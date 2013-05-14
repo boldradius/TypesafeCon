@@ -155,10 +155,14 @@ object User {
 		}
 	}
 	
-	/** Fetches all Users with email sent flag = false */
+	/** Fetches all Users with email sent flag = false and at least one link to another user */
 	def findAllNoContactEmailSent = {
 		DB.withConnection { implicit connection =>
-			SQL("select * from s1user where not contactEmailSent").as(user *)
+			SQL("""
+				select * from s1user s
+				where not contactEmailSent
+				and (select count(*) from link where sourceid = s.id) > 0
+			""").as(user *)
 		}
 	}
 	
