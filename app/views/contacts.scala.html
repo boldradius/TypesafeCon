@@ -4,35 +4,38 @@
 
 <p>Thank you so much for attending Scala Days 2013 in NYC!  We hope you enjoyed the conference.</p>
 
-<p>Here are the connections you registered through the TypesafeCon app:</p>
+@if(contacts.size > 0) {
 
-<ol> 
-	@for(contact <- contacts) {
-		<li>@contact.target.fullName</li>
-		<ul>
-			<li>Email: @contact.target.email</li>
-		
-			@if(contact.target.firstName.isDefined && contact.target.lastName.isDefined) {
-				<li>LinkedIn: <a href="http://www.linkedin.com/search/fpsearch?type=people&keywords=@java.net.URLEncoder.encode(contact.target.fullName, "UTF-8")">
-					@contact.target.fullName</a>
-				</li>
-			}
-		
-			@if(contact.target.twitter.isDefined) {
-				<li>Twitter: <a href="http://twitter.com/@contact.target.twitter.get">@contact.target.twitter.get</a></li>
-			}	
-		
-			@if(contact.target.facebook.isDefined) {
-				<li>Facebook: <a href="http://facebook.com/@contact.target.facebook.get">@contact.target.facebook.get</a></li>
-			}
-		
-			@if(contact.target.website.isDefined) {
-				<li>Website: <a href="@contact.target.website">@contact.target.website.get</a></li>
-			}	
-		</ul>
-	  	
-	} 
-</ol>
+	<p>Here are the connections you registered through the TypesafeCon app:</p>
+	
+	<ol> 
+		@for(contact <- contacts) {
+			<li>@contact.target.fullName</li>
+			<ul>
+				<li>Email: @contact.target.email</li>
+			
+				@if(contact.target.firstName.isDefined && contact.target.lastName.isDefined) {
+					<li>LinkedIn: <a href="http://www.linkedin.com/search/fpsearch?type=people&keywords=@java.net.URLEncoder.encode(contact.target.fullName, "UTF-8")">
+						@contact.target.fullName</a>
+					</li>
+				}
+			
+				@if(contact.target.twitter.isDefined) {
+					<li>Twitter: <a href="http://twitter.com/@contact.target.twitter.get">@contact.target.twitter.get</a></li>
+				}	
+			
+				@if(contact.target.facebook.isDefined) {
+					<li>Facebook: <a href="http://facebook.com/@contact.target.facebook.get">@contact.target.facebook.get</a></li>
+				}
+			
+				@if(contact.target.website.isDefined) {
+					<li>Website: <a href="@contact.target.website">@contact.target.website.get</a></li>
+				}	
+			</ul>
+		  	
+		} 
+	</ol>
+}
 
 <p>We look forward to seeing you at our next event!</p>
 
