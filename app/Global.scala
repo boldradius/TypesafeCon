@@ -445,7 +445,7 @@ object InitialData {
 				"Scala gives you awesome expressive power, but how to make best use of it? In my talk I will discuss the question what makes good Scala style. We will start with syntax and continue with how to name things, how to mix objects and functions, where (and where not) to use mutable state, and when to use which design pattern. As most questions of style, the discussion will be quite subjective, and some of it might be controversial. I am looking forward to discuss these topics with the conference attendees.",
 				new DateTime(2013, 6, 10, 19, 0),
 				new DateTime(2013, 6, 10, 20, 30),
-				"",
+				"Hudson Theater",
 				Seq(martin.id.get)).create
 	
 /***** Track 1 Tuesday Morning *****/
@@ -456,7 +456,7 @@ object InitialData {
 				"The skills of building Scalable, Highly Concurrent and Fault-Tolerant Systems are becoming increasingly important in our new world of Cloud Computing, multi-core processors, Big Data and Real-Time Web. Unfortunately, many people are still doing it wrong; using the wrong tools, techniques, habits and ideas. In this talk we will look at some of the most common (and some not so common but superior) practices; what works - what doesn't work - and why.",
 				new DateTime(2013, 6, 11, 9, 15),
 				new DateTime(2013, 6, 11, 10, 0),
-				"",
+				"Room 4.11",
 				Seq(jonas.id.get)).create				
 			
 			val T1_S2 = S1Event(Id(0),
@@ -465,7 +465,7 @@ object InitialData {
 				"With a plethora of different concurrency programming models available to developers today, in this talk, we'll put on our haz-mat suits and explore the different models–getting a 360 degree view on what's good, what's bad and what's just plain ugly. We're going to cover Threads, pessimistic locking, optimistic locking, event-handlers, actors and more, so don't forget to mute your cellphone, bring popcorn & soda and be prepared for a real thriller!",
 				new DateTime(2013, 6, 11, 10, 15),
 				new DateTime(2013, 6, 11, 11, 0),
-				"",
+				"Room 4.11",
 				Seq(viktor.id.get, roland.id.get)).create				
 				
 			val T1_S3 = S1Event(Id(0),
@@ -474,7 +474,7 @@ object InitialData {
 				"Scala is one of the most feature rich, expressive and flexible languages around at present. It offers more ways to solve a problem than virtually any other language around, since it mixes Object Orientation, Functional Programming, Static Typing and much more. The down side of all this power and functionality is all too commonly observable in the libraries available for Scala. Many libraries forget the audience for whom they are being written, and instead expose details like the underlying model (which may be very clever, but should mostly be orthogonal to the resulting API and certainly should not directly affect it). To put it another way, if your database structure dictates your user interface or web page, something is wrong with the design of your site (too many failed model driven design projects back this assertion). In the same way, APIs that are dictated by the innermost workings of your library have likely failed to take into account the needs of the user. While writing SubCut, and further enhancing the feature set for SubCut 2.0, I learned many lessons about the advantages of teasing apart your semantic model from your library API. This is not a talk about SubCut, but a talk about some of the techniques I used to provide what I believe is the smallest, simplest and most streamlined API, while hiding most of the details of the implementation. I can also speak to the advantage of that approach with the enhancements made in SubCut 2.0 - the small targeted API let me change much about the inner workings, and while the API was affected for some new features, the new features were always added in a way that kept the API familiar to current users, and more importantly provided an easy, often non-breaking transition path.",
 				new DateTime(2013, 6, 11, 11, 15),
 				new DateTime(2013, 6, 11, 12, 0),
-				"",
+				"Room 4.11",
 				Seq(dick.id.get)).create				
 
 /***** Track 2 Tuesday Morning *****/
@@ -485,7 +485,7 @@ object InitialData {
 				"An Introduction and dive into the best practices of creating and maintaining builds in SBT, including how to debug a broken build. During the talk, we'll set up a non-trivial project including an Akka backend and Play frontend, both communicating to each other. If you've struggled learning SBT up to this point, here is the talk for you!",
 				new DateTime(2013, 6, 11, 9, 15),
 				new DateTime(2013, 6, 11, 10, 0),
-				"",
+				"Room 3.11",
 				Seq(joshua.id.get)).create				
 			
 			val T2_S2 = S1Event(Id(0),
@@ -494,7 +494,7 @@ object InitialData {
 				"You don't yet speak Scala? Then let us invite you to a journey on which we will explore the outstanding features of this programming language for the Java Virtual Machine. As an introduction we will briefly talk about Scala's key characteristics. Then we will explore this language and some of its typical applications, e.g. concise OO and powerful functional collections. If you are a developer and expect vivid examples and live coding, then you will like this session.",
 				new DateTime(2013, 6, 11, 10, 15),
 				new DateTime(2013, 6, 11, 11, 0),
-				"",
+				"Room 3.11",
 				Seq(heiko.id.get)).create				
 				
 			val T2_S3 = S1Event(Id(0),
@@ -503,7 +503,7 @@ object InitialData {
 				"I've been tasked with building a large, complex, data-driven application that has a rich HTML5, CSS, jQuery UI featuring drag and drop, real-time feedback, and much more and I've done it all using Play, Scala, and Akka. In this session I'll discuss my experiences building a powerful, modern, scalable web application on the Typesafe Stack.",
 				new DateTime(2013, 6, 11, 11, 15),
 				new DateTime(2013, 6, 11, 12, 0),
-				"",
+				"Room 3.11",
 				Seq(kevin.id.get)).create
 
 /***** Track 3 Tuesday Morning *****/
@@ -514,7 +514,7 @@ object InitialData {
 				"This talk will give you an brief overview of the BigData tooling landscape and where Scoobi, a distributed collection Scala library for Hadoop, stands. Then we'll see what are the challenges in translating Scoobi abstractions to Hadoop constructs and how Scala, as programming language, and Kiama (http://code.google.com/kiama), as a graph-processing library, can be leveraged to support this translation. In particular, we'll show: - How rewriting rules based on partial functions are a very succinct way to pre-process the computation graph and to optimise it. - How attribute grammars can be used to implement general graph traversal algorithms",
 				new DateTime(2013, 6, 11, 9, 15),
 				new DateTime(2013, 6, 11, 10, 0),
-				"",
+				"Metropolis",
 				Seq(etoreeborre.id.get)).create				
 			
 			val T3_S2 = S1Event(Id(0),
@@ -523,7 +523,7 @@ object InitialData {
 				"The currently developed upcoming Lift 3 (Scala 2.10+) contains innovative ways to craft web applications, like for instance actors that communicate between JS client and Lift server.  The talk will demonstrate the new features of Lift 3 on one side and also touches the topic of integrating client side JavaScript frameworks like AngularJs, Knockout, Backbone, etc into an application architecture.",
 				new DateTime(2013, 6, 11, 10, 15),
 				new DateTime(2013, 6, 11, 11, 0),
-				"",
+				"Metropolis",
 				Seq(torsten.id.get)).create				
 				
 			val T3_S3 = S1Event(Id(0),
@@ -532,7 +532,7 @@ object InitialData {
 				"Machine learning turns data into predictions about the real world in an almost magical fashion. In this talk we'll show why Scala is a great language for machine learning practitioners and show the audience of Scala programmers how easy it is to start performing machine learning magic themselves.",
 				new DateTime(2013, 6, 11, 11, 15),
 				new DateTime(2013, 6, 11, 12, 0),
-				"",
+				"Metropolis",
 				Seq(christopher.id.get, vitaly.id.get)).create				
 
 /***** Track 1 Tuesday Afternoon *****/				
@@ -543,7 +543,7 @@ object InitialData {
 				"Ruby has a long history of \"making the developer happy\" by allowing for ease of programming and prototyping. Rails has taken off by storm and allowed startup companies to quickly create web applications that solve features required by the business. However, recently the Ruby community has realized that scaling Ruby in the real world can be a challenge due to the lack of type safety, the global interpreter lock, lack of a robust threading library, and the general lack of focus on performance in the Ruby world.  In this talk my goal will be to illustrate how I've made the transition from the dynamic programming world of Ruby to the type safe and highly async/concurrent world of Scala and Akka. I think that Ruby developers shy away from Scala due to its static type safety and lack of understanding of its powerful and expressive features. I want to illustrate how Scala does a much better job at allowing the developer to be expressive while avoiding common pitfalls with Ruby (e.g., Ruby's dynamic mixins vs. Scala's type safe trait mixins). I will use examples from my own redis_failover project and illustrate how using Scala could've saved me at times.  The Ruby/Rails community currently has a huge force behind it, and I think that some of these users will make the transition to Scala/Akka/Play with the proper illustrative comparisons and knowledge.",
 				new DateTime(2013, 6, 11, 13, 30),
 				new DateTime(2013, 6, 11, 14, 15),
-				"",
+				"Room 4.11",
 				Seq(ryan.id.get)).create	
 				
 			val T1_S5 = S1Event(Id(0),
@@ -552,7 +552,7 @@ object InitialData {
 				"Reactive Architectures are the next major evolution of the Internet. They allow for applications to be built in a completely non-blocking, asynchronous, and reactive manner. The Play Framework fully embraces this new paradigm of programming which allows developers to write asynchronous applications using either Scala or Java. In this hands-on session we will be building a reactive Play application. The application will use Play to asynchronously read from a web service and stream it to the client using web sockets and JSON. In building this sample you will learn the basics of how a Play application is structured and the tools it provides for building event-driven applications.",
 				new DateTime(2013, 6, 11, 14, 30),
 				new DateTime(2013, 6, 11, 15, 15),
-				"",
+				"Room 4.11",
 				Seq(ryank.id.get)).create	
 				
 			val T1_S6 = S1Event(Id(0),
@@ -561,7 +561,7 @@ object InitialData {
 				"Profile-driven JIT compilers like those in most JVMs provide good performance on average, but they are a black box with highly nondeterministic behavior. Thus, achieving top performance, predictably and consistently, is very hard. This talk will present Lancet, a research JIT compiler written in Scala that allows the running application to take full control of the JIT process. This includes the ability to compile multiple specialized versions of code paths at runtime, which is key for removing abstraction overhead of high-level, generic code. Another key feature of Lancet are JIT macros, which enable execution of user code at JIT-compile time and thus open the door for \"smart libraries\" that come with domain-specific optimizations and checks. Unlike Scala macros, JIT macros are not a front-end system, but tightly integrated with regular JIT compiler optimizations and VM functionality like speculative optimization and re-optimization.",
 				new DateTime(2013, 6, 11, 15, 30),
 				new DateTime(2013, 6, 11, 16, 15),
-				"",
+				"Room 4.11",
 				Seq(tiark.id.get)).create					
 		
 			val T1_S7 = S1Event(Id(0),
@@ -570,7 +570,7 @@ object InitialData {
 				"Realtime Web Applications are applications making use of Websockets, Server Sent Events, Comet or other protocols to offer an open socket between the browser and the server for continuous communication. Several web frameworks target the development of this type of applications but they mostly feature a basic API that allows developers to push/receive messages from/to an open channel: channel.push(message) //and channel.onMessage { callback } These APIs fall short when it comes to manipuling a rich set of streams of data, which is central to the Realtime Web model. It presents indeed several challenges in terms of creating, adapting, manipulating, filtering and merging streams of data as well as in terms of synchronization involved. To respond to this challenges, it is crucial to have a programming model that identifies clearly what a stream of data is and defines composable components to deal with it. Play2 uses Iteratees together with Futures for dealing reactively with streams of data, providing a very rich model for programming rich Realtime Web Applications.",
 				new DateTime(2013, 6, 11, 16, 30),
 				new DateTime(2013, 6, 11, 17, 15),
-				"",
+				"Room 4.11",
 				Seq(sadek.id.get)).create	
 				
 	
@@ -583,7 +583,7 @@ object InitialData {
 				"In the brave new world of actor programming conventional design patterns frequently are not applicable, as is witnessed by questions we get on the mailing list and at conferences. That is why we have collected a number of common solutions and best practices for solving typical problems you will encounter when building scalable and robust systems with Akka actors. In this session we will show you how to implement flow control, distributed workers, blocking resources, reliable messaging and more.",
 				new DateTime(2013, 6, 11, 13, 30),
 				new DateTime(2013, 6, 11, 14, 15),
-				"",
+				"Room 3.11",
 				Seq(jamie.id.get, bjorn.id.get, patrik.id.get)).create	
 				
 			val T2_S5 = S1Event(Id(0),
@@ -592,7 +592,7 @@ object InitialData {
 				"Versal is an edtech platform. We have a full Scala backend for RESTful API and a JavaScript frontend. In this talk we outline the whole trajectory from nothing to a working company where Scala does the heavy lifting. We describe the event sourcing architecture, and Jellyfish, an open-source project which decouples the web framework from logic. We show how abstraction allows us to not get married to any particular implementation, replacing them by more performant ones as needed. We also describe how our community relationships -- running a Scala for Startups meetup -- helps us stay on top of the best practices for Scala engineering.", 
 				new DateTime(2013, 6, 11, 14, 30),
 				new DateTime(2013, 6, 11, 15, 15),
-				"",
+				"Room 3.11",
 				Seq(alexy.id.get)).create					
 		
 			val T2_S6 = S1Event(Id(0),
@@ -601,7 +601,7 @@ object InitialData {
 				"As the author of an open-source serialization library in Scala, I've undergone a lot of struggle to understand and harness the power of Scala's type system. My library was based on parsing pickled Scala signatures, which was a subterranean and sparely documented feature of Scala 2.8. I wanted to serialize and deserialize options, lists and maps, which required defeating type erasure when serializing while skating by on type erasure when deserializing. I struggled with multiple constructors, checking for annotation types, specialization, more. The new reflection libraries introduced in Scala 2.10 provided easier access to the same information I had been getting from the pickled signatures. This talk will address practical aspects of type mining, providing a library of hands-on examples using the Scala 2.10 reflection API.",
 				new DateTime(2013, 6, 11, 15, 30),
 				new DateTime(2013, 6, 11, 16, 15),
-				"",
+				"Room 3.11",
 				Seq(rose.id.get)).create	
 				
 			val T2_S7 = S1Event(Id(0),
@@ -610,7 +610,7 @@ object InitialData {
 				"A lens represents a readable and \"settable\" location in a possibly nested immutable object. Lenses aren't in the Scala standard library, but several libraries provide them, including Scalaz and Shapeless. I'll show how you to use the Shapeless version, and we'll look at how it's implemented. This may interest you if: ...you use immutable objects ...you use nested immutable objects ...you want to abstract over different fields in your immutable objects ...you're interested in functional programming This is an informal, introductory talk, suitable for newcomers to Scala and newcomers to functional programming.",
 				new DateTime(2013, 6, 11, 16, 30),
 				new DateTime(2013, 6, 11, 17, 15),
-				"",
+				"Room 3.11",
 				Seq(seth.id.get)).create
 				
 /***** Track 3 Tuesday Afternoon *****/
@@ -621,7 +621,7 @@ object InitialData {
 				"Traditionally in order to write applications that run across heterogeneous hardware, programmers must manually combine code for multiple programming models together in ad-hoc ways. Domain-specific languages (DSLs) offer an alternative approach, as high-level implicitly parallel domain abstractions can be transparently lowered to multiple heterogeneous architectures. Delite is a framework for building high performance DSLs embedded in Scala. This talk will describe how we have extended Delite to run single-source, implicitly parallel DSL applications across clusters of machines of CPUs and GPUs. Using examples from existing Delite DSLs for data querying and machine learning, we will show how we can achieve high performance with a flexible high-level programming model using a set of powerful compiler analyses and optimizations. Finally we will compare Delite's performance with Hadoop and Spark across of set of applications.",
 				new DateTime(2013, 6, 11, 13, 30),
 				new DateTime(2013, 6, 11, 14, 15),
-				"",
+				"Metropolis",
 				Seq(kevinb.id.get)).create	
 				
 			val T3_S5 = S1Event(Id(0),
@@ -630,7 +630,7 @@ object InitialData {
 				"As big data becomes a concern for more and more organizations, there is a need for both faster tools to process it and easier-to-use APIs. Spark is a Hadoop-compatible cluster computing engine that addresses these needs through (1) in-memory computing primitives that let it run 100x faster than Hadoop and (2) a concise and high-level Scala API that can be used both in standalone programs and interactively from the Scala shell. Increasingly, Spark is also being used to power a stack of higher-level computing frameworks, including Shark, a port of the Hive SQL engine, and GraphX, a graph computing package that can describe algorithms like PageRank in a few lines of code. In this talk, we'll introduce the Spark ecosystem, focusing on Spark's native Scala API and GraphX. We'll also cover use cases from Spark's open source community, which has grown significantly since we released the project in 2010 -- in the past year, 15 companies have contributed code to Spark.",
 				new DateTime(2013, 6, 11, 14, 30),
 				new DateTime(2013, 6, 11, 15, 15),
-				"",
+				"Metropolis",
 				Seq(matei.id.get, reynold.id.get)).create					
 		
 			val T3_S6 = S1Event(Id(0),
@@ -639,7 +639,7 @@ object InitialData {
 				"Scala's mix of functional and object oriented programming paradigms is ideal for building data pipelines. Many smart people have noticed this, and as a result, we now have three distinct APIs for creating MapReduce pipelines in Scala (Scrunch, Scoobi, and Scalding), as well as a standalone data processing framework developed purely in Scala (Spark). Although all of these tools showcase the power and elegance of Scala, there is a larger opportunity for the community to give pipeline developers a single API to use for both in-memory and batch-style data processing. We'll discuss some of the challenges in creating an API that balances the features of both in-memory and batch processing and demonstrate the benefits that this creates in ETL development, exploratory data analysis, and machine learning.",
 				new DateTime(2013, 6, 11, 15, 30),
 				new DateTime(2013, 6, 11, 16, 15),
-				"",
+				"Metropolis",
 				Seq(joshw.id.get)).create	
 				
 			val T3_S7 = S1Event(Id(0),
@@ -648,7 +648,7 @@ object InitialData {
 				"Jan will show how to use RabbitMQ to connect components on different platforms. After a few introductory slides explaining the main concepts, the rest of the talk will be live code. The coding will begin by showing simple Scala / Akka code to connect to RabbitMQ to send and receive messages--think ``java.lang.String`` values back and forth to start with. We will then increase the complexity of the messages and marshal the messages into JSON. Jan will then show the real power of messaging infrastructures by replacing the RPC server component by native code in C++: we will write image processing component. To make matters even better--faster--we will then use CUDA to perform the image processing.  Come to Jan's talk and demo if you want to find out how to use Scala, Akka and RabbitMQ in the core of your application, especially if your application needs to tie together code on completely different platforms and if it performs heavy number crunching or image processing. You do not need to have deep knowledge of Scala, Akka, RabbitMQ, Boost, OpenCV, ...; all that you will need is your _inner geek_.",
 				new DateTime(2013, 6, 11, 16, 30),
 				new DateTime(2013, 6, 11, 17, 15),
-				"",
+				"Metropolis",
 				Seq(jan.id.get)).create
 				
 /***** Wednesday Keynote *****/
@@ -659,7 +659,7 @@ object InitialData {
 				"It's 2018. Scala is now 15 years old and the dominant programming language for enterprise apps. But how did we get here? What hurdles did we tackle and what hurdles tackled us?",
 				new DateTime(2013, 6, 12, 8, 45),
 				new DateTime(2013, 6, 11, 10, 0),
-				"",
+				"Hudson Theater",
 				Seq(rod.id.get)).create	
 				
 /***** Track 1 Wednesday Morning *****/				
@@ -670,7 +670,7 @@ object InitialData {
 				"Announced right before 2.10.0-final, macro paradise became the home for experimentation in the macro land. In this talk I will cover the ideas we played with and outline what panned out and what did not. What's going to happen to quasiquotes? Are type macros useful enough? Do macro annotations make sense? Come over and find out the answers.",
 				new DateTime(2013, 6, 12, 10, 15),
 				new DateTime(2013, 6, 12, 11, 0),
-				"",
+				"Room 4.11",
 				Seq(eugene.id.get)).create				
 				
 			val T1_S9 = S1Event(Id(0),
@@ -679,7 +679,7 @@ object InitialData {
 				"In this talk, we discuss some interesting extensions to the cake pattern as described in Real­World Scala: Dependency Injection (DI) by Jonas Bonér. We consider the use of the cake pattern to express hierarchical components, and the high­level design constraints between them. We also discuss encapsulating the details of a composite component. The cake pattern suffers from three major problems that limit its adoption: 1. Verbosity: Lots of boilerplate. 2. Opacity: Hard to follow the code because the language idioms used do not signify the user's intent. 3. Compiler error messages are confusing. We present a specification for a suite of type macros to address the problems of verbosity and opacity. We provide a status report on the implementation of these macros to date.",
 				new DateTime(2013, 6, 12, 11, 15),
 				new DateTime(2013, 6, 12, 12, 0),
-				"",
+				"Room 4.11",
 				Seq(john.id.get)).create					
 				
 /***** Track 2 Wednesday Morning *****/				
@@ -690,7 +690,7 @@ object InitialData {
 				"In this session we will have a round at all new functionalities introduced in the latest sand greatest Scala IDE V3.0 release, and outline the future direction of the tool. Semantic highlighting, implicit highlighting, and a new shiny Scala debugger are the spotlights of version 3.0. Scala code is now easier to read, write, test and debug. Furthermore, a growing ecosystem of plug-ins is available right at your fingertips for customizing your Scala environment just the way it fits you best.  The focus of the next releases is on enhancing the Scala debugger, further improving the editor's responsiveness, and add first-class support for both Play2 and Sbt.  Sounds too good to be true? Come and see for yourself the Scala IDE in action!",
 				new DateTime(2013, 6, 12, 10, 15),
 				new DateTime(2013, 6, 12, 11, 0),
-				"",
+				"Room 3.11",
 				Seq(micro.id.get)).create				
 				
 			val T2_S9 = S1Event(Id(0),
@@ -699,7 +699,7 @@ object InitialData {
 				"Scala continues to be fun! Implementing algorithms to solve Sudoku puzzles, bioinformatic problems, and analyzing time-series data has been a great learning experience. Creating video games and mods have made my game time much more enjoyable and gave me an opportunity to impress my friends! To do all these, I used a myriad of technologies from Scala IDE, sbt, and giter8 to git, Android, and Play! In the process, I learned a lot more about Scala's features such as traits, iterators, streams, lazy vals, implicit classes, and typeclasses. In this talk, I will share a few games, Android apps, and algorithms that show how Scala made implementing complex programs simple. I will also demonstrate a few awesome Minecraft mods written in Scala and a \"mind blowing\" project.",
 				new DateTime(2013, 6, 12, 11, 15),
 				new DateTime(2013, 6, 12, 12, 0),
-				"",
+				"Room 3.11",
 				Seq(shadaj.id.get)).create					
 				
 /***** Track 3 Wednesday Morning *****/				
@@ -710,7 +710,7 @@ object InitialData {
 				"A case study of how Scala and Akka helped a team of software developers without a whole lot of distributed system programming experience build a fairly sophisticated, production quality distributed system with a custom multipaxos implementation at its core. The name of the system is Sirius, and we're using it to power the next generation of our API layer at Comcast's Interactive Media division. The talk will focus on how we used Akka and Scala to build the core of the system. Our basic approach was to read up on all the Paxos literature we could find. We then took the psuedocode in \"Paxos Made Moderately Complex\" and translated it wholesale into straightforward Scala using functions and tuples. Then we slowly massaged that code into something cleaner using case classes before moving it into Akka actors. Finally, we went through that naive implementation to optimize our usage of memory and network resources to finish the core Paxos implementation. We've had this running in production for about half a year now with only minor issues. Given that we had very limited experience with distributed systems, this a major miracle that we couldn't have pulled off without Akka.", 
 				new DateTime(2013, 6, 12, 10, 15),
 				new DateTime(2013, 6, 12, 11, 0),
-				"",
+				"Metropolis",
 				Seq(michael.id.get)).create				
 				
 			val T3_S9 = S1Event(Id(0),
@@ -719,7 +719,7 @@ object InitialData {
 				"With IntelliJ IDEA frequently called the most intelligent Java IDE, JetBrains is working to replicate similar levels of code assistance and developer tools for Scala. This presentation will showcase some of the IDE’s trickiest features that help developers to be more productive, and will provide a brief overview of IntelliJ IDEA's plugin infrastructure for Scala development, including support for SBT, Play Framework and Scalate.",
 				new DateTime(2013, 6, 12, 11, 15),
 				new DateTime(2013, 6, 12, 12, 0),
-				"",
+				"Metropolis",
 				Seq(andrey.id.get)).create	
 				
 /***** Track 1 Wednesday Afternoon *****/				
@@ -730,7 +730,7 @@ object InitialData {
 				"Ever wished the compiler could make asynchronous programming easier? Enter Scala Async. Do asynchronous I/O like \"normal\" blocking I/O, program with Futures and Promises even more naturally! Scala Async makes it possible to \"suspend\" at arbitrary points in a block of regular Scala code, and to \"resume\" from that point later— all without blocking. This not only makes it possible to make concurrent code look sequential, it makes it possible to actually use even the most unfamiliar asynchronous libraries in a familiar blocking style. What's more, not only does it come out-of-the-box seamlessly integrated with Scala 2.10's new Futures and Promises API, but you can also easily use it with any other event-driven Scala or Java library of your choice.",
 				new DateTime(2013, 6, 12, 13, 30),
 				new DateTime(2013, 6, 12, 14, 15),
-				"",
+				"Room 4.11",
 				Seq(philipp.id.get, jason.id.get)).create	
 				
 			val T1_S11 = S1Event(Id(0),
@@ -739,7 +739,7 @@ object InitialData {
 				"Asynchronous IO is one of the most important building blocks when designing high-performance systems. Over the years various patterns emerged on top of the selector based services provided by the operating system. In this talk I will give a quick overview of the most important asynchronous IO patterns from callbacks to iteratees, demonstrating various approaches to error handling, backpressure/throttling and exposing low level behavior. Finally I will show how these approaches map to the actor world, introducing the new IO model designed by the Akka and Spray team available in Akka 2.2.",
 				new DateTime(2013, 6, 12, 14, 30),
 				new DateTime(2013, 6, 12, 15, 15),
-				"",
+				"Room 4.11",
 				Seq(endre.id.get)).create
 				
 			val T1_S12 = S1Event(Id(0),
@@ -748,7 +748,7 @@ object InitialData {
 				"Slick is not an object-relational mapper, but a functional-relational mapper leading to unique benefits. Using Slick efficiently may be counter-intuitive to people familiar with ORM systems. This talk explains how common ORM use cases should me implemented differently using Slick and what the benefits are. In short, ORM systems suffer from the consequences of the object-relational impedance mismatch, where in contrast Slick's mapping to functional programming constructs is rather straight forward. This allows for tight integration with Scala and highly re-useable code for composing queries.",
 				new DateTime(2013, 6, 12, 15, 30),
 				new DateTime(2013, 6, 12, 16, 15),
-				"",
+				"Room 4.11",
 				Seq(christopherVogt.id.get, stefan.id.get)).create
 				
 			val T1_S13 = S1Event(Id(0),
@@ -757,7 +757,7 @@ object InitialData {
 				"Designing a REST API for multiple applications and devices is typically an exercise in trade-offs. A single API offers efficiency in terms of building and maintenance costs; specialised APIs, though tedious to build, can be optimised for each particular use-case, removing unnecessary computational overheads. At Time Out (http://www.timeout.com/), we are experimenting with a Graph-based approach that takes full advantage of Scala's functionality to provide the best of both worlds: an optimised and flexible API with no boilerplate. In this talk, we discuss how your domain can be modeled as a graph and introduce Shona, a library which facilitates integration of data from heterogeneous data sources and links it together in a consistent and flexible Graph API. We compare Shona with other approaches (LinkedIn, Netflix and Facebook) highlighting its strengths along with possible areas for development.",
 				new DateTime(2013, 6, 12, 16, 30),
 				new DateTime(2013, 6, 12, 17, 15),
-				"",
+				"Room 4.11",
 				Seq(ismael.id.get, alois.id.get)).create	
 				
 /***** Track 2 Wednesday Afternoon *****/				
@@ -768,7 +768,7 @@ object InitialData {
 				"Despite unifying frameworks like Akka, distributed systems often look like a patchwork of special-purpose tools, libraries, and frameworks. For example, the essential task of persisting objects by pickling (or serializing) them to a binary or text representation is typically outsourced to a third-party serialization framework. Many of these frameworks, like Google's Protocol Buffers, lack support by the Scala compiler or integration with the Scala standard library, resulting in suboptimal performance, unsatisfying Scala support, or both. Furthermore, to obtain good performance using one of these frameworks, it's often necessary to roll your own type-specialized custom serializers, requiring significant boilerplate. This talk presents a new pickling framework designed for Scala with a few attractive properties: (1) using the framework requires little to no boilerplate, (2) using Scala's implicit parameters, users can add their own easily-swappable pickle format enabling users to persist to a number of formats, binary, JSON, or your own custom format, (3) using the type class pattern, users can provide their own custom picklers to override the default behavior of the pickling framework, (4) static, macro-based generation of picklers enables significant performance improvements. In microbenchmarks our framework achieves a factor 6 speedup over Java Serialization, and performs on par or up to 3 times faster than popular fast Java serialization frameworks like Kryo. We'll show how this new framework can be used as a drop-in replacement for other serialization frameworks, and what's in store for Java compatibility. Finally, we'll present an experimental abstraction, called spores, well-behaved, composable pieces of functional behavior that can be cleanly pickled, transported over the wire, unpickled, planted, and more.",
 				new DateTime(2013, 6, 12, 13, 30),
 				new DateTime(2013, 6, 12, 14, 15),
-				"",
+				"Room 3.11",
 				Seq(heather.id.get)).create	
 				
 			val T2_S11 = S1Event(Id(0),
@@ -777,7 +777,7 @@ object InitialData {
 				"Spark Streaming is a new extension to the Spark cluster computing framework that enables high-speed, fault-tolerant stream processing through a high-level Scala API. It builds on a new execution model called \"discretized streams\" to provide exactly-once processing without the heavy cost of transactions required by previous systems (e.g. Storm), allowing it to process significantly higher rates of data per node while still recovering from faults in seconds. It also greatly simplifies stream programming by providing a set of high-level operators (e.g. maps, filters, and windows) in Scala. Perhaps the most exciting feature of Spark Streaming, however, is that it combines seamlessly with Spark's interactive and batch processing features, allowing ad-hoc queries on stream state and programs that combine streaming and historical data. Spark Streaming scales linearly to 100 nodes and has been used to build applications including session-level metrics reporting and online machine learning.",
 				new DateTime(2013, 6, 12, 14, 30),
 				new DateTime(2013, 6, 12, 15, 15),
-				"",
+				"Room 3.11",
 				Seq(tathagata.id.get)).create
 				
 			val T2_S12 = S1Event(Id(0),
@@ -786,7 +786,7 @@ object InitialData {
 				"Scala provides a wide variety of productivity- and correctness-enhancing features, but some of those come at the cost of performance. I will discuss how to design Scala applications to take maximal advantage of Scala's best features while still yielding Java-like performance--or better since you can spend your time thinking and optimizing instead of writing boilerplate! Topics will include how and when to write microbenchmarks, the intrinsic speed of various common library routines, the pitfalls of the first-get-it-working-then-run-the-profiler mode of optimization when performance really matters (and how to let the profiler help you), and patterns to favor when you know a priori or via profiling or benchmarking that performance is critical.",
 				new DateTime(2013, 6, 12, 15, 30),
 				new DateTime(2013, 6, 12, 16, 15),
-				"",
+				"Room 3.11",
 				Seq(rex.id.get)).create
 				
 			val T2_S13 = S1Event(Id(0),
@@ -795,7 +795,7 @@ object InitialData {
 				"Ever dreamed of writing you next Rich Internet Application in Scala, enjoying all the Scala goodness, but not sacrificing JavaScript interoperability? Then come and meet Scala.js, a JavaScript backend for Scala. Scala.js compiles full-fledged Scala code down to JavaScript, which can be integrated in your Web application. It provides very good interoperability with JavaScript code, both from Scala.js to JavaScript and vice versa. E.g., use jQuery and HTML5 from your Scala.js code, either in a typed or untyped way. Or create Scala.js objects and call their methods from JavaScript. For the most part of the talk, we will show off Scala.js and its features through some examples and code samples. We will then present our future plans for Scala.js, and we'll be very interested in knowing what *you* want Scala.js to be.",
 				new DateTime(2013, 6, 12, 16, 30),
 				new DateTime(2013, 6, 12, 17, 15),
-				"",
+				"Room 3.11",
 				Seq(sebastien.id.get)).create	
 				
 /***** Track 3 Wednesday Afternoon *****/				
@@ -806,7 +806,7 @@ object InitialData {
 				"The Spring Framework is one of the most popular Java frameworks used today. While it is possible to use Spring in Scala, it does feel awkward in certain places, because of the \"Javaism\" peering through. For instance, using callback interfaces feels strange in Scala; functions would be a better match. In October 2012, I introduced the Spring Scala project, which solves this particular issue, and aims to make it easier to use Spring in Scala in general. In this session, we discuss the Spring Scala portfolio project and its feature set.",
 				new DateTime(2013, 6, 12, 13, 30),
 				new DateTime(2013, 6, 12, 14, 15),
-				"",
+				"Metropolis",
 				Seq(arjen.id.get)).create	
 				
 			val T3_S11 = S1Event(Id(0),
@@ -815,7 +815,7 @@ object InitialData {
 				"Polymorphic function values are one of the key abstractions in shapeless: they are crucial to enabling sequence-like operations such as map, flatMap and filter to be performed on HLists (data structures which combine the heterogeneous typing of tuples with list-like characteristics). Their encoding in Scala has been refined over a number of iterations, but remains a little heavyweight relative to the syntactic ease with which ordinary monomorphic functions or polymorphic methods can be defined. In this talk I will show how we can use macros to automatically promote polymorphic methods to polymorphic function values and how that improves the usability of shapeless.",
 				new DateTime(2013, 6, 12, 14, 30),
 				new DateTime(2013, 6, 12, 15, 15),
-				"",
+				"Metropolis",
 				Seq(miles.id.get)).create
 				
 			val T3_S12 = S1Event(Id(0),
@@ -824,7 +824,7 @@ object InitialData {
 				"The decipherment of Mesoamerican hieroglyphic writing systems advanced at previously unparalleled rates in recent decades. One of the keys to this success is the application of methodologies developed and applied successfully to other writing systems. The purpose of this presentation is to show how some of these methodologies, from Natural Language Processing and Hermeneumatics, can be successfully applied to the Maya hieroglyphic writing system thanks to the power and versatility of Scala. In particular, the research framework presented here makes extensive use of the facilities that Scala provides to build external Domain Specific Languages that epigraphers can use both to provide accurate transcriptions and transliterations of hieroglyphic texts, and to query the linguistic corpora for quantitative and qualitative analyses.",
 				new DateTime(2013, 6, 12, 15, 30),
 				new DateTime(2013, 6, 12, 16, 15),
-				"",
+				"Metropolis",
 				Seq(ignacio.id.get)).create
 				
 			val T3_S13 = S1Event(Id(0),
@@ -833,10 +833,44 @@ object InitialData {
 				"One of the most advanced programming languages of today has surely outgrown the gotchas, puzzlers and head-scratchers of the past. Really? Scala Puzzlers returns with a totally new range of seemingly simple examples which demonstrate that there's plenty of head-scratching left in Scala 2.10! Let your mind be challenged by unexpected and unintuitive behaviour and results and learn something about your favourite language in the process. And unlike in a real magic show, we'll even be giving away the solutions :-)",
 				new DateTime(2013, 6, 12, 16, 30),
 				new DateTime(2013, 6, 12, 17, 15),
-				"",
+				"Metropolis",
 				Seq(andrewp.id.get, nermin.id.get)).create	
 				
+			val MondayCocktail = S1Event(Id(0),
+				"MondayCocktail",
+				"Cocktail Hour",
+				"Join Us For a Cocktail!",
+				new DateTime(2013, 6, 10, 18,00),
+				new DateTime(2013, 6, 10, 19, 00),
+				"Hudson Theatre",
+				Seq()).create		
+				
+			val TuesdayLunch = S1Event(Id(0),
+				"TuesdayLunch",
+				"Lunch",
+				"Join Us For Lunch",
+				new DateTime(2013, 6, 11, 12, 00),
+				new DateTime(2013, 6, 11, 13, 30),
+				"Hudson Theatre",
+				Seq()).create	
+				
+			val TuesdayParty = S1Event(Id(0),
+				"TuesdayParty",
+				"Conference Party",
+				"Conference Party",
+				new DateTime(2013, 6, 11, 19, 00),
+				new DateTime(2013, 6, 11, 23, 30),
+				"Hudson Theatre",
+				Seq()).create					
 		
+			val WednesdayLunch = S1Event(Id(0),
+				"WednesdayLunch",
+				"Lunch",
+				"Join Us For Lunch",
+				new DateTime(2013, 6, 12, 12, 00),
+				new DateTime(2013, 6, 12, 13, 30),
+				"Hudson Theatre",
+				Seq()).create					
 		}
 	}
 }
