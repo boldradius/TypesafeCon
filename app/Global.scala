@@ -209,7 +209,7 @@ object InitialData {
 			val rose = Speaker(Id(0),
 				"Rose Katherine Toomey",
 				"Software Engineer at Novus Partners",
-				"",
+				"Scala developer in NYC. Currently at work on https://github.com/novus/salat",
 				None,
 				Some("prasinous"),
 				Some("https://github.com/rktoomey")).create.get					
@@ -217,7 +217,7 @@ object InitialData {
 			val joshw = Speaker(Id(0),
 				"Josh Wills",
 				"Data Scientist at Cloudera",
-				"",
+				"Data Scientist @Cloudera, VP of Apache Crunch",
 				None,
 				Some("josh_wills"),
 				Some("http://crunch.apache.org")).create.get	
@@ -306,7 +306,7 @@ object InitialData {
 			val philipp = Speaker(Id(0),
 				"Philipp Haller",
 				"Consultant at Typesafe",
-				"",
+				"Philipp is a programming languages researcher, developer and consultant at Typesafe. Previously, he was a post-doctoral researcher in the Programming Methods Lab (LAMP) at EPFL, Switzerland, and in the Pervasive Parallelism Lab at Stanford University. Prior to that he was a PhD student of Martin Odersky. His main research interests are in the design and implementation of programming languages and managed runtime environments to support concurrent and parallel software. I received a PhD in Computer Science from EPFL in Lausanne, Switzerland, in 2010. Pilipp is a member of the Scala team, and a top-5 contributor of the Scala project. Recently, he has been working on Scala 2.10’s futures (SIP-14) as well as Scala’s upcoming Async feature for asynchronous and concurrent programming.",
 				None,
 				Some("philippkhaller"),
 				None).create.get
@@ -314,7 +314,7 @@ object InitialData {
 			val jason = Speaker(Id(0),
 				"Jason Zaugg",
 				"Compiler Engineer at Typesafe",
-				"",
+				"Lion tamer @ Typesafe",
 				None,
 				Some("retronym"),
 				None).create.get
@@ -363,7 +363,7 @@ object InitialData {
 			val christopherVogt = Speaker(Id(0),
 				"Christopher Vogt",
 				"Software Engineer at EPFL",
-				"",
+				"Christopher Vogt is a Software Engineer in the Scala team at EPFL",
 				None,
 				Some("cvogt"),
 				None).create.get				
