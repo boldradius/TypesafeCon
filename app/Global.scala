@@ -847,8 +847,8 @@ object InitialData {
 				"MondayCocktail",
 				"Cocktail Hour",
 				"Join Us For a Cocktail!",
-				new DateTime(2013, 6, 10, 18,00),
-				new DateTime(2013, 6, 10, 19, 00),
+				new DateTime(2013, 6, 10, 18,0),
+				new DateTime(2013, 6, 10, 19, 0),
 				"Hudson Theatre",
 				Seq()).create		
 				
@@ -856,7 +856,7 @@ object InitialData {
 				"TuesdayLunch",
 				"Lunch",
 				"Join Us For Lunch",
-				new DateTime(2013, 6, 11, 12, 00),
+				new DateTime(2013, 6, 11, 12, 0),
 				new DateTime(2013, 6, 11, 13, 30),
 				"Hudson Theatre",
 				Seq()).create	
@@ -865,7 +865,7 @@ object InitialData {
 				"TuesdayParty",
 				"Conference Party",
 				"Conference Party",
-				new DateTime(2013, 6, 11, 19, 00),
+				new DateTime(2013, 6, 11, 19, 0),
 				new DateTime(2013, 6, 11, 23, 30),
 				"Hudson Theatre",
 				Seq()).create					
@@ -874,7 +874,7 @@ object InitialData {
 				"WednesdayLunch",
 				"Lunch",
 				"Join Us For Lunch",
-				new DateTime(2013, 6, 12, 12, 00),
+				new DateTime(2013, 6, 12, 12, 0),
 				new DateTime(2013, 6, 12, 13, 30),
 				"Hudson Theatre",
 				Seq()).create					
