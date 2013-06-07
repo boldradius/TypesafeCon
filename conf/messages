@@ -26,7 +26,7 @@ about.find.details=It''s a big conference out there - coordinate on-the-fly meet
 about.sponsors=Sponsors
 
 playground.details=This is the playground area. It''s here for you to hack at. Here''s how:
-playground.details.step1=Fork the application repository.
+playground.details.step1=Fork the application <a href=''{0}'' target=''_blank''>repository</a>.
 playground.details.step2=Hack away at the source code.
 playground.details.step3=Send us a pull request, and we''ll include your changes if they''re safe and fun for everyone :)
 playground.instructions=We sent you an email with instructions when you created your profile - if you haven''t yet, now is the perfect time!
