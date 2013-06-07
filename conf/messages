@@ -13,7 +13,7 @@ event.by=By
 event.discussion=Join the discussion
 event.share=Share this event
 
-about.details=TypesafeCon is an application for conference attendees to visualize content and sessions related to the Typesafe Stack (Scala, Akka and the Play! Framework), while interacting with other enthusiasts around them.
+about.details=TypesafeCon is an application for conference attendees to visualize content and sessions related to the Typesafe Stack (Scala, Akka and the Play Framework), while interacting with other enthusiasts around them.
 about.download=Download the app:
 about.typesafe=About Typesafe
 about.typesafe.more=To learn more about the Typesafe stack, click here:
@@ -32,7 +32,7 @@ playground.instructions=We sent you an email with instructions when you created 
 playground.sendInstructions=Enter your email below and we''ll send you full instructions:
 playground.send=Send
 
-landing.details=TypesafeCon is an application for conference attendees to visualize content and sessions related to the Typesafe Stack (Scala, Akka and the Play! Framework), while interacting with other enthusiasts around them.
+landing.details=TypesafeCon is an application for conference attendees to visualize content and sessions related to the Typesafe Stack (Scala, Akka and the Play Framework), while interacting with other enthusiasts around them.
 landing.download.ios=Get iOS App
 landing.download.android=Get Android App
 

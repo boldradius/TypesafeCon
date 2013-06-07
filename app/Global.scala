@@ -368,7 +368,6 @@ object InitialData {
 				Some("cvogt"),
 				None).create.get				
 				
-				
 			val stefan = Speaker(Id(0),
 				"Stefan Zeiger",
 				"Tech Lead for Slick at Typesafe",
@@ -433,6 +432,14 @@ object InitialData {
 				Some("higherkinded"),
 				Some("http://composables.com")).create.get
 				
+			val jroper = Speaker(Id(0),
+				"James Roper",
+				"Typesafe's tech lead for the Play Framework",
+				"James Roper is a software developer at Typesafe working as tech lead on Play Framework. His passion is taking the hassle out of software development, making developers more productive, and ensuring that they have fun doing so. He also loves sunsets, long walks on the beach and trolling.",
+				None,
+				Some("jroper"),
+				Some("http://jazzy.id.au")).create.get
+				
 				
 				
 			/********************************************************************************************************************/
@@ -442,7 +449,7 @@ object InitialData {
 			val KEYNOTE1 = S1Event(Id(0),
 				"KEYNOTE1",
 				"Keynote - Scala With Style",
-				"Scala gives you awesome expressive power, but how to make best use of it? In my talk I will discuss the question what makes good Scala style. We will start with syntax and continue with how to name things, how to mix objects and functions, where (and where not) to use mutable state, and when to use which design pattern. As most questions of style, the discussion will be quite subjective, and some of it might be controversial. I am looking forward to discuss these topics with the conference attendees.",
+				"Scala gives you awesome expressive power, but how to make best use of it? In my talk I will discuss the question what makes good Scala style. We will start with syntax and continue with how to name things, how to mix objects and functions, where (and where not) to use mutable state and when to use which design pattern. As with most questions of style, the discussion will be quite subjective, and some of it might be controversial. I am looking forward to discussing these topics with the conference attendees.",
 				new DateTime(2013, 6, 10, 19, 0),
 				new DateTime(2013, 6, 10, 20, 30),
 				"Hudson Theater",
@@ -548,12 +555,12 @@ object InitialData {
 				
 			val T1_S5 = S1Event(Id(0),
 				"T1_S5",
-				"Bring Your Own Laptop",
-				"Reactive Architectures are the next major evolution of the Internet. They allow for applications to be built in a completely non-blocking, asynchronous, and reactive manner. The Play Framework fully embraces this new paradigm of programming which allows developers to write asynchronous applications using either Scala or Java. In this hands-on session we will be building a reactive Play application. The application will use Play to asynchronously read from a web service and stream it to the client using web sockets and JSON. In building this sample you will learn the basics of how a Play application is structured and the tools it provides for building event-driven applications.",
+				"All Work and No Play Doesn't Scale",
+				"As the focus of modern web applications shifts to be more and more about providing rich user experiences, and hardware evolves not to be faster but to provide more and more CPU cores, many web frameworks have been left behind, unable to meet the demands of a modern web application. At the same time, demands for web applications continue to become more complex, with more services required to be written faster. Play Framework is the answer to these new demands, providing first class support for current web standards such as WebSockets and technologies such as LESS, requireJS and CoffeeScript, while providing the power of asynchronous IO and parallel processing using simple and concise Scala syntax on the backend. It does this while allowing you to produce applications quickly, scaling your development by providing everything working out of the box and ready to go. This presentation will give you a taste of just how simple Play Framework makes modern web application development, showcasing support for the latest technologies in a development environment that is powerful and productive.",
 				new DateTime(2013, 6, 11, 14, 30),
 				new DateTime(2013, 6, 11, 15, 15),
 				"Room 4.11",
-				Seq(ryank.id.get)).create	
+				Seq(jroper.id.get)).create	
 				
 			val T1_S6 = S1Event(Id(0),
 				"T1_S6",
@@ -617,7 +624,7 @@ object InitialData {
 				
 			val T3_S4 = S1Event(Id(0),
 				"T3_S4",
-				"High Performance Cluster Computing with Delite",
+				"Big Data Analytics with Delite",
 				"Traditionally in order to write applications that run across heterogeneous hardware, programmers must manually combine code for multiple programming models together in ad-hoc ways. Domain-specific languages (DSLs) offer an alternative approach, as high-level implicitly parallel domain abstractions can be transparently lowered to multiple heterogeneous architectures. Delite is a framework for building high performance DSLs embedded in Scala. This talk will describe how we have extended Delite to run single-source, implicitly parallel DSL applications across clusters of machines of CPUs and GPUs. Using examples from existing Delite DSLs for data querying and machine learning, we will show how we can achieve high performance with a flexible high-level programming model using a set of powerful compiler analyses and optimizations. Finally we will compare Delite's performance with Hadoop and Spark across of set of applications.",
 				new DateTime(2013, 6, 11, 13, 30),
 				new DateTime(2013, 6, 11, 14, 15),
