@@ -36,4 +36,4 @@ Just send us any commits you have, and we'll take a look. If your changes are sa
 
 h2. Links
 
-The mobile app repositories are available here (TODO)
+The mobile app repositories are available "here":https://github.com/magneticbear/scalaone_iphone and "here":https://github.com/magneticbear/scala1_android
